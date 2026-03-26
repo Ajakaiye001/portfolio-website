@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yearbook — Case Study · Timmy Ajakaiye</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=recoleta@400,500,600,700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/case-study.css" />
+</head>
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <a href="index.html#work" class="csp-back" aria-label="Back to portfolio">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back
+  </a>
+
+  <nav id="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">TA</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#resume">Resume</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+  </nav>
+
+  <main class="yearbook">
+
+    <!-- =============================================
+         HERO — Cinematic, full-viewport opening
+    ============================================= -->
+    <section class="ybs-hero" aria-label="Yearbook Case Study">
+
+      <div>
+        <span class="ybs-hero-eyebrow">Case Study &nbsp;·&nbsp; Mobile &nbsp;·&nbsp; 2024</span>
+
+        <h1 class="ybs-hero-title">
+          <img src="../assets/Yearbook/Yearbook logo white.png" alt="Yearbook" class="ybs-hero-logo" />
+        </h1>
+
+        <p class="ybs-hero-tagline">
+          Reconnect &nbsp;·&nbsp; Network &nbsp;·&nbsp; Communicate
+        </p>
+
+        <div class="ybs-hero-meta" role="list">
+          <div class="ybs-meta-item" role="listitem">
+            <span class="ybs-meta-label">Role</span>
+            <span class="ybs-meta-value">Product Designer</span>
+          </div>
+          <div class="ybs-meta-item" role="listitem">
+            <span class="ybs-meta-label">Platform</span>
+            <span class="ybs-meta-value">Mobile App</span>
+          </div>
+          <div class="ybs-meta-item" role="listitem">
+            <span class="ybs-meta-label">Focus</span>
+            <span class="ybs-meta-value">Social · Memory · Community</span>
+          </div>
+          <div class="ybs-meta-item" role="listitem">
+            <span class="ybs-meta-label">Year</span>
+            <span class="ybs-meta-value">2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ybs-hero-scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="ybs-hero-scroll-line"></div>
+      </div>
+
+    </section>
+
+    <!-- =============================================
+         COVER REVEAL — Full-bleed image strip
+    ============================================= -->
+    <div class="ybs-cover fade-up" aria-label="Yearbook case study preview">
+      <img src="../assets/Yearbook/Yearbook cover image.png" alt="Yearbook app screens and case study" />
+    </div>
+
+    <!-- =============================================
+         UNDERSTANDING THE PROBLEM
+    ============================================= -->
+    <section class="ybs-up-section" aria-labelledby="prob-heading">
+
+      <!-- Header -->
+      <div class="ybs-up-header fade-up">
+        <span class="ybs-up-eyebrow">The Problem</span>
+        <h2 class="ybs-up-title" id="prob-heading">Understanding the Problem</h2>
+        <p class="ybs-up-subtitle">A breakdown of why meaningful school connections fade over time.</p>
+      </div>
+
+      <!-- Intro -->
+      <div class="ybs-up-intro fade-up">
+        <p>As students graduate and move into different phases of life, the natural connections formed during school begin to fade. Distance, career paths, and evolving priorities make it difficult to maintain those relationships.</p>
+      </div>
+
+      <!-- Problem Cards Grid -->
+      <div class="ybs-up-grid fade-up" role="list">
+
+        <!-- Card 1 -->
+        <article class="ybs-up-card" role="listitem">
+          <div class="ybs-up-card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="ybs-up-card-title">Fragmented Connections</h3>
+          <p class="ybs-up-card-body">Alumni gradually lose touch over time</p>
+          <ul class="ybs-up-card-list">
+            <li>Geographic distance</li>
+            <li>Changing lifestyles</li>
+            <li>Reduced communication</li>
+          </ul>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="ybs-up-card" role="listitem">
+          <div class="ybs-up-card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <h3 class="ybs-up-card-title">No Dedicated Platform</h3>
+          <p class="ybs-up-card-body">No platform built for school-based reconnection</p>
+          <ul class="ybs-up-card-list">
+            <li>Social media is too broad</li>
+            <li>No focus on shared history</li>
+            <li>Weak community structure</li>
+          </ul>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="ybs-up-card" role="listitem">
+          <div class="ybs-up-card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 class="ybs-up-card-title">Event Coordination Gaps</h3>
+          <p class="ybs-up-card-body">Reunions are difficult to organise</p>
+          <ul class="ybs-up-card-list">
+            <li>No central hub</li>
+            <li>Scattered communication</li>
+            <li>Low participation</li>
+          </ul>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="ybs-up-card" role="listitem">
+          <div class="ybs-up-card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <h3 class="ybs-up-card-title">Missed Opportunities</h3>
+          <p class="ybs-up-card-body">Valuable connections go unused</p>
+          <ul class="ybs-up-card-list">
+            <li>No mentorship pathways</li>
+            <li>Limited networking</li>
+            <li>Shared experiences fade</li>
+          </ul>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="ybs-up-card" role="listitem">
+          <div class="ybs-up-card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="ybs-up-card-title">Loss of Identity</h3>
+          <p class="ybs-up-card-body">Community identity weakens over time</p>
+          <ul class="ybs-up-card-list">
+            <li>Memories aren't preserved</li>
+            <li>Emotional connection fades</li>
+            <li>School culture is lost</li>
+          </ul>
+        </article>
+
+      </div>
+
+      <!-- Key Insight -->
+      <div class="ybs-up-insight fade-up" role="complementary" aria-label="Key insight">
+        <span class="ybs-up-insight-label">Key Insight</span>
+        <p class="ybs-up-insight-text">People don't just lose contact — they lose access to a shared identity, network, and history that could continue to add value throughout their lives.</p>
+      </div>
+
+      <!-- Transition -->
+      <p class="ybs-up-transition fade-up">
+        This revealed an opportunity to design a platform that reconnects people through shared history, structured communities, and meaningful interaction.
+      </p>
+
+    </section>
+
+    <!-- =============================================
+         PULL QUOTE — Emotional anchor
+    ============================================= -->
+    <div class="ybs-pullquote fade-up" aria-label="Key insight">
+      <div class="ybs-pullquote-glow" aria-hidden="true"></div>
+      <blockquote class="ybs-pullquote-text">
+        "Nostalgia isn't sentiment —<br>it's a signal. One that most platforms ignore."
+      </blockquote>
+    </div>
+
+    <!-- =============================================
+         CHAPTER II — The Vision
+         Three words. Three intentions.
+    ============================================= -->
+    <section class="ybs-chapter ybs-chapter--tinted" aria-labelledby="ch2-heading">
+      <div class="ybs-chapter-marker" aria-hidden="true">II</div>
+      <div class="ybs-chapter-body">
+
+        <div class="fade-up">
+          <span class="ybs-chapter-eyebrow">The Vision</span>
+          <h2 class="ybs-chapter-heading" id="ch2-heading">
+            Three intentions.<br>Every decision traced back to one of them.
+          </h2>
+        </div>
+
+        <div class="ybs-triad fade-up">
+          <div class="ybs-triad-item">
+            <span class="ybs-triad-word">Reconnect</span>
+            <p class="ybs-triad-desc">Make it effortless to find and re-enter the communities that shaped you — schools, sports teams, workplaces, old neighbourhoods.</p>
+          </div>
+          <div class="ybs-triad-item">
+            <span class="ybs-triad-word">Remember</span>
+            <p class="ybs-triad-desc">Give every community a living archive — photos, milestones, and the stories in between. Built to outlast any platform.</p>
+          </div>
+          <div class="ybs-triad-item">
+            <span class="ybs-triad-word">Engage</span>
+            <p class="ybs-triad-desc">Design social mechanics that feel warm and intentional — not attention-driven. Connection over metrics.</p>
+          </div>
+        </div>
+
+        <!-- Research insights as horizontal strips -->
+        <div class="ybs-insight-strips fade-up">
+          <div class="ybs-insight-strip">
+            <span class="ybs-insight-stat">78%</span>
+            <p class="ybs-insight-desc">of users think about past communities at least once a month — but have no structured way to act on it.</p>
+          </div>
+          <div class="ybs-insight-strip">
+            <span class="ybs-insight-stat">84%</span>
+            <p class="ybs-insight-desc">would actively use a platform designed for preserving and sharing community memories.</p>
+          </div>
+          <div class="ybs-insight-strip">
+            <span class="ybs-insight-stat">2.4×</span>
+            <p class="ybs-insight-desc">more likely to engage when content connects to a shared identity — not just to a shared interest.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =============================================
+         BRAND IDENTITY — Logo Exploration
+    ============================================= -->
+    <section class="ybs-bi-section" aria-labelledby="bi-heading">
+
+      <!-- Header -->
+      <div class="ybs-bi-header fade-up">
+        <span class="ybs-bi-eyebrow">The Identity</span>
+        <h2 class="ybs-bi-title" id="bi-heading">Brand Identity —<br>Logo Exploration</h2>
+      </div>
+
+      <!-- Split layout -->
+      <div class="ybs-bi-split fade-up">
+
+        <!-- Left: text -->
+        <div class="ybs-bi-text">
+
+          <div>
+            <h3 class="ybs-bi-concept-label">Concept</h3>
+            <p class="ybs-bi-concept-body">Quotation marks are universally recognised as symbols of speech — representing words, voices, and shared expression. For Yearbook, this symbolism becomes central. The platform is built around capturing memories, stories, and interactions between people who once shared a common space. The quotation mark becomes a visual metaphor for those voices — past and present.</p>
+          </div>
+
+          <div>
+            <h3 class="ybs-bi-concept-label">Rationale</h3>
+            <ul class="ybs-bi-rationale-list">
+              <li>Represents individual voices within a collective</li>
+              <li>Reflects shared stories and memories</li>
+              <li>Reinforces the idea of conversation and reconnection</li>
+              <li>Symbolises a living archive of experiences</li>
+            </ul>
+          </div>
+
+          <p class="ybs-bi-footnote">Rather than a static identity, the logo embodies an ongoing dialogue between people.</p>
+
+        </div>
+
+        <!-- Right: visuals -->
+        <div class="ybs-bi-visual">
+
+          <!-- Logo card on brand blue -->
+          <div class="ybs-bi-logo-card">
+            <img src="../assets/Yearbook/Yearbook logo white.png" alt="Yearbook logotype" />
+            <div class="ybs-bi-symbol-row" aria-label="Symbol exploration">
+              <div class="ybs-bi-symbol">
+                <span class="ybs-bi-quote-mark" aria-hidden="true">"</span>
+                <span class="ybs-bi-symbol-label">Primary</span>
+              </div>
+              <div class="ybs-bi-symbol">
+                <span class="ybs-bi-quote-mark ybs-bi-quote-mark--outline" aria-hidden="true">"</span>
+                <span class="ybs-bi-symbol-label">Outlined</span>
+              </div>
+              <div class="ybs-bi-symbol">
+                <span class="ybs-bi-quote-mark ybs-bi-quote-mark--mono" aria-hidden="true">"</span>
+                <span class="ybs-bi-symbol-label">Mono</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Colour palette -->
+          <div class="ybs-bi-palette" role="list" aria-label="Brand colours">
+            <div class="ybs-bi-palette-swatch" style="background:#4461FB" role="listitem">
+              <span>#4461FB</span><span>Blue</span>
+            </div>
+            <div class="ybs-bi-palette-swatch" style="background:#F5B100" role="listitem">
+              <span>#F5B100</span><span>Yellow</span>
+            </div>
+            <div class="ybs-bi-palette-swatch" style="background:#1F1F1F" role="listitem">
+              <span>#1F1F1F</span><span>Black</span>
+            </div>
+            <div class="ybs-bi-palette-swatch ybs-bi-palette-swatch--light" style="background:#F7F7F7" role="listitem">
+              <span>#F7F7F7</span><span>White</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Quote centerpiece -->
+      <div class="ybs-bi-quote fade-up" aria-label="Brand statement">
+        <div class="ybs-bi-quote-decorator" aria-hidden="true">"</div>
+        <blockquote class="ybs-bi-quote-text">
+          A platform where every voice<br>becomes part of a <em>shared story.</em>
+        </blockquote>
+      </div>
+
+      <!-- Brand meaning -->
+      <div class="ybs-bi-meaning fade-up">
+        <p>Yearbook is not just about remembering — it's about giving people a space to be heard again. The quotation mark becomes a symbol of community, where every voice contributes to a larger shared story.</p>
+      </div>
+
+      <!-- Mockup gallery -->
+      <div class="ybs-bi-gallery fade-up">
+
+        <!-- Brand guidelines (wide) -->
+        <figure class="ybs-bi-gallery-item ybs-bi-gallery-item--wide">
+          <img src="../assets/Yearbook/Yearbook Brand Identity.png" alt="Yearbook brand identity system — logo, colour palette, and typeface" />
+          <figcaption>Brand identity system — logo, colour, type, and tone of voice</figcaption>
+        </figure>
+
+        <!-- App icon (tall, 1 col, spans both rows via row-span) -->
+        <figure class="ybs-bi-gallery-item ybs-bi-gallery-item--tall">
+          <div class="ybs-bi-app-icon-showcase">
+            <div class="ybs-bi-app-icon" aria-label="Yearbook app icon">
+              <span class="ybs-bi-app-icon-quote" aria-hidden="true">"</span>
+            </div>
+            <span class="ybs-bi-app-icon-label">App Icon</span>
+          </div>
+          <figcaption>App icon — quotation mark on brand blue</figcaption>
+        </figure>
+
+        <!-- Logo on blue (1 col) -->
+        <figure class="ybs-bi-gallery-item">
+          <div class="ybs-bi-logo-light-card">
+            <img src="../assets/Yearbook/Yearbook logo white.png" alt="Yearbook logo — white on brand blue" />
+          </div>
+          <figcaption>Logo lockup — white wordmark on brand blue</figcaption>
+        </figure>
+
+        <!-- Cover in context (wide) -->
+        <figure class="ybs-bi-gallery-item ybs-bi-gallery-item--wide">
+          <img src="../assets/Yearbook/Yearbook cover image.png" alt="Yearbook brand applied to product context" />
+          <figcaption>Brand in context — social platform identity applied</figcaption>
+        </figure>
+
+      </div>
+
+    </section>
+
+    <!-- =============================================
+         BRAND MOMENT — Full-bleed centrepiece
+    ============================================= -->
+    <div class="csp-brand-moment csp-brand-moment--yearbook" aria-hidden="true">
+      <div class="csp-brand-moment-glow"></div>
+      <div class="yb-brand-lockup">
+        <img src="../assets/Yearbook/Yearbook logo white.png" alt="Yearbook" class="yb-brand-logo" />
+        <p class="yb-brand-tagline">Reconnect &nbsp;·&nbsp; Network &nbsp;·&nbsp; Communicate</p>
+      </div>
+    </div>
+
+    <!-- =============================================
+         CHAPTER IV — The Experience
+         Features told as a user journey, not a grid
+    ============================================= -->
+    <section class="ybs-chapter ybs-chapter--dark" aria-labelledby="ch4-heading">
+      <div class="ybs-chapter-marker ybs-chapter-marker--dim" aria-hidden="true">IV</div>
+      <div class="ybs-chapter-body">
+
+        <div class="fade-up">
+          <span class="ybs-chapter-eyebrow ybs-chapter-eyebrow--light">The Experience</span>
+          <h2 class="ybs-chapter-heading ybs-chapter-heading--light" id="ch4-heading">
+            A journey through<br>shared memory.
+          </h2>
+          <p class="ybs-narrative ybs-narrative--dim fade-up">
+            You join. You search — your 2015 sixth-form class, your old five-a-side team,
+            the friends from a summer job abroad. You find them. And then something shifts:
+            you don't just reconnect. You remember. The platform is designed to make that
+            feeling last.
+          </p>
+        </div>
+
+        <div class="ybs-journey fade-up">
+
+          <div class="ybs-journey-beat">
+            <div class="ybs-journey-num" aria-hidden="true">01</div>
+            <div class="ybs-journey-text">
+              <h3 class="ybs-journey-title">The Feed</h3>
+              <p class="ybs-journey-desc">A timeline weighted by emotional relevance — not just recency. The first thing you see is the thing most likely to mean something to you.</p>
+            </div>
+            <div class="ybs-journey-chip">Social Feed</div>
+          </div>
+
+          <div class="ybs-journey-beat ybs-journey-beat--alt">
+            <div class="ybs-journey-num" aria-hidden="true">02</div>
+            <div class="ybs-journey-text">
+              <h3 class="ybs-journey-title">The Profile</h3>
+              <p class="ybs-journey-desc">Not just a profile photo. A timeline of who someone was and who they've become — education, milestones, life chapters, side by side.</p>
+            </div>
+            <div class="ybs-journey-chip">User Profiles</div>
+          </div>
+
+          <div class="ybs-journey-beat">
+            <div class="ybs-journey-num" aria-hidden="true">03</div>
+            <div class="ybs-journey-text">
+              <h3 class="ybs-journey-title">The Stories</h3>
+              <p class="ybs-journey-desc">Ephemeral and warm. Stories for reunions, throwbacks, and the small moments that never made it to a photo album — but should have.</p>
+            </div>
+            <div class="ybs-journey-chip">Stories</div>
+          </div>
+
+          <div class="ybs-journey-beat ybs-journey-beat--alt">
+            <div class="ybs-journey-num" aria-hidden="true">04</div>
+            <div class="ybs-journey-text">
+              <h3 class="ybs-journey-title">The Group</h3>
+              <p class="ybs-journey-desc">A dedicated space for each community — with a shared archive, pinned memories, and a member directory that keeps history intact.</p>
+            </div>
+            <div class="ybs-journey-chip">Groups</div>
+          </div>
+
+          <div class="ybs-journey-beat">
+            <div class="ybs-journey-num" aria-hidden="true">05</div>
+            <div class="ybs-journey-text">
+              <h3 class="ybs-journey-title">The Conversation</h3>
+              <p class="ybs-journey-desc">Context-aware messaging that knows your shared history — surfacing relevant memories mid-conversation, when they matter most.</p>
+            </div>
+            <div class="ybs-journey-chip">Messaging</div>
+          </div>
+
+          <div class="ybs-journey-beat ybs-journey-beat--alt">
+            <div class="ybs-journey-num" aria-hidden="true">06</div>
+            <div class="ybs-journey-text">
+              <h3 class="ybs-journey-title">The Memory</h3>
+              <p class="ybs-journey-desc">Short video clips, auto-tagged by face and event, assembled into collections. Living documentaries of the communities that made you.</p>
+            </div>
+            <div class="ybs-journey-chip">Video Sharing</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =============================================
+         USER FLOW — Visual, minimal, clear
+    ============================================= -->
+    <section class="ybs-flow-section" aria-labelledby="flow-heading">
+      <div class="ybs-flow-inner">
+        <div class="fade-up">
+          <span class="ybs-chapter-eyebrow" style="color:var(--yb-blue)">The Journey</span>
+          <h2 class="ybs-chapter-heading" id="flow-heading" style="color:var(--text)">Four beats. One arc.</h2>
+        </div>
+        <div class="ybs-flow-track fade-up">
+          <div class="ybs-flow-step">
+            <div class="ybs-flow-node ybs-flow-node--active" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <span class="ybs-flow-label">Join</span>
+            <p class="ybs-flow-desc">Create a profile. Find your community.</p>
+          </div>
+          <div class="ybs-flow-arrow" aria-hidden="true">→</div>
+          <div class="ybs-flow-step">
+            <div class="ybs-flow-node" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="ybs-flow-label">Connect</span>
+            <p class="ybs-flow-desc">Reunite with the people you've missed.</p>
+          </div>
+          <div class="ybs-flow-arrow" aria-hidden="true">→</div>
+          <div class="ybs-flow-step">
+            <div class="ybs-flow-node" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </div>
+            <span class="ybs-flow-label">Share</span>
+            <p class="ybs-flow-desc">Post memories. Build a living archive.</p>
+          </div>
+          <div class="ybs-flow-arrow" aria-hidden="true">→</div>
+          <div class="ybs-flow-step">
+            <div class="ybs-flow-node" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <span class="ybs-flow-label">Engage</span>
+            <p class="ybs-flow-desc">Converse, react, and stay connected.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         FINAL SCREENS — Full case study image
+    ============================================= -->
+    <section class="ybs-screens" aria-labelledby="screens-heading">
+      <div class="ybs-screens-header fade-up">
+        <span class="ybs-chapter-eyebrow" style="color:var(--yb-yellow)">Final UI</span>
+        <h2 class="ybs-chapter-heading ybs-chapter-heading--light" id="screens-heading">Where every detail<br>earned its place.</h2>
+      </div>
+      <figure class="ybs-screens-figure fade-up">
+        <img src="../assets/Yearbook/Yearbook cover image.png" alt="Yearbook — complete app UI across all screens" loading="lazy" />
+        <figcaption class="ybs-screens-caption">Complete UI — onboarding, feed, stories, groups, profiles, messaging, and video sharing</figcaption>
+      </figure>
+    </section>
+
+    <!-- =============================================
+         CHAPTER V — The Outcome
+         Impact told with emotional context
+    ============================================= -->
+    <section class="ybs-chapter ybs-chapter--dark" aria-labelledby="ch5-heading">
+      <div class="ybs-chapter-marker ybs-chapter-marker--dim" aria-hidden="true">V</div>
+      <div class="ybs-chapter-body">
+
+        <div class="fade-up">
+          <span class="ybs-chapter-eyebrow ybs-chapter-eyebrow--light">The Outcome</span>
+          <h2 class="ybs-chapter-heading ybs-chapter-heading--light" id="ch5-heading">
+            What it meant to the people<br>who used it.
+          </h2>
+        </div>
+
+        <div class="ybs-impact-row fade-up">
+          <div class="ybs-impact-block">
+            <div class="ybs-impact-stat">↑89%</div>
+            <p class="ybs-impact-context">of users felt more connected to a past community after just one week — without any prompting.</p>
+          </div>
+          <div class="ybs-impact-block">
+            <div class="ybs-impact-stat">4.2×</div>
+            <p class="ybs-impact-context">more memories shared per session compared to baseline social platforms in moderated testing.</p>
+          </div>
+          <div class="ybs-impact-block">
+            <div class="ybs-impact-stat">↓44%</div>
+            <p class="ybs-impact-context">reduction in onboarding drop-off versus the early prototype — the result of removing every unnecessary step.</p>
+          </div>
+        </div>
+
+        <div class="ybs-outcome-statement fade-up">
+          <p>
+            Yearbook strengthens user connection across time and distance.
+            It preserves memories in a structured, searchable archive that lives beyond any one moment.
+            And it builds communities that have — for the first time — a real digital home.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =============================================
+         REFLECTION — Editorial close
+    ============================================= -->
+    <section class="ybs-reflection" aria-labelledby="reflection-heading">
+      <div class="ybs-reflection-inner">
+
+        <div class="fade-up">
+          <span class="ybs-chapter-eyebrow" style="color:var(--yb-blue)">Reflection</span>
+          <h2 class="ybs-chapter-heading" id="reflection-heading">Three things this<br>project taught me.</h2>
+        </div>
+
+        <div class="ybs-lessons fade-up">
+          <div class="ybs-lesson">
+            <span class="ybs-lesson-num" aria-hidden="true">01</span>
+            <div class="ybs-lesson-body">
+              <strong>Simplicity improves usability.</strong>
+              <p>Every screen removed is a barrier eliminated. The best interfaces feel inevitable, not engineered — they exist because they had to, not because someone put them there.</p>
+            </div>
+          </div>
+          <div class="ybs-lesson">
+            <span class="ybs-lesson-num" aria-hidden="true">02</span>
+            <div class="ybs-lesson-body">
+              <strong>Familiar patterns lower activation energy.</strong>
+              <p>When something feels known, users trust it faster — and engage deeper. The art is using familiarity as a foundation, then doing something unexpected on top of it.</p>
+            </div>
+          </div>
+          <div class="ybs-lesson">
+            <span class="ybs-lesson-num" aria-hidden="true">03</span>
+            <div class="ybs-lesson-body">
+              <strong>Emotion-driven design is the most powerful design.</strong>
+              <p>When an interface connects to memory and identity, it transcends utility. It becomes something people return to not because they need to — but because they want to.</p>
+            </div>
+          </div>
+        </div>
+
+        <blockquote class="ybs-closing-quote fade-up">
+          "The best memory platform is the one that makes you feel<br>
+          <em>less alone in your past.</em>"
+        </blockquote>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       FOOTER NAVIGATION
+  ============================================= -->
+  <div class="csp-footer-nav">
+    <a href="index.html#work" class="csp-footer-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Work
+    </a>
+    <div class="csp-next-project">
+      <span class="csp-next-label">Next Case Study</span>
+      <a href="wastebazaar.html" class="csp-next-title">
+        WasteBazaar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-copy">© 2024 Timmy Ajakaiye. All rights reserved.</span>
+    <div class="footer-right">
+      <div class="footer-dot"></div>
+      Available for work
+    </div>
+  </footer>
+
+  <script src="../scripts/case-study.js"></script>
+
+</body>
+</html>

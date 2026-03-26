@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "design-engineer": {
+      "source": "darasoba/design-engineer-plugin",
+      "sourceType": "github",
+      "computedHash": "6521c3bf0d45c758d45b8b018e32559e2f5140f0ac903381d9acbd12b014eb18"
+    },
+    "shadcn": {
+      "source": "shadcn/ui",
+      "sourceType": "github",
+      "computedHash": "77faba608ea949351d1757e29e6cb726f6ec5937f7595be0593038a7d2d76bb9"
+    }
+  }
+}
