@@ -1323,45 +1323,86 @@
 ============================================= */
 
 /* HERO */
-.ybs-hero-content { /* alias used in HTML */ }
+.ybs-hero-content { /* alias */ }
 
+/* =============================================
+   HERO — Split composition
+   Left: brand bands · Right: phone mockup
+============================================= */
 .ybs-hero {
   min-height: 100vh;
-  background: var(--yb-hero-bg);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 160px 80px 80px;
+  background: #060A14;
+  display: grid;
+  grid-template-columns: 52% 48%;
   position: relative;
   overflow: hidden;
 }
 
-.ybs-hero::before {
-  content: '';
+/* ---- LEFT ZONE ---- */
+.ybs-hero-left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 80px 72px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Brand bands as full-bleed texture */
+.ybs-hero-bands {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0.13;
+  transform: scale(1.08);
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: lighten;
+}
+
+/* Vignette: fades bands toward bottom so text stays readable */
+.ybs-hero-left-vignette {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 55%),
-    radial-gradient(ellipse at 20% 80%, rgba(245,177,0,0.08) 0%, transparent 50%);
+    linear-gradient(to bottom,
+      transparent 0%,
+      transparent 35%,
+      #060A14 80%
+    ),
+    linear-gradient(to right,
+      transparent 60%,
+      #060A14 100%
+    );
   pointer-events: none;
+  z-index: 1;
+}
+
+.ybs-hero-content-inner {
+  position: relative;
+  z-index: 2;
 }
 
 .ybs-hero-eyebrow {
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--yb-yellow-light);
+  color: rgba(245,177,0,0.7);
   margin-bottom: 40px;
   display: block;
 }
 
 .ybs-hero-title {
-  margin-bottom: 40px;
+  margin-bottom: 36px;
   line-height: 1;
 }
 
 .ybs-hero-logo {
-  height: clamp(56px, 8vw, 110px);
+  height: clamp(48px, 6.5vw, 96px);
   width: auto;
   display: block;
 }
@@ -1377,22 +1418,21 @@
 
 .ybs-hero-tagline {
   font-family: var(--sans);
-  font-size: clamp(14px, 1.6vw, 20px);
+  font-size: clamp(12px, 1.2vw, 16px);
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.35);
   line-height: 1.5;
-  margin-bottom: 64px;
-  max-width: 520px;
+  margin-bottom: 56px;
 }
 
 .ybs-hero-meta {
   display: flex;
-  gap: 56px;
+  gap: 48px;
   flex-wrap: wrap;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,0.07);
 }
 
 .ybs-meta-item {
@@ -1405,19 +1445,62 @@
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.2);
 }
 
 .ybs-meta-value {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.75);
 }
 
+/* ---- RIGHT ZONE ---- */
+.ybs-hero-right {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+/* Ambient glow behind phone */
+.ybs-hero-phone-glow {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(68, 97, 251, 0.28) 0%,
+    rgba(68, 97, 251, 0.08) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Phone mockup — elevated, overflows top */
+.ybs-hero-phone {
+  position: relative;
+  z-index: 2;
+  height: 92vh;
+  width: auto;
+  max-height: 840px;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+  filter: drop-shadow(0 40px 80px rgba(0,0,0,0.7)) drop-shadow(0 0 40px rgba(68,97,251,0.15));
+  transform: translateY(2%);
+}
+
+/* ---- SCROLL INDICATOR ---- */
 .ybs-hero-scroll {
   position: absolute;
   bottom: 40px;
-  right: 80px;
+  left: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1425,13 +1508,35 @@
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.15);
+  z-index: 10;
 }
 
 .ybs-hero-scroll-line {
   width: 1px;
-  height: 56px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .ybs-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100svh;
+  }
+  .ybs-hero-right {
+    height: 55vw;
+    max-height: 400px;
+  }
+  .ybs-hero-phone {
+    height: 100%;
+    transform: none;
+  }
+  .ybs-hero-left {
+    padding: 100px 32px 48px;
+  }
+  .ybs-hero-scroll { display: none; }
 }
 
 /* COVER REVEAL */
@@ -2413,6 +2518,13 @@
   color: rgba(255,255,255,0.3);
 }
 
+.ybs-bi-symbol-img {
+  width: 100%;
+  height: 48px;
+  object-fit: contain;
+  object-position: center;
+}
+
 /* Colour palette strip */
 .ybs-bi-palette {
   display: grid;
@@ -2506,14 +2618,20 @@
   margin: 0;
 }
 
-/* Mockup gallery */
+/* Mockup gallery — brand identity (3-row bento) */
 .ybs-bi-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 280px 280px;
+  grid-template-rows: 280px 280px 280px;
   gap: 14px;
   max-width: 1100px;
   margin: 64px auto 0;
+}
+
+/* Brand in context gallery — 2-row bento */
+.ybs-bi-gallery--context {
+  grid-template-rows: 400px 320px;
+  margin-top: 0;
 }
 
 .ybs-bi-gallery-item {
@@ -2523,8 +2641,9 @@
   gap: 10px;
 }
 
-.ybs-bi-gallery-item--wide { grid-column: span 2; }
-.ybs-bi-gallery-item--tall { grid-row: span 2; }
+.ybs-bi-gallery-item--wide  { grid-column: span 2; }
+.ybs-bi-gallery-item--tall  { grid-row: span 2; }
+.ybs-bi-gallery-item--span3 { grid-column: span 3; }
 
 .ybs-bi-gallery-item img {
   width: 100%;
@@ -2533,6 +2652,21 @@
   display: block;
   border-radius: 14px;
   object-fit: cover;
+}
+
+/* Brand in Context sub-header */
+.ybs-bi-context-header {
+  max-width: 1100px;
+  margin: 72px auto 0;
+}
+
+.ybs-bi-context-title {
+  font-family: 'Recoleta', Georgia, serif;
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 400;
+  color: var(--text);
+  margin: 8px 0 0;
+  line-height: 1.2;
 }
 
 .ybs-bi-gallery-item figcaption {
@@ -2615,18 +2749,20 @@
   .ybs-bi-visual          { position: static; }
   .ybs-bi-quote           { padding: 48px 32px; }
   .ybs-bi-quote-decorator { font-size: 120px; }
-  .ybs-bi-gallery         { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-  .ybs-bi-gallery-item--wide { grid-column: span 2; }
-  .ybs-bi-gallery-item--tall { grid-row: span 1; }
-  .ybs-bi-gallery-item img,
-  .ybs-bi-app-icon-showcase,
-  .ybs-bi-logo-light-card { min-height: 200px; }
+  .ybs-bi-gallery                    { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .ybs-bi-gallery-item--wide,
+  .ybs-bi-gallery-item--span3        { grid-column: span 2; }
+  .ybs-bi-gallery-item--tall         { grid-row: span 1; }
+  .ybs-bi-gallery-item img           { min-height: 220px; }
+  .ybs-bi-context-header             { margin-top: 56px; }
 }
 
 @media (max-width: 540px) {
-  .ybs-bi-gallery         { grid-template-columns: 1fr; }
+  .ybs-bi-gallery { grid-template-columns: 1fr; }
   .ybs-bi-gallery-item--wide,
+  .ybs-bi-gallery-item--span3,
   .ybs-bi-gallery-item--tall { grid-column: span 1; grid-row: span 1; }
+  .ybs-bi-gallery-item img   { min-height: 200px; }
 }
 
 /* =============================================
@@ -3204,3 +3340,756 @@
   align-items: center;
   justify-content: center;
 }
+
+/* =============================================
+   SCHOOL REGISTRATION SYSTEM — Chapter III
+============================================= */
+.ybs-srs-desc {
+  font-size: clamp(15px, 1.4vw, 17px);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin-bottom: 64px;
+  padding-left: 0;
+}
+
+/* Two-column split: user flow + system logic */
+.ybs-srs-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 64px;
+}
+
+.ybs-srs-col-title {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--yb-blue);
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+/* Numbered steps */
+.ybs-srs-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ybs-srs-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.ybs-srs-step-num {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--yb-blue);
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  margin-top: 3px;
+  min-width: 22px;
+}
+
+.ybs-srs-step strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.ybs-srs-step p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* System logic items */
+.ybs-srs-logic {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ybs-srs-logic-item {
+  padding: 20px 24px;
+  background: rgba(68, 97, 251, 0.04);
+  border: 1px solid rgba(68, 97, 251, 0.1);
+  border-radius: 10px;
+}
+
+.ybs-srs-logic-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--yb-blue);
+  margin-bottom: 8px;
+}
+
+.ybs-srs-logic-item p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* UI component chips */
+.ybs-srs-components {
+  margin-bottom: 64px;
+}
+
+.ybs-srs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ybs-srs-chip {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  background: rgba(68, 97, 251, 0.06);
+  border: 1px solid rgba(68, 97, 251, 0.15);
+  border-radius: 100px;
+  padding: 7px 16px;
+  white-space: nowrap;
+}
+
+/* Screenshot */
+.ybs-srs-screens {
+  margin: 0;
+}
+
+.ybs-srs-screens img {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.ybs-srs-screens figcaption {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ybs-srs-split {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* =============================================
+   ADD NEW SCHOOL — Companion feature section
+============================================= */
+.ybs-ans {
+  background: #FAFAFA;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* =============================================
+   SUPPORTING SCREENS — Additional UI
+============================================= */
+.ybs-support {
+  background: #F7F5F0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* 4-up annotated grid */
+.ybs-support-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 72px;
+}
+
+.ybs-support-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Each card clips a quadrant of the composite image */
+.ybs-support-screen {
+  aspect-ratio: 9/16;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8e6e1;
+  position: relative;
+}
+
+.ybs-support-img {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  top: 0;
+}
+
+/* Clip each quadrant — image is 4 phones wide */
+.ybs-support-img--1 { left: 0%;    transform: scale(1); width: 400%; object-fit: cover; object-position: 0% 50%; }
+.ybs-support-img--2 { left: 0%;    width: 400%; object-fit: cover; object-position: 33.3% 50%; }
+.ybs-support-img--3 { left: 0%;    width: 400%; object-fit: cover; object-position: 66.6% 50%; }
+.ybs-support-img--4 { left: 0%;    width: 400%; object-fit: cover; object-position: 100% 50%; }
+
+.ybs-support-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ybs-support-tag {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--yb-blue);
+}
+
+.ybs-support-label p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Full composite below */
+.ybs-support-screens img {
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.07);
+}
+
+@media (max-width: 900px) {
+  .ybs-support-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .ybs-support-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+/* =============================================
+   YEARBOOK STORYLINE — Feature
+============================================= */
+.ybs-stl {
+  background: #0C0B08;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.ybs-stl-heading { color: #fff; }
+.ybs-stl-narrative { color: rgba(255,255,255,0.45); }
+
+.ybs-stl-strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.ybs-stl-p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+}
+
+/* Lifecycle strip */
+.ybs-stl-lifecycle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+}
+
+.ybs-stl-life-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: rgba(245, 177, 0, 0.08);
+  border: 1px solid rgba(245, 177, 0, 0.18);
+}
+
+.ybs-stl-life-step--expire {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.ybs-stl-life-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--yb-yellow);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(245,177,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ybs-stl-life-step--expire .ybs-stl-life-num {
+  color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.06);
+}
+
+.ybs-stl-life-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  white-space: nowrap;
+}
+
+.ybs-stl-life-step--expire .ybs-stl-life-text {
+  color: rgba(255,255,255,0.3);
+}
+
+.ybs-stl-life-arrow {
+  font-size: 14px;
+  color: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+
+/* Logic cards */
+.ybs-stl-logic .ybs-srs-logic-item {
+  background: rgba(245, 177, 0, 0.04);
+  border-color: rgba(245, 177, 0, 0.12);
+}
+
+/* Component chips */
+.ybs-stl-chip {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.7);
+  background: rgba(245, 177, 0, 0.07);
+  border: 1px solid rgba(245, 177, 0, 0.18);
+  border-radius: 100px;
+  padding: 7px 16px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* Screenshot */
+.ybs-stl-screens img {
+  border-radius: 16px;
+  border: none;
+  box-shadow:
+    0 0 0 1px rgba(245,177,0,0.08),
+    0 32px 80px rgba(245,177,0,0.06),
+    0 8px 24px rgba(0,0,0,0.5);
+}
+
+.ybs-stl-screens figcaption {
+  color: rgba(255,255,255,0.2);
+}
+
+@media (max-width: 640px) {
+  .ybs-stl-lifecycle {
+    gap: 8px;
+  }
+  .ybs-stl-life-step {
+    padding: 7px 12px;
+  }
+}
+
+/* Slightly larger screenshot with soft shadow to lift it */
+.ybs-ans-screens img {
+  box-shadow: 0 24px 64px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* =============================================
+   SCHOOL TAGS — Specialized User Identification
+============================================= */
+.ybs-sui {
+  background: #0F0F0F;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Override text colours for dark background */
+.ybs-sui .ybs-chapter-heading,
+.ybs-sui .ybs-srs-step strong {
+  color: #fff;
+}
+
+.ybs-sui .ybs-narrative,
+.ybs-sui .ybs-srs-step p,
+.ybs-sui .ybs-srs-logic-item p {
+  color: rgba(255,255,255,0.5);
+}
+
+.ybs-sui .ybs-srs-logic-item {
+  background: rgba(245, 177, 0, 0.05);
+  border-color: rgba(245, 177, 0, 0.15);
+}
+
+/* Inline tag example — mirrors the screen's name+acronym display */
+.ybs-sui-tag-example {
+  font-family: var(--mono, 'Courier New', monospace);
+  font-size: 13px;
+  background: rgba(245,177,0,0.1);
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: rgba(255,255,255,0.75);
+  white-space: nowrap;
+}
+
+.ybs-sui-tag-example em {
+  font-style: normal;
+  color: var(--yb-yellow);
+  font-weight: 600;
+}
+
+/* Component chips — yellow-tinted on dark */
+.ybs-sui-chip {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.8);
+  background: rgba(245, 177, 0, 0.08);
+  border: 1px solid rgba(245, 177, 0, 0.2);
+  border-radius: 100px;
+  padding: 7px 16px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.ybs-sui .ybs-srs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Screenshot — yellow glow underneath to echo the screen's brand colour */
+.ybs-sui-screens img {
+  border-radius: 16px;
+  border: none;
+  box-shadow:
+    0 0 0 1px rgba(245,177,0,0.1),
+    0 32px 80px rgba(245,177,0,0.08),
+    0 8px 24px rgba(0,0,0,0.4);
+}
+
+.ybs-sui-screens figcaption {
+  color: rgba(255,255,255,0.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ybs-sui-tag-example {
+    font-size: 12px;
+  }
+}
+
+/* =============================================
+   TIMELINE — Content Feed Feature
+============================================= */
+.ybs-tl {
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Algorithm signal row */
+.ybs-tl-signals {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+}
+
+.ybs-tl-signal-label {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.ybs-tl-signal-pills {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ybs-tl-pill {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 100px;
+  letter-spacing: 0.01em;
+}
+
+.ybs-tl-pill--1 {
+  background: rgba(68, 97, 251, 0.08);
+  color: var(--yb-blue);
+  border: 1px solid rgba(68, 97, 251, 0.2);
+}
+
+.ybs-tl-pill--2 {
+  background: rgba(68, 97, 251, 0.05);
+  color: var(--yb-blue);
+  border: 1px solid rgba(68, 97, 251, 0.12);
+}
+
+.ybs-tl-pill--3 {
+  background: rgba(68, 97, 251, 0.03);
+  color: var(--yb-blue);
+  border: 1px solid rgba(68, 97, 251, 0.08);
+}
+
+.ybs-tl-divider {
+  font-size: 14px;
+  color: var(--text-muted);
+  opacity: 0.4;
+}
+
+/* Screenshot */
+.ybs-tl-screens img {
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.07);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .ybs-tl-signals {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* =============================================
+   YEARBOOK GROUPS — Feature
+============================================= */
+.ybs-grp {
+  background: #080D1A;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.ybs-grp-heading { color: #fff; }
+
+.ybs-grp-narrative { color: rgba(255,255,255,0.45); }
+
+.ybs-grp-strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.ybs-grp-p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+}
+
+/* Group type pills row */
+.ybs-grp-types {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+}
+
+.ybs-grp-pill {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 7px 16px;
+  border-radius: 100px;
+  color: rgba(255,255,255,0.7);
+  background: rgba(68, 97, 251, 0.1);
+  border: 1px solid rgba(68, 97, 251, 0.25);
+  white-space: nowrap;
+}
+
+/* Logic cards — dark variant */
+.ybs-grp-logic .ybs-srs-logic-item {
+  background: rgba(68, 97, 251, 0.05);
+  border-color: rgba(68, 97, 251, 0.15);
+}
+
+/* Component chips — dark variant */
+.ybs-grp-chip {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.7);
+  background: rgba(68, 97, 251, 0.08);
+  border: 1px solid rgba(68, 97, 251, 0.2);
+  border-radius: 100px;
+  padding: 7px 16px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* Screenshot */
+.ybs-grp-screens img {
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow:
+    0 0 0 1px rgba(68,97,251,0.08),
+    0 32px 80px rgba(68,97,251,0.1),
+    0 8px 24px rgba(0,0,0,0.5);
+}
+
+.ybs-grp-screens figcaption {
+  color: rgba(255,255,255,0.2);
+}
+
+@media (max-width: 600px) {
+  .ybs-grp-types {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* =============================================
+   YEARBOOK MESSAGING — Feature
+============================================= */
+.ybs-msg {
+  background: #F4F6FF;
+  border-top: 1px solid rgba(68,97,251,0.08);
+}
+
+/* Inbox state pills */
+.ybs-msg-states {
+  margin-bottom: 64px;
+}
+
+.ybs-msg-states .ybs-tl-signal-label {
+  color: var(--text-muted);
+}
+
+.ybs-msg-pill {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 7px 18px;
+  border-radius: 100px;
+  color: var(--text-secondary);
+  background: rgba(68, 97, 251, 0.05);
+  border: 1px solid rgba(68, 97, 251, 0.12);
+  white-space: nowrap;
+}
+
+.ybs-msg-pill--active {
+  background: var(--yb-blue);
+  color: #fff;
+  border-color: var(--yb-blue);
+  font-weight: 500;
+}
+
+/* Screenshot */
+.ybs-msg-screens img {
+  border-radius: 16px;
+  border: 1px solid rgba(68,97,251,0.1);
+  box-shadow:
+    0 24px 64px rgba(68,97,251,0.08),
+    0 4px 16px rgba(0,0,0,0.06);
+}
+
+/* ==================================================
+   2026 REDESIGN — alignment layer
+   Maps the case study system onto the new visual
+   language: Bricolage headings, Spectral italic
+   accents, Martian Mono labels.
+   ================================================== */
+
+/* Display type */
+.csp-hero-title {
+  font-family: var(--sans);
+  font-weight: 750;
+  font-variation-settings: 'opsz' 96, 'wdth' 82;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.csp-section-heading {
+  font-family: var(--sans);
+  font-weight: 650;
+  font-variation-settings: 'opsz' 40, 'wdth' 88;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.csp-hero-title em,
+.csp-section-heading em {
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+/* Mono labels everywhere a label lives */
+.csp-hero-eyebrow,
+.csp-section-eyebrow,
+.csp-meta-label,
+.csp-caption,
+.csp-back,
+.csp-next-label,
+.csp-tag,
+.csp-persona-tag,
+.csp-coming-badge {
+  font-family: var(--mono);
+  font-weight: 400;
+}
+.csp-hero-eyebrow,
+.csp-section-eyebrow { font-size: 10px; letter-spacing: 0.18em; }
+.csp-caption { font-size: 10px; letter-spacing: 0.08em; }
+
+/* Numbers carry the engineering voice */
+.csp-stat-num,
+.csp-impact-num,
+.csp-problem-num,
+.csp-reflection-num,
+.csp-section-num {
+  font-family: var(--sans);
+  font-variation-settings: 'wdth' 80;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Footer nav */
+.csp-next-title { font-family: var(--sans); font-weight: 650; letter-spacing: -0.02em; }
+
+/* Back link: clear of the hero title, tighter to the edge */
+.csp-back { left: 20px; }
+@media (max-width: 900px) { .csp-back { display: none; } }

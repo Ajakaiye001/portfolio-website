@@ -3,608 +3,315 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Timmy Ajakaiye — Product Designer & UI/UX Engineer</title>
+  <title>Timmy Ajakaiye — Product Designer &amp; UI/UX Engineer</title>
+  <meta name="description" content="Portfolio of Timmy Ajakaiye, a product designer and UI/UX engineer working on fintech and sustainability products. Lagos to London." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Martian+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
-  <!-- GSAP (loaded before body so ScrollTrigger is available in main.js) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="../styles/main.css" />
 </head>
 <body>
 
-  <!-- Grain texture overlay -->
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- Custom cursor -->
-  <div class="cursor" id="cursor"></div>
+  <div class="cursor" id="cursor"><span class="cursor-label" id="cursorLabel"></span></div>
   <div class="cursor-follower" id="cursorFollower"></div>
 
-  <!-- =============================================
-       LOADER
-  ============================================= -->
+  <!-- LOADER -->
   <div id="loader" aria-hidden="true">
-    <div class="loader-name">
-      <span>T</span><span>I</span><span>M</span><span>M</span><span>Y</span>
-      <span>&nbsp;</span>
-      <span>A</span><span>J</span><span>A</span><span>K</span><span>A</span><span>I</span><span>Y</span><span>E</span>
+    <div class="loader-name" id="loaderName">
+      <span>T</span><span>I</span><span>M</span><span>M</span><span>Y</span><span>&nbsp;</span><span>A</span><span>J</span><span>A</span><span>K</span><span>A</span><span>I</span><span>Y</span><span>E</span>
     </div>
-    <div class="loader-bar">
-      <div class="loader-bar-fill" id="loaderFill"></div>
-    </div>
-    <div class="loader-count" id="loaderCount">0</div>
+    <div class="loader-tag">Portfolio · 2026</div>
+    <div class="loader-count" id="loaderCount">000</div>
   </div>
 
-  <!-- =============================================
-       NAVIGATION
-  ============================================= -->
+  <!-- NAV -->
   <nav id="nav" aria-label="Main navigation">
-    <a href="index.html" class="nav-logo">TA</a>
-    <ul class="nav-links">
-      <li><a href="index.html#work">Work</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#resume">Resume</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+    <a href="#hero" class="nav-logo">Timmy Ajakaiye<sup>&reg;</sup></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#resume">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+    <a href="#contact" class="nav-cta">Let's talk</a>
   </nav>
 
-  <!-- =============================================
-       HERO
-  ============================================= -->
-  <section id="hero" aria-label="Hero">
-    <div class="hero-number" aria-hidden="true">01</div>
+  <!-- HERO -->
+  <section id="hero" aria-label="Introduction">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
 
-    <div class="hero-label">
-      <span>Product Designer — Portfolio 2024</span>
+    <div class="hero-meta-row">
+      <span class="mono-label">Product Designer <em>/</em> UI·UX Engineer</span>
+      <span class="mono-label hero-clock" id="heroClock">Lagos → London</span>
+      <span class="mono-label">Portfolio © 2026</span>
     </div>
 
-    <h1 class="hero-title" aria-label="Timmy Ajakaiye — Product Designer and UI/UX Engineer">
-      <div class="line"><span class="word">Timmy</span></div>
-      <div class="line"><span class="word">Ajakaiye</span></div>
-      <div class="line"><span class="word"><em>— Designer</em></span></div>
+    <h1 class="hero-title" aria-label="Timmy Ajakaiye">
+      <span class="line"><span class="word">Timmy</span></span>
+      <span class="line"><span class="word">Ajakaiye</span></span>
     </h1>
 
-    <div class="hero-bottom">
-      <p class="hero-tagline">
-        <span>Crafting interfaces that are not just</span>
-        <span>beautiful — but <em>inevitable</em>.</span>
+    <div class="hero-sub-row">
+      <p class="hero-role">Designing products that <strong>earn trust</strong>, one decision at a time.</p>
+      <p class="hero-desc">
+        A mechatronics engineering past means I see products as connected systems.
+        I design the parts people touch without losing sight of the whole, mostly in fintech and sustainability.
       </p>
-      <button class="hero-cta" aria-label="View work">
-        <div class="hero-cta-inner">
-          <div class="hero-cta-circle">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M8 2v12M2 8l6 6 6-6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          View Work
-        </div>
-      </button>
     </div>
 
-    <div class="hero-scroll-hint" id="scrollHint" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="hero-scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       SCROLL-BASED PROJECT PREVIEW
-  ============================================= -->
-  <section id="scroll-preview" aria-label="Project Preview">
-    <div class="scroll-preview-sticky">
-      <div class="scroll-preview-bg" id="previewBg"></div>
-
-      <p class="preview-section-label" aria-hidden="true">Selected Work — Preview</p>
-
-      <!-- Panel 1: WasteBazaar -->
-      <div class="preview-panel" id="panel-0">
-        <div class="preview-panel-inner">
-          <div class="preview-mockup" style="padding:0;overflow:hidden">
-            <img src="../assets/wastebazaar/Cover Image.png" alt="WasteBazaar app screens" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
-          </div>
-          <div class="preview-info">
-            <div class="preview-index">01 / 05</div>
-            <div class="preview-category">Mobile · Sustainability</div>
-            <h2 class="preview-title">WasteBazaar</h2>
-            <p class="preview-desc">An on-demand recycling platform connecting users with verified drivers. Built around GreenCredits to reward sustainable habits.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 2: Kora -->
-      <div class="preview-panel" id="panel-1">
-        <div class="preview-panel-inner">
-          <div class="preview-mockup mockup-kora">
-            <div class="kora-topbar">
-              <span class="kora-logo">KORA</span>
-              <div class="kora-nav-dots">
-                <div class="kora-dot"></div>
-                <div class="kora-dot"></div>
-                <div class="kora-dot" style="background:#0A0A0A"></div>
-              </div>
-            </div>
-            <div class="kora-body">
-              <div class="kora-sidebar">
-                <div class="kora-icon active"></div>
-                <div class="kora-icon"></div>
-                <div class="kora-icon"></div>
-                <div class="kora-icon"></div>
-              </div>
-              <div class="kora-main">
-                <div class="kora-stats">
-                  <div class="kora-stat">
-                    <div class="kora-stat-label">Revenue</div>
-                    <div class="kora-stat-value">$48.2K</div>
-                    <div class="kora-stat-change">↑ 12.4%</div>
-                  </div>
-                  <div class="kora-stat">
-                    <div class="kora-stat-label">Users</div>
-                    <div class="kora-stat-value">12,409</div>
-                    <div class="kora-stat-change">↑ 8.1%</div>
-                  </div>
-                  <div class="kora-stat">
-                    <div class="kora-stat-label">Conv. Rate</div>
-                    <div class="kora-stat-value">3.8%</div>
-                    <div class="kora-stat-change">↑ 0.3%</div>
-                  </div>
-                </div>
-                <div class="kora-chart">
-                  <div class="kora-chart-label">Monthly Revenue</div>
-                  <div class="kora-chart-area" id="koraChart"></div>
-                </div>
-                <div class="kora-table">
-                  <div class="kora-row"><div class="kora-row-dot green"></div><div class="kora-row-line" style="width:45%"></div><div class="kora-row-amt">+$2,400</div></div>
-                  <div class="kora-row"><div class="kora-row-dot"></div><div class="kora-row-line" style="width:60%"></div><div class="kora-row-amt">+$890</div></div>
-                  <div class="kora-row"><div class="kora-row-dot green"></div><div class="kora-row-line" style="width:30%"></div><div class="kora-row-amt">+$3,100</div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="preview-info">
-            <div class="preview-index">02 / 05</div>
-            <div class="preview-category">Web · Fintech Dashboard</div>
-            <h2 class="preview-title">Kora</h2>
-            <p class="preview-desc">A financial analytics platform that turned complex data into clear decisions. Onboarding time cut by 60%.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 3: Bloom -->
-      <div class="preview-panel" id="panel-2">
-        <div class="preview-panel-inner">
-          <div class="preview-mockup mockup-bloom">
-            <div class="bloom-rings">
-              <div class="bloom-ring bloom-ring-1"></div>
-              <div class="bloom-ring bloom-ring-2"></div>
-              <div class="bloom-ring bloom-ring-3"></div>
-              <div class="bloom-center">82%</div>
-            </div>
-            <div class="bloom-stats">
-              <div class="bloom-stat"><div class="bloom-stat-val">7.2h</div><div class="bloom-stat-key">Sleep</div></div>
-              <div class="bloom-stat"><div class="bloom-stat-val">8,400</div><div class="bloom-stat-key">Steps</div></div>
-              <div class="bloom-stat"><div class="bloom-stat-val">68bpm</div><div class="bloom-stat-key">Heart</div></div>
-            </div>
-            <div class="bloom-bar-section">
-              <div class="bloom-bar-label"><span>Mindfulness</span><span>24 min</span></div>
-              <div class="bloom-bar-track"><div class="bloom-bar-fill" style="width:75%"></div></div>
-            </div>
-            <div class="bloom-bar-section">
-              <div class="bloom-bar-label"><span>Hydration</span><span>1.8L</span></div>
-              <div class="bloom-bar-track"><div class="bloom-bar-fill" style="width:60%; background:#FCD34D"></div></div>
-            </div>
-          </div>
-          <div class="preview-info">
-            <div class="preview-index">03 / 05</div>
-            <div class="preview-category">Mobile · Health &amp; Wellness</div>
-            <h2 class="preview-title">Bloom</h2>
-            <p class="preview-desc">A holistic wellness companion that makes healthy habits feel effortless. 94% user retention at 30 days.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 4: Atlas -->
-      <div class="preview-panel" id="panel-3">
-        <div class="preview-panel-inner">
-          <div class="preview-mockup mockup-atlas">
-            <div class="atlas-map" id="atlasMap">
-              <div class="atlas-grid-line atlas-grid-h" style="top:25%"></div>
-              <div class="atlas-grid-line atlas-grid-h" style="top:50%"></div>
-              <div class="atlas-grid-line atlas-grid-h" style="top:75%"></div>
-              <div class="atlas-grid-line atlas-grid-v" style="left:33%"></div>
-              <div class="atlas-grid-line atlas-grid-v" style="left:66%"></div>
-              <div class="atlas-road" style="top:38%;left:10%;width:50%;height:3px;transform:rotate(-8deg)"></div>
-              <div class="atlas-road" style="top:55%;left:30%;width:40%;height:3px;transform:rotate(12deg)"></div>
-              <div class="atlas-road" style="top:20%;left:55%;width:3px;height:45%"></div>
-              <div class="atlas-pin" style="top:35%;left:25%;transform:translate(-50%,-50%)"></div>
-              <div class="atlas-destination" style="top:60%;left:68%;transform:translate(-50%,-50%)"></div>
-              <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M 75 70 Q 140 40, 204 120" stroke="#06B6D4" stroke-width="2" stroke-dasharray="5 5" fill="none" opacity="0.6"/>
-              </svg>
-            </div>
-            <div class="atlas-cards">
-              <div class="atlas-search">
-                <div class="atlas-search-dot"></div>
-                <div class="atlas-search-text"></div>
-              </div>
-              <div class="atlas-place-cards">
-                <div class="atlas-place"><div class="atlas-place-img"></div><div class="atlas-place-name"></div><div class="atlas-place-sub"></div></div>
-                <div class="atlas-place"><div class="atlas-place-img"></div><div class="atlas-place-name"></div><div class="atlas-place-sub"></div></div>
-                <div class="atlas-place"><div class="atlas-place-img"></div><div class="atlas-place-name"></div><div class="atlas-place-sub"></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="preview-info">
-            <div class="preview-index">04 / 05</div>
-            <div class="preview-category">Mobile · Navigation &amp; Travel</div>
-            <h2 class="preview-title">Atlas</h2>
-            <p class="preview-desc">A next-generation travel companion with contextual navigation. Winner — Awwwards Site of the Day.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 5: Nexus -->
-      <div class="preview-panel" id="panel-4">
-        <div class="preview-panel-inner">
-          <div class="preview-mockup mockup-nexus">
-            <div class="nexus-header">
-              <div class="nexus-logo-mark"></div>
-              <div>
-                <div class="nexus-title-text">Nexus Design System</div>
-                <div class="nexus-subtitle">Component Library v2.0</div>
-              </div>
-            </div>
-            <div class="nexus-tokens">
-              <div class="nexus-token" style="background:#0A0A0A"></div>
-              <div class="nexus-token" style="background:#2D2D2D"></div>
-              <div class="nexus-token" style="background:#6B6866"></div>
-              <div class="nexus-token" style="background:#A8A4A0"></div>
-              <div class="nexus-token" style="background:#D1CEC9"></div>
-              <div class="nexus-token" style="background:#F4F1EC"></div>
-            </div>
-            <div class="nexus-type-scale">
-              <div class="nexus-type-row"><span class="nexus-type-label">H1</span><span class="nexus-type-sample" style="font-size:22px;font-family:var(--serif);font-weight:300">Display Heading</span></div>
-              <div class="nexus-type-row"><span class="nexus-type-label">H2</span><span class="nexus-type-sample" style="font-size:16px;font-family:var(--serif)">Section Heading</span></div>
-              <div class="nexus-type-row"><span class="nexus-type-label">Body</span><span class="nexus-type-sample" style="font-size:12px;color:#6B6866">Regular body text — 16px, 300 weight</span></div>
-              <div class="nexus-type-row"><span class="nexus-type-label">Label</span><span class="nexus-type-sample" style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#A8A4A0">COMPONENT LABEL</span></div>
-            </div>
-            <div class="nexus-components">
-              <div class="nexus-comp-row">
-                <button class="nexus-btn-primary">Primary Button</button>
-                <button class="nexus-btn-secondary">Secondary</button>
-                <span class="nexus-badge">Beta</span>
-              </div>
-              <div class="nexus-comp-row">
-                <input class="nexus-input" value="Input field placeholder..." readonly />
-              </div>
-            </div>
-          </div>
-          <div class="preview-info">
-            <div class="preview-index">05 / 05</div>
-            <div class="preview-category">Systems · Design Language</div>
-            <h2 class="preview-title">Nexus</h2>
-            <p class="preview-desc">A unified design system spanning 120+ components, used across 6 product teams. Reduced design debt by 70%.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Progress indicator -->
-      <div class="preview-progress" aria-hidden="true">
-        <span class="preview-counter" id="previewCounter">01 / 05</span>
-        <div class="preview-progress-bar">
-          <div class="preview-progress-fill" id="previewFill"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       SELECTED WORK
-  ============================================= -->
-  <section id="work" aria-label="Selected Work">
-    <div class="work-header fade-up">
-      <h2 class="work-heading">Selected<br><em style="font-style:italic;font-family:var(--serif)">Work</em></h2>
-      <span class="work-count">05 Projects</span>
-    </div>
-
-    <div class="work-grid">
-
-      <!-- Card 1 — WasteBazaar (tall, spans 2 rows) -->
-      <div class="work-card fade-up" style="transition-delay:0.1s" onclick="window.location.href='wastebazaar.html'" role="button" tabindex="0" aria-label="View WasteBazaar case study">
-        <div class="work-card-mockup" style="height:100%;padding:0;overflow:hidden">
-          <img src="../assets/wastebazaar/Cover Image.png" alt="WasteBazaar app screens" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
-        </div>
-        <div class="work-card-overlay">
-          <div class="work-card-cat">Mobile · Sustainability</div>
-          <h3 class="work-card-title">WasteBazaar</h3>
-          <p class="work-card-desc">On-demand recycling platform. GreenCredits reward system drives 3× recycling frequency.</p>
-        </div>
-        <div class="work-card-arrow" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-      </div>
-
-      <!-- Card 2 — Kora -->
-      <div class="work-card fade-up" style="transition-delay:0.2s" onclick="window.location.href='kora.html'" role="button" tabindex="0" aria-label="View Kora case study">
-        <div class="work-card-mockup mockup-kora" style="height:100%;display:flex;flex-direction:column">
-          <div class="kora-topbar">
-            <span class="kora-logo" style="font-size:11px">KORA</span>
-            <div class="kora-nav-dots"><div class="kora-dot"></div><div class="kora-dot" style="background:#0A0A0A"></div></div>
-          </div>
-          <div class="kora-body" style="flex:1">
-            <div class="kora-sidebar"><div class="kora-icon active"></div><div class="kora-icon"></div><div class="kora-icon"></div></div>
-            <div class="kora-main" style="padding:12px;gap:10px">
-              <div class="kora-stats">
-                <div class="kora-stat"><div class="kora-stat-label" style="font-size:8px">Revenue</div><div class="kora-stat-value" style="font-size:14px">$48.2K</div><div class="kora-stat-change" style="font-size:8px">↑ 12.4%</div></div>
-                <div class="kora-stat"><div class="kora-stat-label" style="font-size:8px">Users</div><div class="kora-stat-value" style="font-size:14px">12,409</div><div class="kora-stat-change" style="font-size:8px">↑ 8.1%</div></div>
-              </div>
-              <div class="kora-chart" style="flex:1">
-                <div class="kora-chart-label" style="font-size:9px">Monthly Revenue</div>
-                <div class="kora-chart-area" id="koraChart2"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="work-card-overlay">
-          <div class="work-card-cat">Web · Fintech</div>
-          <h3 class="work-card-title">Kora</h3>
-          <p class="work-card-desc">Financial analytics dashboard. Onboarding cut by 60%.</p>
-        </div>
-        <div class="work-card-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </div>
-
-      <!-- Card 3 — Bloom -->
-      <div class="work-card fade-up" style="transition-delay:0.3s" onclick="window.location.href='bloom.html'" role="button" tabindex="0" aria-label="View Bloom case study">
-        <div class="work-card-mockup mockup-bloom" style="height:100%">
-          <div class="bloom-rings" style="width:120px;height:120px">
-            <div class="bloom-ring bloom-ring-1"></div>
-            <div class="bloom-ring bloom-ring-2"></div>
-            <div class="bloom-ring bloom-ring-3"></div>
-            <div class="bloom-center" style="font-size:20px">82%</div>
-          </div>
-          <div class="bloom-stats" style="gap:10px">
-            <div class="bloom-stat" style="padding:10px 14px"><div class="bloom-stat-val" style="font-size:16px">7.2h</div><div class="bloom-stat-key">Sleep</div></div>
-            <div class="bloom-stat" style="padding:10px 14px"><div class="bloom-stat-val" style="font-size:16px">8.4k</div><div class="bloom-stat-key">Steps</div></div>
-          </div>
-        </div>
-        <div class="work-card-overlay">
-          <div class="work-card-cat">Mobile · Wellness</div>
-          <h3 class="work-card-title">Bloom</h3>
-          <p class="work-card-desc">Holistic health app. 94% 30-day retention.</p>
-        </div>
-        <div class="work-card-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </div>
-
-      <!-- Card 4 — Yearbook -->
-      <div class="work-card fade-up" style="transition-delay:0.4s" onclick="window.location.href='yearbook.html'" role="button" tabindex="0" aria-label="View Yearbook case study">
-        <div class="work-card-mockup" style="height:100%;padding:0;overflow:hidden">
-          <img src="../assets/Yearbook/Yearbook cover image.png" alt="Yearbook case study" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
-        </div>
-        <div class="work-card-overlay">
-          <div class="work-card-cat">Mobile · Social Platform</div>
-          <h3 class="work-card-title">Yearbook</h3>
-          <p class="work-card-desc">Memory-driven reconnection platform. Emotion-led design built for lasting community bonds.</p>
-        </div>
-        <div class="work-card-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </div>
-
-      <!-- Card 5 — Atlas -->
-      <div class="work-card fade-up" style="transition-delay:0.5s" onclick="window.location.href='atlas.html'" role="button" tabindex="0" aria-label="View Atlas case study">
-        <div class="work-card-mockup mockup-atlas" style="height:100%">
-          <div class="atlas-map">
-            <div class="atlas-grid-line atlas-grid-h" style="top:25%"></div>
-            <div class="atlas-grid-line atlas-grid-h" style="top:50%"></div>
-            <div class="atlas-grid-line atlas-grid-h" style="top:75%"></div>
-            <div class="atlas-grid-line atlas-grid-v" style="left:33%"></div>
-            <div class="atlas-grid-line atlas-grid-v" style="left:66%"></div>
-            <div class="atlas-road" style="top:38%;left:10%;width:50%;height:3px;transform:rotate(-8deg)"></div>
-            <div class="atlas-road" style="top:55%;left:30%;width:40%;height:3px;transform:rotate(12deg)"></div>
-            <div class="atlas-road" style="top:20%;left:55%;width:3px;height:45%"></div>
-            <div class="atlas-pin" style="top:35%;left:25%;transform:translate(-50%,-50%)"></div>
-            <div class="atlas-destination" style="top:60%;left:68%;transform:translate(-50%,-50%)"></div>
-            <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M 75 70 Q 140 40, 204 120" stroke="#06B6D4" stroke-width="2" stroke-dasharray="5 5" fill="none" opacity="0.6"/>
-            </svg>
-          </div>
-          <div class="atlas-cards">
-            <div class="atlas-search">
-              <div class="atlas-search-dot"></div>
-              <div class="atlas-search-text"></div>
-            </div>
-            <div class="atlas-place-cards">
-              <div class="atlas-place"><div class="atlas-place-img"></div><div class="atlas-place-name"></div><div class="atlas-place-sub"></div></div>
-              <div class="atlas-place"><div class="atlas-place-img"></div><div class="atlas-place-name"></div><div class="atlas-place-sub"></div></div>
-              <div class="atlas-place"><div class="atlas-place-img"></div><div class="atlas-place-name"></div><div class="atlas-place-sub"></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="work-card-overlay">
-          <div class="work-card-cat">Mobile · Navigation &amp; Travel</div>
-          <h3 class="work-card-title">Atlas</h3>
-          <p class="work-card-desc">Next-gen travel companion with contextual navigation. Awwwards Site of the Day.</p>
-        </div>
-        <div class="work-card-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </div>
-
-    </div>
-
-    <div style="text-align:center;padding:60px 0 0">
-      <a href="index.html#work" class="nav-cta" style="font-size:13px;padding:14px 32px;display:inline-block">View All Projects</a>
-    </div>
-  </section>
-
-  <!-- =============================================
-       ABOUT
-  ============================================= -->
-  <section id="about" aria-label="About">
-    <div class="about-grid">
-      <div class="about-left fade-up">
-        <div class="about-portrait">
-          <div class="portrait-shape"></div>
-        </div>
-        <p class="about-caption">Lagos, Nigeria → London, UK</p>
-      </div>
-      <div class="about-right">
-        <div class="section-label fade-up" style="margin-bottom:32px">About</div>
-        <h2 class="about-heading fade-up">
-          Design is the gap between<br><em>intention</em> and experience.
-        </h2>
-        <p class="about-body fade-up">
-          I'm Timmy — a product designer and UI/UX engineer who believes the best interfaces are the ones users never have to think about. Raised on the energy of Lagos, sharpened in London.
-        </p>
-        <p class="about-body fade-up">
-          With 5+ years shaping digital products across fintech, health, and consumer apps, I bring together sharp visual thinking and deep user empathy. I don't just design screens — I design the feeling of using them.
-        </p>
-        <div class="about-philosophy fade-up">
-          <p>"Every pixel is a decision. Every interaction is a promise. I design both with intention."</p>
-        </div>
-        <div class="about-tools fade-up">
-          <div class="about-tools-label">Tools &amp; Stack</div>
-          <div class="tools-grid">
-            <span class="tool-tag">Figma</span>
-            <span class="tool-tag">Framer</span>
-            <span class="tool-tag">Principle</span>
-            <span class="tool-tag">React</span>
-            <span class="tool-tag">Tailwind</span>
-            <span class="tool-tag">GSAP</span>
-            <span class="tool-tag">Webflow</span>
-            <span class="tool-tag">Lottie</span>
-            <span class="tool-tag">Protopie</span>
-            <span class="tool-tag">Notion</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       RESUME
-  ============================================= -->
-  <section id="resume" aria-label="Resume">
-    <div class="resume-header fade-up">
-      <h2 class="resume-heading">Experience &amp;<br><em style="font-style:italic;font-family:var(--serif)">Education</em></h2>
-      <a href="../assets/Timmy-Ajakaiye-Resume.pdf" class="resume-download" download aria-label="Download resume PDF">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v13M6 11l6 6 6-6"/><path d="M3 20h18"/></svg>
-        Download Resume
+    <div class="hero-foot">
+      <a href="#work" class="hero-scroll">
+        Scroll
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 2v12M2 8l6 6 6-6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        Selected work
       </a>
-    </div>
-    <div class="resume-grid">
-      <div>
-        <div class="resume-section-title fade-up">Work Experience</div>
-        <div class="timeline">
-          <div class="timeline-item fade-up">
-            <div class="timeline-year">2022<br>— Now</div>
-            <div class="timeline-content">
-              <div class="timeline-role">Senior Product Designer</div>
-              <div class="timeline-company">Paystack · Full-time</div>
-              <p class="timeline-desc">Led design for checkout and merchant dashboard. Shipped 3 major features used by 200K+ businesses across Africa.</p>
-            </div>
-          </div>
-          <div class="timeline-item fade-up">
-            <div class="timeline-year">2020<br>— 2022</div>
-            <div class="timeline-content">
-              <div class="timeline-role">UI/UX Designer</div>
-              <div class="timeline-company">Flutterwave · Full-time</div>
-              <p class="timeline-desc">Redesigned the core payment flow, improving conversion by 24%. Built and maintained the V2 design system.</p>
-            </div>
-          </div>
-          <div class="timeline-item fade-up">
-            <div class="timeline-year">2019<br>— 2020</div>
-            <div class="timeline-content">
-              <div class="timeline-role">Product Design Intern</div>
-              <div class="timeline-company">Andela · Internship</div>
-              <p class="timeline-desc">Contributed to onboarding redesign. Conducted user research with 50+ participants across 4 countries.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="resume-section-title fade-up">Education</div>
-        <div class="timeline">
-          <div class="timeline-item fade-up">
-            <div class="timeline-year">2019</div>
-            <div class="timeline-content">
-              <div class="timeline-role">BSc Computer Science</div>
-              <div class="timeline-company">University of Lagos</div>
-              <p class="timeline-desc">Focus on Human-Computer Interaction and interface design. First Class Honours.</p>
-            </div>
-          </div>
-          <div class="timeline-item fade-up">
-            <div class="timeline-year">2021</div>
-            <div class="timeline-content">
-              <div class="timeline-role">Product Design Certificate</div>
-              <div class="timeline-company">Google UX Design</div>
-              <p class="timeline-desc">Completed 6-course professional certification covering UX research, prototyping, and design systems.</p>
-            </div>
-          </div>
-        </div>
-        <div class="resume-section-title fade-up" style="margin-top:48px">Core Skills</div>
-        <div class="skills-cloud fade-up">
-          <span class="skill-pill">UX Research</span>
-          <span class="skill-pill">Interaction Design</span>
-          <span class="skill-pill">Design Systems</span>
-          <span class="skill-pill">Prototyping</span>
-          <span class="skill-pill">User Testing</span>
-          <span class="skill-pill">Motion Design</span>
-          <span class="skill-pill">Front-end Dev</span>
-          <span class="skill-pill">Information Architecture</span>
-          <span class="skill-pill">Visual Design</span>
-        </div>
-      </div>
+      <span class="hero-avail"><span class="avail-dot"></span> Available for work</span>
     </div>
   </section>
 
-  <!-- =============================================
-       CONTACT
-  ============================================= -->
-  <section id="contact" aria-label="Contact">
-    <div class="contact-bg-text" aria-hidden="true">Hello.</div>
-    <div class="contact-eyebrow fade-up">Open to opportunities</div>
-    <h2 class="contact-heading fade-up">
-      Let's build<br>something<br><em>remarkable.</em>
-    </h2>
-    <p class="contact-sub fade-up">
-      Whether you have a project in mind, a role to discuss, or just want to connect — I'd love to hear from you.
-    </p>
-    <a href="mailto:timmy@timmyajakaiye.com" class="contact-email fade-up">
-      timmy@timmyajakaiye.com
-    </a>
-    <div class="contact-socials fade-up">
-      <a href="#" class="contact-social">Twitter</a>
-      <a href="#" class="contact-social">LinkedIn</a>
-      <a href="#" class="contact-social">Dribbble</a>
-      <a href="#" class="contact-social">GitHub</a>
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-chunk">
+        <span>Product Design</span><span class="sep">from</span>
+        <span>UX Research</span><span class="sep">to</span>
+        <span>Design Systems</span><span class="sep">to</span>
+        <span>Front-end</span><span class="sep">for</span>
+        <span>Fintech</span><span class="sep">&amp;</span>
+        <span>Sustainability</span><span class="sep">·</span>
+      </div>
     </div>
-  </section>
-
-  <!-- =============================================
-       FOOTER
-  ============================================= -->
-  <footer>
-    <span class="footer-copy">© 2024 Timmy Ajakaiye. All rights reserved.</span>
-    <div class="footer-right">
-      <div class="footer-dot"></div>
-      Available for work
-    </div>
-  </footer>
-
-  <!-- =============================================
-       CASE STUDY OVERLAY
-  ============================================= -->
-  <div class="case-study-overlay" id="cs-overlay" role="dialog" aria-modal="true" aria-label="Case Study">
-    <button class="cs-close" id="cs-close-btn" aria-label="Close case study" onclick="closeCaseStudy()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
-    </button>
-    <div id="cs-content"></div>
   </div>
 
-  <!-- JavaScript (deferred after DOM) -->
+  <!-- WORK -->
+  <section id="work" aria-label="Selected work">
+    <div class="section-head">
+      <h2 class="fade-up">Selected <em>work</em></h2>
+      <span class="mono-label fade-up">(04) — 2023&ndash;2026</span>
+    </div>
+
+    <!-- 01 WasteBazaar -->
+    <article class="work-item">
+      <a class="work-media" href="wastebazaar.html" data-cursor="View case" aria-label="WasteBazaar case study">
+        <img src="../assets/Wastebazaar/Cover Image.png" alt="WasteBazaar — booking, tracking and GreenCredits screens of the recycling app" loading="eager" />
+      </a>
+      <div class="work-info">
+        <span class="work-index">01 / 04</span>
+        <h3 class="work-title"><a href="wastebazaar.html">Waste<br>Bazaar</a></h3>
+        <div class="work-meta">
+          <span>2024</span><span>Mobile</span><span>Sustainability · Logistics</span>
+        </div>
+        <p class="work-desc">
+          On-demand recycling that connects households with verified drivers.
+          GreenCredits turned recycling into a habit: +48% participation, 92% satisfaction.
+        </p>
+        <a href="wastebazaar.html" class="work-link">
+          View case study
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 02 Yearbook -->
+    <article class="work-item work-item--flip">
+      <a class="work-media" href="yearbook.html" data-cursor="View case" aria-label="Yearbook case study">
+        <img src="../assets/Yearbook/Yearbook cover image.png" alt="Yearbook — social platform screens and brand identity for school communities" loading="lazy" />
+      </a>
+      <div class="work-info">
+        <span class="work-index">02 / 04</span>
+        <h3 class="work-title"><a href="yearbook.html">Yearbook</a></h3>
+        <div class="work-meta">
+          <span>2024</span><span>Mobile</span><span>Social · Brand Identity</span>
+        </div>
+        <p class="work-desc">
+          A social platform that reconnects students, staff, and alumni through shared
+          memories. Product design plus full brand identity.
+        </p>
+        <a href="yearbook.html" class="work-link">
+          View case study
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 03 Closet Manager -->
+    <article class="work-item">
+      <a class="work-media" href="closet-manager.html" data-cursor="View case" aria-label="Closet Manager case study">
+        <img src="../assets/My closet manager/Cover image.png" alt="Closet Manager — AI wardrobe assistant screens with outfit of the day" loading="lazy" />
+      </a>
+      <div class="work-info">
+        <span class="work-index">03 / 04</span>
+        <h3 class="work-title"><a href="closet-manager.html">Closet<br>Manager</a></h3>
+        <div class="work-meta">
+          <span>2025</span><span>Mobile</span><span>AI · UX Case Study</span>
+        </div>
+        <p class="work-desc">
+          An AI wardrobe assistant with calendar-aware outfit suggestions and laundry
+          management. Gets you dressed without the daily mental load.
+        </p>
+        <a href="closet-manager.html" class="work-link">
+          View case study
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- 04 Kora (in progress) -->
+    <article class="work-item work-item--wip">
+      <a href="kora.html" class="work-wip-row" data-cursor="Preview" aria-label="Kora case study, in progress">
+        <h3 class="work-wip-title">Kora<span class="work-wip-badge">In progress</span></h3>
+        <p class="work-wip-desc">B2B financial analytics, made legible. Onboarding time cut by 60%. Full case study being documented.</p>
+      </a>
+    </article>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-label="About">
+    <div class="about-grid">
+      <span class="mono-label about-label fade-up">About — 01</span>
+      <div class="about-main">
+        <h2 class="about-statement fade-up">
+          Engineer turned designer. <em>Still building things.</em>
+        </h2>
+        <div class="about-cols">
+          <p class="fade-up">
+            I came to design through systems, not aesthetics. Mechatronics taught me that
+            every part exists in relation to the whole, and that a product fails at its
+            weakest joint, which is usually the interface.
+          </p>
+          <p class="fade-up">
+            Most of my work lives in fintech and sustainability, where trust and clarity
+            aren't nice-to-haves. They're the product. I take projects from discovery
+            through handoff, solo or embedded in teams.
+          </p>
+        </div>
+      </div>
+      <div class="about-facts">
+        <div class="about-fact fade-up">
+          <span class="num">(01)</span>
+          <p>Launched WasteBazaar and Pick10 into production.</p>
+        </div>
+        <div class="about-fact fade-up">
+          <span class="num">(02)</span>
+          <p>Shipped work used by 200K+ businesses at Paystack.</p>
+        </div>
+        <div class="about-fact fade-up">
+          <span class="num">(03)</span>
+          <p>Lagos, Nigeria → London, UK. Works across time zones.</p>
+        </div>
+      </div>
+      <div class="about-tags fade-up">
+        <span>User research</span>
+        <span>UX strategy</span>
+        <span>Design systems</span>
+        <span>Prototyping</span>
+        <span>Motion design</span>
+        <span>Front-end dev</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="resume" aria-label="Experience and education">
+    <div class="section-head">
+      <h2 class="fade-up">Exper<em>ience</em></h2>
+      <span class="mono-label fade-up">2019 — Now</span>
+    </div>
+
+    <div class="xp-list">
+      <div class="xp-row fade-up">
+        <span class="xp-year">2022 — Now</span>
+        <span class="xp-role">Senior Product Designer</span>
+        <span class="xp-org">Paystack</span>
+        <span class="xp-note">Full-time</span>
+        <p class="xp-detail">Led design for checkout and the merchant dashboard. Shipped three major features used by 200K+ businesses across Africa.</p>
+      </div>
+      <div class="xp-row fade-up">
+        <span class="xp-year">2020 — 2022</span>
+        <span class="xp-role">UI/UX Designer</span>
+        <span class="xp-org">Flutterwave</span>
+        <span class="xp-note">Full-time</span>
+        <p class="xp-detail">Redesigned the core payment flow, improving conversion by 24%. Built and maintained the V2 design system.</p>
+      </div>
+      <div class="xp-row fade-up">
+        <span class="xp-year">2019 — 2020</span>
+        <span class="xp-role">Product Design Intern</span>
+        <span class="xp-org">Andela</span>
+        <span class="xp-note">Internship</span>
+        <p class="xp-detail">Contributed to the onboarding redesign. Ran user research with 50+ participants across four countries.</p>
+      </div>
+      <div class="xp-row fade-up">
+        <span class="xp-year">2019</span>
+        <span class="xp-role">BSc Computer Science</span>
+        <span class="xp-org">University of Lagos</span>
+        <span class="xp-note">First Class</span>
+        <p class="xp-detail">Focus on human-computer interaction and interface design.</p>
+      </div>
+      <div class="xp-row fade-up">
+        <span class="xp-year">2021</span>
+        <span class="xp-role">UX Design Certificate</span>
+        <span class="xp-org">Google</span>
+        <span class="xp-note">Certification</span>
+        <p class="xp-detail">Six-course professional certification: UX research, prototyping, design systems.</p>
+      </div>
+    </div>
+
+    <div class="xp-skills fade-up" aria-label="Core skills">
+      <span class="mono-label">Core skills</span>
+      <span>UX research,</span>
+      <span>interaction design,</span>
+      <span>design systems,</span>
+      <span>prototyping,</span>
+      <span>user testing,</span>
+      <span>motion,</span>
+      <span>information architecture.</span>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-label="Contact">
+    <span class="contact-eyebrow fade-up"><span class="avail-dot"></span> Open to full-time &amp; freelance</span>
+    <h2 class="contact-heading fade-up">
+      Got something<br><em>worth</em> designing?
+    </h2>
+    <p class="contact-sub fade-up">
+      If you're building in fintech, sustainability, or anything that needs to earn
+      trust, I'd like to hear about it. Full-time roles, freelance projects, and
+      conversations that go somewhere.
+    </p>
+    <div class="fade-up">
+      <a href="mailto:timilehinajax@gmail.com" class="contact-email">timilehinajax@gmail.com</a>
+    </div>
+    <div class="contact-socials fade-up">
+      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter ↗</a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://dribbble.com" target="_blank" rel="noopener">Dribbble ↗</a>
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+
+    <footer class="footer--dark">
+      <span class="footer-copy">© 2026 Timmy Ajakaiye</span>
+      <span>Lagos / London — <span id="footClock">00:00</span></span>
+      <button class="footer-top" id="backToTop" aria-label="Back to top">
+        Back to top
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 14V2M2 8l6-6 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </button>
+    </footer>
+  </section>
+
   <script src="../scripts/main.js"></script>
 
 </body>

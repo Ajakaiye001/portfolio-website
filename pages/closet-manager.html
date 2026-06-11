@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Closet Manager — Case Study · Timmy Ajakaiye</title>
+  <meta name="description" content="Closet Manager case study: an AI wardrobe assistant with calendar-aware outfit suggestions and laundry management. Research, segmentation, persona, journey, features." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Martian+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/case.css" />
+  <link rel="stylesheet" href="../styles/closet-manager.css" />
+</head>
+<body class="closet-manager">
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Scroll progress -->
+  <div class="cs-progress" aria-hidden="true"><span id="csProgress"></span></div>
+
+  <!-- NAV -->
+  <nav id="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">Timmy Ajakaiye<sup>&reg;</sup></a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#resume">Experience</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Let's talk</a>
+  </nav>
+
+  <main>
+
+    <!-- ============================================
+         HERO
+    ============================================= -->
+    <header class="cs-hero" aria-label="Closet Manager case study">
+      <div class="cs-hero-grid">
+        <div data-enter="1">
+          <span class="cs-hero-eyebrow">Case Study · Mobile · UX</span>
+          <h1 class="cs-hero-title">Closet<br>Manager</h1>
+          <p class="cs-hero-sub">
+            An AI wardrobe assistant that figures out what to wear, so you
+            don't have to. Style your life, simplified.
+          </p>
+        </div>
+        <figure class="cs-hero-cover cs-zoom" data-enter="2">
+          <img src="../assets/My closet manager/Cover image.png"
+               alt="Closet Manager app on a phone against the brand's light green: a tagged shirt in the wardrobe inventory"
+               width="2160" height="1778" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+
+      <div class="cs-hero-rail" data-enter="3">
+        <dl class="cs-hero-meta">
+          <div><dt>Role</dt><dd>UX Designer · with Uchechi Kalu</dd></div>
+          <div><dt>Type</dt><dd>Mobile App · UX Case Study</dd></div>
+          <div><dt>Deliverables</dt><dd>Research → Personas → Journey → Hi-Fi</dd></div>
+        </dl>
+        <div class="cs-chips" role="list" aria-label="Headline facts">
+          <span class="cs-chip" role="listitem"><strong>3 taps</strong> max, any task</span>
+          <span class="cs-chip" role="listitem"><strong>5</strong> features from research</span>
+          <span class="cs-chip" role="listitem"><strong>2</strong> user segments</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================
+         90-SECOND VERSION
+    ============================================= -->
+    <section class="cs-section" aria-label="Summary">
+      <span class="cs-label">The 90-second version</span>
+      <div class="cs-skim">
+        <div class="cs-skim-col cs-reveal">
+          <h3>The problem</h3>
+          <p>Getting dressed sounds simple. Between work schedules, social
+          calendars, and seasonal changes, it rarely is. People have the
+          clothes; they lack a <strong>system</strong>.</p>
+        </div>
+        <div class="cs-skim-col cs-reveal">
+          <h3>What we owned</h3>
+          <p>A two-person UX case study with <strong>Uchechi Kalu</strong>:
+          structured interviews, segmentation, persona, journey map, flows,
+          and hi-fi screens.</p>
+        </div>
+        <div class="cs-skim-col cs-reveal">
+          <h3>What research said</h3>
+          <ul>
+            <li><strong>40%</strong> wanted efficiency</li>
+            <li><strong>30%</strong> wanted convenience</li>
+            <li><strong>30%</strong> wanted personal assistance</li>
+          </ul>
+        </div>
+        <div class="cs-skim-col cs-reveal">
+          <h3>Where it landed</h3>
+          <p>Five features, each traced to a research motivation, governed by
+          one principle: <strong>any task in three taps or fewer</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         PROBLEM
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="cm-problem">
+      <span class="cs-label">01 · The problem</span>
+      <h2 class="cs-h2 cs-reveal" id="cm-problem">Getting dressed sounds simple. <em>It rarely is.</em></h2>
+      <p class="cs-body cs-reveal">
+        Demanding work schedules, shifting social calendars, seasonal wardrobe
+        transitions, and the mental load of keeping a closet organised turn a
+        daily routine into a daily source of stress. Most people aren't
+        struggling because they lack clothes. They're struggling because they
+        lack a system.
+      </p>
+
+      <p class="cm-hmw cs-reveal">
+        How might we help people move from a disorganised wardrobe to a
+        <strong>confident, personalised dressing routine</strong> without
+        adding complexity to their day?
+      </p>
+    </section>
+
+    <!-- ============================================
+         RESEARCH
+    ============================================= -->
+    <section class="cs-section cs-section--soft" aria-labelledby="cm-research">
+      <span class="cs-label">02 · Research</span>
+      <h2 class="cs-h2 cs-reveal" id="cm-research">Listen first, <em>design second.</em></h2>
+      <p class="cs-body cs-reveal">
+        Structured interviews with a diverse group of potential users, organised
+        around five themes.
+      </p>
+
+      <div class="cs-rows">
+        <div class="cs-row cs-reveal">
+          <span class="num">(01)</span>
+          <h3>General usage &amp; habits</h3>
+          <p>How often do users struggle with outfit selection? What does that look like in practice?</p>
+        </div>
+        <div class="cs-row cs-reveal">
+          <span class="num">(02)</span>
+          <h3>Wardrobe &amp; style preferences</h3>
+          <p>How do people currently organise their wardrobes? What drives their daily choices?</p>
+        </div>
+        <div class="cs-row cs-reveal">
+          <span class="num">(03)</span>
+          <h3>Calendar &amp; event integration</h3>
+          <p>Do daily activities shape clothing decisions? Would calendar-linked suggestions add value?</p>
+        </div>
+        <div class="cs-row cs-reveal">
+          <span class="num">(04)</span>
+          <h3>Laundry &amp; clothing management</h3>
+          <p>How do users track clothing usage and rotation? Where do reminders fit in?</p>
+        </div>
+        <div class="cs-row cs-reveal">
+          <span class="num">(05)</span>
+          <h3>Technology &amp; app preferences</h3>
+          <p>What would make a wardrobe app genuinely worth using?</p>
+        </div>
+      </div>
+
+      <div class="cs-themes" aria-label="Core motivations">
+        <div class="cs-theme cs-reveal" data-pct="40">
+          <div class="bar"><i></i></div>
+          <div class="pct"><span data-count="40">0</span>%</div>
+          <div class="name">Efficiency</div>
+          <p class="note">Influencers and fashion-forward users want to curate content, track trends, and style outfits systematically.</p>
+        </div>
+        <div class="cs-theme cs-reveal" data-pct="30">
+          <div class="bar"><i></i></div>
+          <div class="pct"><span data-count="30">0</span>%</div>
+          <div class="name">Convenience</div>
+          <p class="note">Busy professionals and frequent travellers need fast, contextual suggestions, often weather- and destination-aware.</p>
+        </div>
+        <div class="cs-theme cs-reveal" data-pct="30">
+          <div class="bar"><i></i></div>
+          <div class="pct"><span data-count="30">0</span>%</div>
+          <div class="name">Personalised assistance</div>
+          <p class="note">Organisation-focused users want a clean wardrobe inventory with laundry management built in.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SEGMENTATION
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="cm-segments">
+      <span class="cs-label">03 · Segmentation</span>
+      <h2 class="cs-h2 cs-reveal" id="cm-segments">Two groups. <em>Distinct needs.</em></h2>
+      <p class="cs-body cs-reveal">
+        Grouping users into two segments let us design with focus. If a feature
+        didn't clearly serve one of them, it didn't belong.
+      </p>
+
+      <div class="cs-rows">
+        <div class="cs-row cs-reveal">
+          <span class="num">(01)</span>
+          <h3>Professional &amp; social users</h3>
+          <p>Corporate professionals who need polished attire for meetings and travel with minimal decision fatigue, and socially active users who want occasion-appropriate picks without the overthinking.</p>
+        </div>
+        <div class="cs-row cs-reveal">
+          <span class="num">(02)</span>
+          <h3>Fashion &amp; lifestyle enthusiasts</h3>
+          <p>Trendsetters and content creators who want to stay organised while keeping up with what's current, plus students, parents, travellers, and gym-goers whose wardrobe needs shift across their lives.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         PERSONA
+    ============================================= -->
+    <section class="cs-section cs-section--soft" aria-labelledby="cm-persona-h">
+      <span class="cs-label">04 · Persona</span>
+      <h2 class="cs-h2 cs-reveal" id="cm-persona-h">Who we <em>designed for.</em></h2>
+
+      <div class="cm-persona cs-reveal">
+        <figure class="cm-persona-photo">
+          <img src="../assets/My closet manager/Ridwan.png"
+               alt="Ridwan, the primary persona: a man in a denim shirt, arms crossed, smiling"
+               width="656" height="716" loading="lazy" />
+        </figure>
+        <div>
+          <h3>Ridwan, 32</h3>
+          <span class="role">Corporate Architect · New York City</span>
+          <p class="quote">"I want to look sharp without spending my morning staring at my wardrobe."</p>
+          <div class="facts">
+            Ridwan works in a fast-paced architectural firm where appearance is
+            part of the culture. He travels frequently for client meetings and
+            seminars, and adopts new tools happily, as long as they actually
+            save him time.
+            <strong>Motivations</strong>
+            Outfit decisions in seconds, not minutes. Always polished for
+            whatever's on the calendar. New styles without manual research.
+            <strong>Pain points</strong>
+            No time for wardrobe management. Constant uncertainty about
+            dressing for different corporate contexts. Disorganised seasonal
+            transitions.
+          </div>
+        </div>
+      </div>
+
+      <div class="cm-jtbd" aria-label="Jobs to be done">
+        <div class="cm-jtbd-row cs-reveal">
+          <div><dt>When</dt><dd>My boss tells me I'm travelling for a seminar next week</dd></div>
+          <div><dt>I want to</dt><dd>Find an app that helps me plan my packing</dd></div>
+          <div><dt>So that</dt><dd>I can bring a few versatile pieces I can mix and match confidently</dd></div>
+        </div>
+        <div class="cm-jtbd-row cs-reveal">
+          <div><dt>When</dt><dd>I have a big client presentation tomorrow</dd></div>
+          <div><dt>I want to</dt><dd>Find the right outfit quickly</dd></div>
+          <div><dt>So that</dt><dd>I'm dressed to impress without second-guessing myself</dd></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         JOURNEY MAP
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="cm-journey-h">
+      <span class="cs-label">05 · Journey map</span>
+      <h2 class="cs-h2 cs-reveal" id="cm-journey-h">Five stages. <em>One story.</em></h2>
+      <p class="cs-body cs-reveal">
+        Following Ridwan from first install to daily habit, and the opportunity
+        hiding in each stage.
+      </p>
+
+      <div class="cm-journey">
+        <div class="cm-stage cs-reveal">
+          <div class="cm-stage-name">
+            <span class="num">(01)</span>
+            <h3>Onboarding</h3>
+            <span class="feeling">Optimistic</span>
+          </div>
+          <div><dt>Doing</dt><dd>Downloads the app, creates an account.</dd></div>
+          <div class="thinking"><dt>Thinking</dt><dd>"Let's see if this app can actually save me time."</dd></div>
+          <div class="opportunity"><dt>Opportunity</dt><dd>Engaging onboarding tutorials and interactive setup guides.</dd></div>
+        </div>
+        <div class="cm-stage cs-reveal">
+          <div class="cm-stage-name">
+            <span class="num">(02)</span>
+            <h3>Setup</h3>
+            <span class="feeling">Hopeful</span>
+          </div>
+          <div><dt>Doing</dt><dd>Inputs professional details, style preferences; syncs his calendar.</dd></div>
+          <div class="thinking"><dt>Thinking</dt><dd>"I need to set my preferences properly to get relevant suggestions."</dd></div>
+          <div class="opportunity"><dt>Opportunity</dt><dd>Advanced customisation and a guided tour of the features.</dd></div>
+        </div>
+        <div class="cm-stage cs-reveal">
+          <div class="cm-stage-name">
+            <span class="num">(03)</span>
+            <h3>Daily use</h3>
+            <span class="feeling">Curious</span>
+          </div>
+          <div><dt>Doing</dt><dd>Receives daily outfit suggestions; manages workwear and event looks.</dd></div>
+          <div class="thinking"><dt>Thinking</dt><dd>"Good suggestions, but I'd prefer something more casual for today's meeting."</dd></div>
+          <div class="opportunity"><dt>Opportunity</dt><dd>Intuitive outfit editing; algorithms that learn individual style over time.</dd></div>
+        </div>
+        <div class="cm-stage cs-reveal">
+          <div class="cm-stage-name">
+            <span class="num">(04)</span>
+            <h3>Engagement</h3>
+            <span class="feeling">Satisfied</span>
+          </div>
+          <div><dt>Doing</dt><dd>Gives feedback on suggestions; refines his preferences.</dd></div>
+          <div class="thinking"><dt>Thinking</dt><dd>"I use this regularly, but I'd love more variety."</dd></div>
+          <div class="opportunity"><dt>Opportunity</dt><dd>A community for sharing tips and outfit ideas; updates shaped by feedback.</dd></div>
+        </div>
+        <div class="cm-stage cs-reveal">
+          <div class="cm-stage-name">
+            <span class="num">(05)</span>
+            <h3>Growth</h3>
+            <span class="feeling">Excited</span>
+          </div>
+          <div><dt>Doing</dt><dd>Adopts new features; recommends the app to others.</dd></div>
+          <div class="thinking"><dt>Thinking</dt><dd>"This has genuinely simplified my mornings. I should recommend it."</dd></div>
+          <div class="opportunity"><dt>Opportunity</dt><dd>New features that add value without adding complexity.</dd></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         FEATURES
+    ============================================= -->
+    <section class="cs-section cs-section--soft" aria-labelledby="cm-features">
+      <span class="cs-label">06 · Key features</span>
+      <h2 class="cs-h2 cs-reveal" id="cm-features">Five features. <em>One system.</em></h2>
+      <p class="cs-body cs-reveal">
+        Each feature answers a motivation the research surfaced. Nothing was
+        included for optics.
+      </p>
+
+      <div style="margin-top: clamp(40px, 6vh, 72px)">
+
+        <article class="cs-block cs-reveal">
+          <div>
+            <span class="cs-block-index">Feature 01 · convenience</span>
+            <h3>Outfit of the day</h3>
+            <p class="cs-block-body">
+              The app opens with a daily outfit curated around the user's
+              schedule, stated preferences, and current trends, with real-time
+              weather factored in. Shuffle for an alternative, or save the looks
+              you love.
+            </p>
+          </div>
+          <a class="cs-zoom" href="../assets/My closet manager/Outfit of the day.png" data-lightbox>
+            <img src="../assets/My closet manager/Outfit of the day.png"
+                 alt="Home screen with a weather-aware recommended outfit, outfit of the day items, and upcoming events"
+                 width="3432" height="4671" loading="lazy" />
+          </a>
+        </article>
+
+        <article class="cs-block cs-block--flip cs-reveal">
+          <div>
+            <span class="cs-block-index">Feature 02 · personalised assistance</span>
+            <h3>Scan &amp; upload outfits</h3>
+            <p class="cs-block-body">
+              Users photograph and tag their clothing with colour, style,
+              category, and occasion. That builds a personal wardrobe database,
+              and recommendations get more accurate with every item added.
+            </p>
+          </div>
+          <a class="cs-zoom" href="../assets/My closet manager/Scan Outfit.png" data-lightbox>
+            <img src="../assets/My closet manager/Scan Outfit.png"
+                 alt="Photo gallery picker and a tagging screen where a shirt gets a name, category, and tags"
+                 width="851" height="1189" loading="lazy" />
+          </a>
+        </article>
+
+        <article class="cs-block cs-reveal">
+          <div>
+            <span class="cs-block-index">Feature 03 · convenience</span>
+            <h3>Events &amp; calendar integration</h3>
+            <p class="cs-block-body">
+              Add events in-app, from formal presentations to casual outings,
+              and Closet Manager surfaces outfit suggestions for each one. With
+              Google and Apple Calendar sync, the app reads the existing
+              schedule and prepares outfit options before the user even asks.
+            </p>
+          </div>
+          <div class="cs-block-media-pair">
+            <a class="cs-zoom" href="../assets/My closet manager/events.png" data-lightbox>
+              <img src="../assets/My closet manager/events.png"
+                   alt="Upcoming events calendar with per-event outfit suggestions"
+                   width="851" height="1189" loading="lazy" />
+            </a>
+            <a class="cs-zoom" href="../assets/My closet manager/Calendar Integration.png" data-lightbox>
+              <img src="../assets/My closet manager/Calendar Integration.png"
+                   alt="Google Calendar sync permission flow inside the app"
+                   width="851" height="1189" loading="lazy" />
+            </a>
+          </div>
+        </article>
+
+        <article class="cs-block cs-block--flip cs-reveal">
+          <div>
+            <span class="cs-block-index">Feature 04 · convenience</span>
+            <h3>Weather-aware suggestions</h3>
+            <p class="cs-block-body">
+              Outfit suggestions factor in real-time weather data through a
+              weather API, which is particularly useful for frequent travellers
+              who need destination-aware packing guidance.
+            </p>
+            <dl class="cs-dl">
+              <div><dt>Signal</dt><dd>Forecast for the user's location, or their destination when travel is on the calendar.</dd></div>
+              <div class="lead"><dt>Payoff</dt><dd>The recommended outfit already suits the day the user is about to have.</dd></div>
+            </dl>
+          </div>
+          <div></div>
+        </article>
+
+        <article class="cs-block cs-reveal">
+          <div>
+            <span class="cs-block-index">Feature 05 · personalised assistance</span>
+            <h3>Laundry management</h3>
+            <p class="cs-block-body">
+              The often-overlooked half of wardrobe management. Users track
+              clothing usage, schedule wash cycles, and set reminders for dry
+              cleaning or specialist care. The wardrobe stays fresh, and so does
+              the recommendation engine.
+            </p>
+          </div>
+          <a class="cs-zoom" href="../assets/My closet manager/Laundry Management.png" data-lightbox>
+            <img src="../assets/My closet manager/Laundry Management.png"
+                 alt="Laundry notifications and the laundry habits questionnaire"
+                 width="866" height="1189" loading="lazy" />
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         THE SYSTEM
+    ============================================= -->
+    <section class="cs-section cs-section--ink" aria-labelledby="cm-system">
+      <span class="cs-label">07 · The system</span>
+      <h2 class="cs-h2 cs-reveal" id="cm-system">Three taps <em>or fewer.</em></h2>
+      <p class="cs-body cs-reveal">
+        Every flow, from viewing today's outfit to scheduling an event, was
+        designed to complete in three taps or fewer. Four primary routes hang
+        off a central home screen.
+      </p>
+
+      <div class="cs-steps cs-reveal" aria-label="Primary routes">
+        <span class="cs-step">Outfit of the day</span><span class="cs-step-arrow" aria-hidden="true">·</span>
+        <span class="cs-step">Outfits</span><span class="cs-step-arrow" aria-hidden="true">·</span>
+        <span class="cs-step">Events</span><span class="cs-step-arrow" aria-hidden="true">·</span>
+        <span class="cs-step">Profile</span>
+      </div>
+
+      <p class="cs-body cs-reveal" style="margin-top: clamp(28px, 4vh, 44px)">
+        The interface anchors on Raisin Black, warmed by Earth Yellow and
+        freshened by Light Green: sophistication with energy, set in the
+        geometric typeface Guminert.
+      </p>
+
+      <div class="cs-swatches cs-reveal" aria-label="App colour palette">
+        <div class="cs-swatch">
+          <div class="chip" style="background:#1D202B"></div>
+          <div class="name" style="color:var(--cs-on-ink)">Raisin Black</div>
+          <div class="hex" style="color:var(--cs-dim-on-ink)">#1D202B</div>
+        </div>
+        <div class="cs-swatch">
+          <div class="chip" style="background:#F3B664"></div>
+          <div class="name" style="color:var(--cs-on-ink)">Earth Yellow</div>
+          <div class="hex" style="color:var(--cs-dim-on-ink)">#F3B664</div>
+        </div>
+        <div class="cs-swatch">
+          <div class="chip" style="background:#A7ED6E"></div>
+          <div class="name" style="color:var(--cs-on-ink)">Light Green</div>
+          <div class="hex" style="color:var(--cs-dim-on-ink)">#A7ED6E</div>
+        </div>
+        <div class="cs-swatch">
+          <div class="chip" style="background:#FFFFFF"></div>
+          <div class="name" style="color:var(--cs-on-ink)">White</div>
+          <div class="hex" style="color:var(--cs-dim-on-ink)">#FFFFFF</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         REFLECTION
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="cm-reflection">
+      <span class="cs-label">08 · Reflection</span>
+      <h2 class="cs-h2 cs-reveal" id="cm-reflection">What this project <em>confirmed.</em></h2>
+
+      <div class="cs-lessons">
+        <div class="cs-lesson cs-reveal">
+          <span class="num">(01)</span>
+          <div>
+            <h3>Research shapes everything.</h3>
+            <p>The three motivations (convenience, efficiency, personalised assistance) drove every decision, from home screen hierarchy to which features made the cut. Starting from research is the difference between a product that fits and one that guesses.</p>
+          </div>
+        </div>
+        <div class="cs-lesson cs-reveal">
+          <span class="num">(02)</span>
+          <div>
+            <h3>Segmentation enables focus.</h3>
+            <p>The two segments were a filter. Any feature that didn't clearly serve one of them didn't make it in. That kept the scope manageable and the product honest.</p>
+          </div>
+        </div>
+        <div class="cs-lesson cs-reveal">
+          <span class="num">(03)</span>
+          <div>
+            <h3>The small things are the product.</h3>
+            <p>The three-tap rule, the shuffle button, the laundry reminders. Each one is a moment of respect for the user's time, and that's what separates an app people try once from one they build a habit around.</p>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="cs-quote cs-reveal">
+        These aren't just features. They're moments of respect for the user's time.
+      </blockquote>
+    </section>
+
+  </main>
+
+  <!-- FOOTER NAV -->
+  <div class="cs-footer-nav">
+    <a href="index.html#work" class="cs-footer-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to work
+    </a>
+    <div class="cs-next">
+      <span class="label">Next case study</span>
+      <a href="wastebazaar.html">
+        WasteBazaar
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-copy">© 2026 Timmy Ajakaiye</span>
+    <div class="footer-right">
+      <div class="footer-dot"></div>
+      Available for work
+    </div>
+  </footer>
+
+  <script src="../scripts/case.js"></script>
+
+</body>
+</html>

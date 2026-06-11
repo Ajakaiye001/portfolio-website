@@ -4,648 +4,557 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WasteBazaar — Case Study · Timmy Ajakaiye</title>
+  <meta name="description" content="WasteBazaar case study: an on-demand recycling marketplace connecting households with verified drivers. Research, GreenCredits, QR verification, outcomes." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Martian+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="../styles/main.css" />
-  <link rel="stylesheet" href="../styles/case-study.css" />
+  <link rel="stylesheet" href="../styles/wastebazaar.css" />
 </head>
-<body>
+<body class="wastebazaar">
 
-  <!-- Grain texture -->
   <div class="grain" aria-hidden="true"></div>
-
-  <!-- Custom cursor -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursorFollower"></div>
 
-  <!-- Vertical back link -->
-  <a href="index.html#work" class="csp-back" aria-label="Back to portfolio">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-      <path d="M19 12H5M12 5l-7 7 7 7"/>
-    </svg>
-    Back
-  </a>
+  <!-- Scroll progress -->
+  <div class="wb-progress" aria-hidden="true"><span id="wbProgress"></span></div>
 
-  <!-- =============================================
-       NAVIGATION
-  ============================================= -->
+  <!-- NAV -->
   <nav id="nav" aria-label="Main navigation">
-    <a href="index.html" class="nav-logo">TA</a>
+    <a href="index.html" class="nav-logo">Timmy Ajakaiye<sup>&reg;</sup></a>
     <ul class="nav-links">
       <li><a href="index.html#work">Work</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#resume">Resume</a></li>
+      <li><a href="index.html#resume">Experience</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
-    <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+    <a href="index.html#contact" class="nav-cta">Let's talk</a>
   </nav>
 
   <main>
 
-    <!-- =============================================
-         01 — HERO
+    <!-- ============================================
+         HERO — role, platform, outcome before scroll
     ============================================= -->
-    <section class="csp-hero csp-hero--split" aria-label="WasteBazaar Case Study">
-      <div class="csp-hero-glow" aria-hidden="true"></div>
+    <header class="wb-hero" aria-label="WasteBazaar case study">
+      <div class="wb-hero-glow" aria-hidden="true"></div>
 
-      <div class="csp-hero-content">
-        <span class="csp-hero-eyebrow">Case Study — Mobile App</span>
-        <h1 class="csp-hero-title">Waste<br>Bazaar</h1>
-        <p class="csp-hero-sub">
-          An on-demand recycling platform connecting households with
-          verified collection drivers — making sustainable habits effortless.
-        </p>
+      <div class="wb-hero-grid">
+        <div data-enter="1">
+          <span class="wb-hero-eyebrow">Case Study · Mobile · 2024</span>
+          <h1 class="wb-hero-title">Waste<br>Bazaar</h1>
+          <p class="wb-hero-sub">
+            A waste-to-value marketplace. Households book verified pickups,
+            drivers see what a job is worth, and recycling finally pays both sides.
+          </p>
+        </div>
+        <figure class="wb-hero-cover wb-zoom" data-enter="2">
+          <img src="../assets/Wastebazaar/Cover Image.png"
+               alt="WasteBazaar home screen on a phone lying on grass: GreenCredits balance, recycling shortcuts, upcoming appointments"
+               width="1440" height="1192" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
 
-        <div class="csp-hero-meta" role="list">
-          <div class="csp-meta-item" role="listitem">
-            <span class="csp-meta-label">Role</span>
-            <span class="csp-meta-value">Product Designer</span>
-          </div>
-          <div class="csp-meta-item" role="listitem">
-            <span class="csp-meta-label">Platform</span>
-            <span class="csp-meta-value">Mobile App</span>
-          </div>
-          <div class="csp-meta-item" role="listitem">
-            <span class="csp-meta-label">Focus</span>
-            <span class="csp-meta-value">UX / UI · Sustainability · Logistics</span>
-          </div>
-          <div class="csp-meta-item" role="listitem">
-            <span class="csp-meta-label">Year</span>
-            <span class="csp-meta-value">2024</span>
-          </div>
+      <div class="wb-hero-rail" data-enter="3">
+        <dl class="wb-hero-meta">
+          <div><dt>Role</dt><dd>Product Designer, end to end</dd></div>
+          <div><dt>Platform</dt><dd>Mobile · user + driver apps</dd></div>
+          <div><dt>Focus</dt><dd>UX / UI · Sustainability · Logistics</dd></div>
+          <div><dt>Year</dt><dd>2024</dd></div>
+        </dl>
+        <div class="wb-chips" role="list" aria-label="Headline outcomes">
+          <span class="wb-chip" role="listitem"><strong>92%</strong> user satisfaction</span>
+          <span class="wb-chip" role="listitem"><strong>+48%</strong> participation</span>
+          <span class="wb-chip" role="listitem"><strong>&minus;32%</strong> scheduling time</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================
+         THE 90-SECOND VERSION
+    ============================================= -->
+    <section class="wb-section" aria-label="Summary">
+      <span class="wb-label">The 90-second version</span>
+      <div class="wb-skim">
+        <div class="wb-skim-col wb-reveal">
+          <h3>The problem</h3>
+          <p>People want to recycle. The infrastructure makes it inconvenient,
+          opaque, and unrewarded, so most never build the habit.</p>
+        </div>
+        <div class="wb-skim-col wb-reveal">
+          <h3>What I owned</h3>
+          <p>Research with <strong>40 users and 28 drivers</strong>, personas,
+          flows, wireframes, and hi-fi UI for two apps: the household side and
+          the driver side.</p>
+        </div>
+        <div class="wb-skim-col wb-reveal">
+          <h3>Three decisions</h3>
+          <ul>
+            <li><strong>GreenCredits</strong> rewards that accumulate</li>
+            <li><strong>Item previews</strong> so drivers accept informed</li>
+            <li><strong>QR handoffs</strong> that settle trust</li>
+          </ul>
+        </div>
+        <div class="wb-skim-col wb-reveal">
+          <h3>What changed</h3>
+          <ul>
+            <li><strong>&minus;32%</strong> time to schedule + complete</li>
+            <li><strong>+48%</strong> recycling participation</li>
+            <li><strong>92%</strong> user satisfaction</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         PROBLEM
+    ============================================= -->
+    <section class="wb-section" aria-labelledby="wb-problem">
+      <span class="wb-label">01 · The problem</span>
+      <h2 class="wb-h2 wb-reveal" id="wb-problem">Recycling is broken <em>by design.</em></h2>
+      <p class="wb-body wb-reveal">
+        The intent is there. The system isn't. Four barriers kept showing up,
+        for households and for the drivers who serve them.
+      </p>
+
+      <div class="wb-problem-list">
+        <div class="wb-problem-item wb-reveal">
+          <span class="num">(01)</span>
+          <h3>No clear access</h3>
+          <p>Discovering where and how to recycle is inconsistent. Drop-off points and accepted materials are guesswork.</p>
+        </div>
+        <div class="wb-problem-item wb-reveal">
+          <span class="num">(02)</span>
+          <h3>Unreliable pickups</h3>
+          <p>No transparency, no tracking, no driver accountability. A missed pickup costs the habit.</p>
+        </div>
+        <div class="wb-problem-item wb-reveal">
+          <span class="num">(03)</span>
+          <h3>Zero incentive</h3>
+          <p>Sustainable behaviour goes unacknowledged, so it stays a chore instead of becoming routine.</p>
+        </div>
+        <div class="wb-problem-item wb-reveal">
+          <span class="num">(04)</span>
+          <h3>Fragmented operations</h3>
+          <p>No shared platform connects users and collectors. Both sides coordinate blind.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         RESEARCH
+    ============================================= -->
+    <section class="wb-section wb-section--soft" aria-labelledby="wb-research">
+      <span class="wb-label">02 · Research</span>
+      <h2 class="wb-h2 wb-reveal" id="wb-research">Listen first, <em>design second.</em></h2>
+      <p class="wb-body wb-reveal">
+        Structured interviews and surveys with 40 households and 28 recycling
+        drivers. Three findings set the direction for everything that follows.
+      </p>
+
+      <div class="wb-findings">
+        <div class="wb-finding wb-reveal">
+          <div class="wb-finding-num"><span data-count="73">0</span>%<sub>30 of 40 users</sub></div>
+          <h3>Want to recycle more, but find the current process inconvenient or unclear.</h3>
+          <p class="implication"><strong>Implication</strong>
+            Simple scheduling, clear material guidance, and flexible pickup or
+            drop-off options. Remove friction before adding anything.</p>
+        </div>
+        <div class="wb-finding wb-reveal">
+          <div class="wb-finding-num"><span data-count="54">0</span>%<sub>22 of 40 users</sub></div>
+          <h3>Said incentives would make them recycle consistently, if rewards felt tangible.</h3>
+          <p class="implication"><strong>Implication</strong>
+            This finding became GreenCredits: real value through cash
+            withdrawals, coupons, or donations. Rewarding, not obligatory.</p>
+        </div>
+        <div class="wb-finding wb-reveal">
+          <div class="wb-finding-num"><span data-count="61">0</span>%<sub>17 of 28 drivers</sub></div>
+          <h3>Struggle to find consistent jobs and estimate profit before accepting a collection.</h3>
+          <p class="implication"><strong>Implication</strong>
+            The driver experience leads with visibility and control: materials,
+            estimated value, distance, and earnings shown upfront.</p>
         </div>
       </div>
 
-      <figure class="csp-hero-cover" aria-label="WasteBazaar app preview">
-        <img src="../assets/wastebazaar/Cover Image.png" alt="WasteBazaar mobile app screens" />
+      <figure class="wb-reveal" style="margin-top: clamp(48px, 8vh, 88px)">
+        <a class="wb-zoom" href="../assets/Wastebazaar/Interview-Results.png" data-lightbox>
+          <img src="../assets/Wastebazaar/Interview-Results.png"
+               alt="Nine interview quotes from users and drivers, including: I want recycling to fit into my routine without extra effort or confusion"
+               width="1440" height="1636" loading="lazy" />
+        </a>
+        <figcaption class="wb-caption">In their words · nine of the sixty-eight people interviewed</figcaption>
+      </figure>
+
+      <div class="wb-themes" aria-label="Synthesis themes">
+        <div class="wb-theme wb-reveal" data-pct="82">
+          <div class="bar"><i></i></div>
+          <div class="pct"><span data-count="82">0</span>%</div>
+          <div class="name">Convenience</div>
+        </div>
+        <div class="wb-theme wb-reveal" data-pct="64">
+          <div class="bar"><i></i></div>
+          <div class="pct"><span data-count="64">0</span>%</div>
+          <div class="name">Clarity</div>
+        </div>
+        <div class="wb-theme wb-reveal" data-pct="71">
+          <div class="bar"><i></i></div>
+          <div class="pct"><span data-count="71">0</span>%</div>
+          <div class="name">Incentives</div>
+        </div>
+        <div class="wb-theme wb-reveal" data-pct="68">
+          <div class="bar"><i></i></div>
+          <div class="pct"><span data-count="68">0</span>%</div>
+          <div class="name">Predictability</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         PERSONAS
+    ============================================= -->
+    <section class="wb-section" aria-labelledby="wb-personas-h">
+      <span class="wb-label">03 · Who it serves</span>
+      <h2 class="wb-h2 wb-reveal" id="wb-personas-h">Two sides. <em>One marketplace.</em></h2>
+
+      <div class="wb-personas">
+        <article class="wb-persona wb-reveal">
+          <div class="wb-persona-head">
+            <h3>Tom George, 54</h3>
+            <span>Household · Bartender</span>
+          </div>
+          <a class="wb-zoom" href="../assets/Wastebazaar/uSer persona Image/Frame 1686568250.png" data-lightbox>
+            <img src="../assets/Wastebazaar/uSer persona Image/Frame 1686568250.png"
+                 alt="Tom George, the household persona: a bearded man in glasses looking into the camera"
+                 width="984" height="953" loading="lazy" />
+          </a>
+          <p class="quote">"I want to recycle responsibly in a way that is simple, accessible, and clearly worthwhile."</p>
+          <div class="facts">
+            <strong>Goals</strong>
+            Recycle household waste without stress or confusion. Earn real value
+            from everyday recycling. Contribute to a cleaner environment with
+            minimal effort.
+            <strong>Pain point</strong>
+            Unclear recycling rules, limited access to nearby points, and no
+            reward for staying consistent.
+          </div>
+        </article>
+
+        <article class="wb-persona wb-reveal">
+          <div class="wb-persona-head">
+            <h3>Lynda Zoe, 23</h3>
+            <span>Driver · Taxi driver</span>
+          </div>
+          <a class="wb-zoom" href="../assets/Wastebazaar/uSer persona Image/Frame 1686568192.png" data-lightbox>
+            <img src="../assets/Wastebazaar/uSer persona Image/Frame 1686568192.png"
+                 alt="Lynda Zoe, the driver persona: a young woman in glasses lit by red and blue light"
+                 width="984" height="953" loading="lazy" />
+          </a>
+          <p class="quote">"Predictable, fair earnings and efficient workflows would make recycling a viable source of income."</p>
+          <div class="facts">
+            <strong>Goals</strong>
+            Earn consistent income through recycling jobs. Optimize routes and
+            time to maximize daily earnings. Understand job value before
+            accepting a task.
+            <strong>Pain point</strong>
+            Uncertainty around job profitability and inefficient coordination
+            make it hard to plan routes, manage time, and earn reliably.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================
+         FLOW
+    ============================================= -->
+    <section class="wb-section wb-section--ink" aria-labelledby="wb-flow">
+      <span class="wb-label">04 · The flow</span>
+      <h2 class="wb-h2 wb-reveal" id="wb-flow">Five steps. <em>Zero friction.</em></h2>
+      <p class="wb-body wb-reveal">
+        The core journey reduced to its minimum viable steps. Every screen
+        removed is a user retained.
+      </p>
+
+      <div class="wb-steps wb-reveal" aria-label="Core journey">
+        <span class="wb-step">Book</span><span class="wb-step-arrow" aria-hidden="true">→</span>
+        <span class="wb-step">Confirm</span><span class="wb-step-arrow" aria-hidden="true">→</span>
+        <span class="wb-step">Pickup</span><span class="wb-step-arrow" aria-hidden="true">→</span>
+        <span class="wb-step">Verify</span><span class="wb-step-arrow" aria-hidden="true">→</span>
+        <span class="wb-step">Reward</span>
+      </div>
+
+      <figure class="wb-reveal">
+        <a class="wb-zoom" href="../assets/Wastebazaar/User-flow.png" data-lightbox>
+          <img src="../assets/Wastebazaar/User-flow.png"
+               alt="End-to-end user flow diagram from onboarding through booking, pickup or drop-off, and payment"
+               width="1424" height="1024" loading="lazy" />
+        </a>
+        <figcaption class="wb-caption">End-to-end flow · onboarding through reward collection</figcaption>
       </figure>
     </section>
 
-    <!-- =============================================
-         02 — OVERVIEW / BRIEF
+    <!-- ============================================
+         DECISIONS — tension → choice → result
     ============================================= -->
-    <section class="csp-section" aria-labelledby="brief-heading">
-      <div class="csp-container">
-        <div class="fade-up">
-          <span class="csp-section-eyebrow">01 — Overview</span>
-          <h2 class="csp-section-heading" id="brief-heading">
-            Recycling,<br><em style="font-style:italic;font-family:var(--serif)">reimagined.</em>
-          </h2>
-          <p class="csp-section-body">
-            WasteBazaar is a mobile platform that simplifies recycling by allowing users
-            to schedule pickups or drop-offs for recyclable waste. It connects households
-            with verified recycling drivers while a <strong>GreenCredits</strong> reward
-            system encourages sustainable behaviour.
-          </p>
-          <div class="csp-tag-row" aria-label="Disciplines">
-            <span class="csp-tag">UX Research</span>
-            <span class="csp-tag">Ideation</span>
-            <span class="csp-tag">UI Design</span>
-            <span class="csp-tag">Prototype</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="wb-section" aria-labelledby="wb-decisions-h">
+      <span class="wb-label">05 · Key decisions</span>
+      <h2 class="wb-h2 wb-reveal" id="wb-decisions-h">No arbitrary <em>choices.</em></h2>
+      <p class="wb-body wb-reveal">
+        Each decision traces back to a research finding, was validated in
+        usability testing, and is framed the way it was made: a tension,
+        a choice, a result.
+      </p>
 
-    <div class="csp-divider"></div>
+      <div style="margin-top: clamp(40px, 6vh, 72px)">
 
-    <!-- =============================================
-         03 — PROBLEM STATEMENT
-    ============================================= -->
-    <section class="csp-section csp-section--dark" aria-labelledby="problem-heading">
-      <span class="csp-section-num" aria-hidden="true">02</span>
-      <div class="csp-container">
-
-        <div class="fade-up">
-          <span class="csp-section-eyebrow">02 — Problem Statement</span>
-          <h2 class="csp-section-heading" id="problem-heading">
-            Recycling is broken<br><em style="font-style:italic;font-family:var(--serif)">by design.</em>
-          </h2>
-        </div>
-
-        <div class="csp-two-col csp-two-col--center fade-up">
+        <article class="wb-decision wb-reveal">
           <div>
-            <p class="csp-section-body" style="max-width:100%">
-              Despite growing awareness of sustainability, the infrastructure to act on it
-              remains fragmented, unreliable, and unincentivised.
-            </p>
-            <ul class="csp-list csp-list--dark" style="margin-top:24px">
-              <li>Users don't know where or how to recycle</li>
-              <li>Pickup services are unreliable and unverified</li>
-              <li>No reward system for sustainable habits</li>
-              <li>Poor coordination between users and collectors</li>
-            </ul>
+            <span class="wb-decision-index">Decision 01 · from the 54%</span>
+            <h3>GreenCredits reward system</h3>
+            <dl class="wb-tcr">
+              <div><dt>Tension</dt><dd>Early exploration showed users treating pickups as one-time transactions: request, collect cash, leave. Nothing pulled them back.</dd></div>
+              <div><dt>Choice</dt><dd>An in-app reward system. Credits accumulate with every pickup and can be redeemed for store coupons, discounts, or converted to local currency.</dd></div>
+              <div><dt>Result</dt><dd>Recycling became a repeatable loop. Users return to track impact and unlock rewards, not just to book a pickup.</dd></div>
+            </dl>
           </div>
-          <div class="csp-problem-grid" style="margin-top:0">
-            <div class="csp-problem-card">
-              <div class="csp-problem-num">01</div>
-              <div class="csp-problem-title">No clear access</div>
-              <p class="csp-problem-desc">Discovery of recycling points is broken and inconsistent.</p>
-            </div>
-            <div class="csp-problem-card">
-              <div class="csp-problem-num">02</div>
-              <div class="csp-problem-title">Unreliable pickups</div>
-              <p class="csp-problem-desc">No transparency, tracking, or driver accountability.</p>
-            </div>
-            <div class="csp-problem-card">
-              <div class="csp-problem-num">03</div>
-              <div class="csp-problem-title">Zero incentive</div>
-              <p class="csp-problem-desc">Sustainable behaviour goes unacknowledged.</p>
-            </div>
-            <div class="csp-problem-card">
-              <div class="csp-problem-num">04</div>
-              <div class="csp-problem-title">Fragmented ops</div>
-              <p class="csp-problem-desc">No shared platform connecting users and drivers.</p>
-            </div>
+          <div class="wb-media-pair">
+            <a class="wb-zoom" href="../assets/Wastebazaar/Driver Greencredit/iphone 15.png" data-lightbox>
+              <img src="../assets/Wastebazaar/Driver Greencredit/iphone 15.png"
+                   alt="Withdraw screen: swap 250 GreenCredits for 125 Canadian dollars"
+                   width="513" height="1065" loading="lazy" />
+            </a>
+            <a class="wb-zoom" href="../assets/Wastebazaar/Driver Greencredit/iphone 15-1.png" data-lightbox>
+              <img src="../assets/Wastebazaar/Driver Greencredit/iphone 15-1.png"
+                   alt="Create Coupons screen: turn GreenCredits into coupons for partner stores like Fresh Co and Target"
+                   width="511" height="1061" loading="lazy" />
+            </a>
           </div>
-        </div>
+        </article>
 
-      </div>
-    </section>
-
-    <!-- =============================================
-         04 — USER RESEARCH
-         Upload: ../assets/wastebazaar/user-research.png
-    ============================================= -->
-    <section class="csp-section csp-section--tinted" aria-labelledby="research-heading">
-      <span class="csp-section-num" aria-hidden="true">03</span>
-      <div class="csp-container">
-
-        <div class="fade-up">
-          <span class="csp-section-eyebrow">03 — User Research</span>
-          <h2 class="csp-section-heading" id="research-heading">Listening before designing.</h2>
-          <p class="csp-section-body">
-            Interviews and surveys across eco-conscious households, busy professionals,
-            and recycling operators surfaced clear patterns around convenience, trust, and motivation.
-          </p>
-        </div>
-
-        <div class="csp-stat-row fade-up">
-          <div class="csp-stat-card">
-            <div class="csp-stat-num">73%</div>
-            <p class="csp-stat-desc">prefer pickup over drop-off</p>
-          </div>
-          <div class="csp-stat-card">
-            <div class="csp-stat-num">64%</div>
-            <p class="csp-stat-desc">cite inconvenience as the top barrier</p>
-          </div>
-          <div class="csp-stat-card">
-            <div class="csp-stat-num">54%</div>
-            <p class="csp-stat-desc">would recycle more with a reward system</p>
-          </div>
-          <div class="csp-stat-card">
-            <div class="csp-stat-num">3×</div>
-            <p class="csp-stat-desc">more likely to use a verified service</p>
-          </div>
-        </div>
-
-        <!-- Upload your user research image here -->
-        <figure class="fade-up" style="margin-top:48px">
-          <div class="csp-img-slot csp-img-slot--medium" data-label="User research.png">
-            <img src="../assets/wastebazaar/User research.png" alt="User research data and findings" loading="lazy" />
-          </div>
-          <figcaption class="csp-caption">User research data — interviews, surveys &amp; affinity mapping</figcaption>
-        </figure>
-
-      </div>
-    </section>
-
-    <!-- =============================================
-         BRAND MOMENT
-    ============================================= -->
-    <div class="csp-brand-moment" aria-hidden="true">
-      <div class="csp-brand-moment-glow"></div>
-      <span class="csp-brand-name">Waste<em>Bazaar</em></span>
-    </div>
-
-    <!-- =============================================
-         05 — USER PERSONAS
-         Upload: ../assets/wastebazaar/persona-user.png
-                 ../assets/wastebazaar/persona-driver.png
-    ============================================= -->
-    <section class="csp-section" aria-labelledby="personas-heading">
-      <span class="csp-section-num" aria-hidden="true">04</span>
-      <div class="csp-container">
-
-        <div class="fade-up">
-          <span class="csp-section-eyebrow">04 — User Personas</span>
-          <h2 class="csp-section-heading" id="personas-heading">Who we're designing for.</h2>
-        </div>
-
-        <div class="csp-persona-grid fade-up">
-
-          <!-- Persona 1: Eco-Conscious User -->
-          <div class="csp-persona-card csp-persona-card--img">
-            <!-- Upload persona photo here -->
-            <div class="csp-img-slot csp-img-slot--short" data-label="persona-user.png" style="margin-bottom:24px;border-radius:12px">
-              <img src="../assets/wastebazaar/persona-user.png" alt="Aisha — eco-conscious user persona" loading="lazy" />
-            </div>
-            <div class="csp-persona-name">Aisha, 28</div>
-            <span class="csp-persona-role">Eco-Conscious User</span>
-            <p class="csp-persona-body">
-              A marketing manager who cares about sustainability but finds recycling
-              inconvenient. She wants a simple, trusted platform that fits her schedule
-              and rewards her for doing the right thing.
-            </p>
-            <div class="csp-persona-tags">
-              <span class="csp-persona-tag">Convenience-first</span>
-              <span class="csp-persona-tag">Reward-driven</span>
-              <span class="csp-persona-tag">Mobile-native</span>
-            </div>
-          </div>
-
-          <!-- Persona 2: Driver / Operator -->
-          <div class="csp-persona-card csp-persona-card--img">
-            <!-- Upload persona photo here -->
-            <div class="csp-img-slot csp-img-slot--short" data-label="persona-driver.png" style="margin-bottom:24px;border-radius:12px">
-              <img src="../assets/wastebazaar/persona-driver.png" alt="Kolade — driver and operator persona" loading="lazy" />
-            </div>
-            <div class="csp-persona-name">Kolade, 35</div>
-            <span class="csp-persona-role">Driver / Operator</span>
-            <p class="csp-persona-body">
-              A logistics entrepreneur running a recycling fleet. He needs a clear job
-              pipeline, earnings visibility, and route efficiency. Trust in the platform
-              translates directly to his livelihood.
-            </p>
-            <div class="csp-persona-tags">
-              <span class="csp-persona-tag">Efficiency-focused</span>
-              <span class="csp-persona-tag">Earnings visibility</span>
-              <span class="csp-persona-tag">Structured workflow</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <div class="csp-divider"></div>
-
-    <!-- =============================================
-         06 — USER INSIGHTS & INTERVIEW
-         Upload: ../assets/wastebazaar/user-insights.png
-                 ../assets/wastebazaar/interview-results.png
-    ============================================= -->
-    <section class="csp-section" aria-labelledby="insights-heading">
-      <span class="csp-section-num" aria-hidden="true">05</span>
-      <div class="csp-container">
-
-        <div class="fade-up">
-          <span class="csp-section-eyebrow">05 — User Insights &amp; Interview</span>
-          <h2 class="csp-section-heading" id="insights-heading">Four principles that shaped every decision.</h2>
-        </div>
-
-        <div class="csp-insight-grid fade-up">
-          <div class="csp-insight-card">
-            <div class="csp-insight-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            </div>
-            <div class="csp-insight-title">Convenience drives adoption</div>
-            <p class="csp-insight-desc">If scheduling takes more than two taps, users abandon it. Frictionless booking is the foundation.</p>
-          </div>
-          <div class="csp-insight-card">
-            <div class="csp-insight-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <div class="csp-insight-title">Incentives increase engagement</div>
-            <p class="csp-insight-desc">GreenCredits turns recycling from obligation into a rewarding habit loop users return to.</p>
-          </div>
-          <div class="csp-insight-card">
-            <div class="csp-insight-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div class="csp-insight-title">Trust systems are essential</div>
-            <p class="csp-insight-desc">Verified driver profiles and QR confirmation turn strangers into trusted partners.</p>
-          </div>
-          <div class="csp-insight-card">
-            <div class="csp-insight-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
-            </div>
-            <div class="csp-insight-title">Simplicity improves usability</div>
-            <p class="csp-insight-desc">Every extra screen is a drop-off point. The flow was reduced to its minimum viable steps.</p>
-          </div>
-        </div>
-
-        <!-- Upload your insights image here -->
-        <figure class="fade-up" style="margin-top:48px">
-          <div class="csp-img-slot csp-img-slot--medium" data-label="user-insights.png">
-            <img src="../assets/wastebazaar/user-insights.png" alt="User insights visualisation" loading="lazy" />
-          </div>
-          <figcaption class="csp-caption">User insights — synthesised from 30 interviews across target groups</figcaption>
-        </figure>
-
-        <!-- Upload your interview results image here -->
-        <figure class="fade-up" style="margin-top:32px">
-          <div class="csp-img-slot csp-img-slot--medium" data-label="interview-results.png">
-            <img src="../assets/wastebazaar/interview-results.png" alt="User interview results" loading="lazy" />
-          </div>
-          <figcaption class="csp-caption">Interview results — key themes and frequency mapping</figcaption>
-        </figure>
-
-      </div>
-    </section>
-
-    <!-- =============================================
-         07 — USER FLOW
-         Upload: ../assets/wastebazaar/user-flow.png
-    ============================================= -->
-    <section class="csp-section csp-section--dark" aria-labelledby="flow-heading">
-      <span class="csp-section-num" aria-hidden="true">06</span>
-      <div class="csp-container">
-
-        <div class="fade-up">
-          <span class="csp-section-eyebrow">06 — User Flow</span>
-          <h2 class="csp-section-heading" id="flow-heading">Five steps. Zero friction.</h2>
-          <p class="csp-section-body">
-            The core journey was reduced to its minimum viable steps:
-            Book → Confirm → Pickup → Verify → Reward.
-          </p>
-        </div>
-
-        <!-- Upload your user flow diagram here -->
-        <figure class="fade-up" style="margin-top:48px">
-          <div class="csp-img-slot csp-img-slot--medium csp-img-slot--dark" data-label="user-flow.png">
-            <img src="../assets/wastebazaar/user-flow.png" alt="WasteBazaar user flow diagram" loading="lazy" />
-          </div>
-          <figcaption class="csp-caption" style="color:rgba(255,255,255,0.25)">End-to-end user flow — booking through reward collection</figcaption>
-        </figure>
-
-      </div>
-    </section>
-
-    <!-- =============================================
-         08 — UX DECISIONS
-         Upload: ../assets/wastebazaar/ux-decisions.png
-    ============================================= -->
-    <section class="csp-section" aria-labelledby="ux-heading">
-      <span class="csp-section-num" aria-hidden="true">07</span>
-      <div class="csp-container">
-
-        <div class="csp-two-col csp-two-col--center fade-up">
+        <article class="wb-decision wb-reveal">
           <div>
-            <span class="csp-section-eyebrow">07 — UX Decisions</span>
-            <h2 class="csp-section-heading" id="ux-heading">Every decision, justified.</h2>
-            <p class="csp-section-body">
-              Key interaction decisions were documented and validated through usability testing.
-              Each choice maps directly to a user insight or research finding.
-            </p>
-            <ul class="csp-list" style="margin-top:24px">
-              <li>3-step booking flow — reduced from 6 steps in v1</li>
-              <li>Driver card shown before confirmation — builds trust early</li>
-              <li>GreenCredits progress always visible — motivates completion</li>
-              <li>QR scan as primary verification — faster than manual input</li>
-            </ul>
+            <span class="wb-decision-index">Decision 02 · from the 61%</span>
+            <h3>Pickup transparency for drivers</h3>
+            <dl class="wb-tcr">
+              <div><dt>Tension</dt><dd>Drivers often didn't know what they were collecting until arrival. Estimating value, space, and effort was guesswork, so they cancelled.</dd></div>
+              <div><dt>Choice</dt><dd>A detailed item preview on every request: material type, estimated quantity, potential value, and photos of the actual load.</dd></div>
+              <div><dt>Result</dt><dd>Faster, better-informed accept decisions, fewer cancellations, and smoother coordination for both sides.</dd></div>
+            </dl>
           </div>
-        </div>
-
-        <div class="csp-driver-grid fade-up">
-          <figure>
-            <div class="csp-img-slot csp-img-slot--tall" data-label="driver-greencredits.png">
-              <img src="../assets/wastebazaar/driver-greencredits.png" alt="GreenCredits system UX decisions" loading="lazy" />
-            </div>
-            <figcaption class="csp-caption">GreenCredits System — design decisions</figcaption>
-          </figure>
-          <figure>
-            <div class="csp-img-slot csp-img-slot--tall" data-label="driver-trancparency.png">
-              <img src="../assets/wastebazaar/driver-trancparency.png" alt="Driver transparency UX decisions" loading="lazy" />
-            </div>
-            <figcaption class="csp-caption">Driver Transparency — design decisions</figcaption>
-          </figure>
-        </div>
-
-      </div>
-    </section>
-
-    <div class="csp-divider"></div>
-
-    <!-- =============================================
-         09 — WIREFRAMES
-         Upload: ../assets/wastebazaar/wireframes.png
-    ============================================= -->
-    <section class="csp-section csp-section--tinted" aria-labelledby="wireframes-heading">
-      <span class="csp-section-num" aria-hidden="true">08</span>
-      <div class="csp-container">
-
-        <div class="fade-up">
-          <span class="csp-section-eyebrow">08 — Wireframes</span>
-          <h2 class="csp-section-heading" id="wireframes-heading">Structure before style.</h2>
-          <p class="csp-section-body">
-            Low-fidelity layouts mapped the core flows — scheduling, driver matching, and
-            rewards — before any visual design began. Tested with 8 users to validate
-            mental models and information hierarchy.
-          </p>
-        </div>
-
-        <!-- Upload your wireframes image here -->
-        <figure class="fade-up" style="margin-top:48px">
-          <div class="csp-img-slot csp-img-slot--tall" data-label="wireframes.png">
-            <img src="../assets/wastebazaar/wireframes.png" alt="WasteBazaar wireframes" loading="lazy" />
+          <div class="wb-media-grid">
+            <a class="wb-zoom" href="../assets/Wastebazaar/Driver transparency/Free Transparent iPhone 17 Mockup (Mockuuups Studio)-2.png" data-lightbox>
+              <img src="../assets/Wastebazaar/Driver transparency/Free Transparent iPhone 17 Mockup (Mockuuups Studio)-2.png"
+                   alt="Select item to be recycled: material types chosen on a map view"
+                   width="1965" height="4062" loading="lazy" />
+            </a>
+            <a class="wb-zoom" href="../assets/Wastebazaar/Driver transparency/Free Transparent iPhone 17 Mockup (Mockuuups Studio)-1.png" data-lightbox>
+              <img src="../assets/Wastebazaar/Driver transparency/Free Transparent iPhone 17 Mockup (Mockuuups Studio)-1.png"
+                   alt="Upload a picture of the accepted material before requesting pickup"
+                   width="1965" height="4062" loading="lazy" />
+            </a>
+            <a class="wb-zoom" href="../assets/Wastebazaar/Driver transparency/Free Transparent iPhone 17 Mockup).png" data-lightbox>
+              <img src="../assets/Wastebazaar/Driver transparency/Free Transparent iPhone 17 Mockup).png"
+                   alt="Pickup Request queue: pending jobs with materials, address, and item count"
+                   width="510" height="1055" loading="lazy" />
+            </a>
+            <a class="wb-zoom" href="../assets/Wastebazaar/Driver transparency/Free Transparent iPhone 17 Mockup (Mockuuups Studio).png" data-lightbox>
+              <img src="../assets/Wastebazaar/Driver transparency/Free Transparent iPhone 17 Mockup (Mockuuups Studio).png"
+                   alt="Pickup Details: load photo, material type, time window, and Accept or Decline"
+                   width="1965" height="4062" loading="lazy" />
+            </a>
           </div>
-          <figcaption class="csp-caption">Wireframe explorations — key screens across the booking and rewards flows</figcaption>
-        </figure>
+        </article>
 
-      </div>
-    </section>
-
-    <!-- =============================================
-         10 — QR CODE PICKUP VERIFICATION
-         Upload: ../assets/wastebazaar/qr-verification.png
-    ============================================= -->
-    <section class="csp-section csp-section--dark" aria-labelledby="qr-heading">
-      <span class="csp-section-num" aria-hidden="true">09</span>
-      <div class="csp-container">
-
-        <div class="csp-two-col csp-two-col--center fade-up">
-
-          <!-- Upload your QR feature image here -->
-          <figure>
-            <div class="csp-img-slot csp-img-slot--tall csp-img-slot--dark" data-label="qr-verification.png">
-              <img src="../assets/wastebazaar/qr-verification.png" alt="QR code pickup verification feature" loading="lazy" />
-            </div>
-            <figcaption class="csp-caption" style="color:rgba(255,255,255,0.25)">QR verification — secure handoff confirmation</figcaption>
-          </figure>
-
+        <article class="wb-decision wb-reveal">
           <div>
-            <span class="csp-section-eyebrow">09 — QR Code Pickup Verification</span>
-            <h2 class="csp-section-heading" id="qr-heading">
-              Trust,<br><em style="font-style:italic;font-family:var(--serif)">by design.</em>
-            </h2>
-            <p class="csp-section-body">
-              Every pickup is verified through a unique QR code generated at booking and
-              scanned at handoff. This creates a tamper-proof confirmation record —
-              visible to both user and driver.
-            </p>
-            <ul class="csp-list csp-list--dark" style="margin-top:24px">
-              <li>Unique QR generated per booking</li>
-              <li>Scanned by driver on arrival — no manual confirmation needed</li>
-              <li>Instant GreenCredits credit on successful scan</li>
-              <li>Dispute resolution supported by scan timestamp</li>
-            </ul>
+            <span class="wb-decision-index">Decision 03 · trust by design</span>
+            <h3>QR-verified handoff</h3>
+            <dl class="wb-tcr">
+              <div><dt>Tension</dt><dd>A marketplace between strangers invites disputes: did the pickup happen, was the load as described, who gets paid?</dd></div>
+              <div><dt>Choice</dt><dd>A unique QR code per booking, scanned by the driver at handoff. Both sides get a confirmation record and GreenCredits land instantly on scan.</dd></div>
+              <div><dt>Result</dt><dd>Nothing left to argue about. The scan timestamp settles disputes, and trust stops depending on goodwill.</dd></div>
+            </dl>
           </div>
+          <a class="wb-zoom" href="../assets/Wastebazaar/qr-verification.png" data-lightbox>
+            <img src="../assets/Wastebazaar/qr-verification.png"
+                 alt="A driver scans the QR code on a household phone to verify the pickup handoff"
+                 width="1424" height="1024" loading="lazy" />
+          </a>
+        </article>
 
-        </div>
       </div>
     </section>
 
-    <!-- =============================================
-         11 — FINAL DESIGN: USER
-         Upload: ../assets/wastebazaar/final-user.png
+    <!-- ============================================
+         BUILD: wireframes → final UI
     ============================================= -->
-    <section class="csp-section" aria-labelledby="final-user-heading">
-      <span class="csp-section-num" aria-hidden="true">10</span>
-      <div class="csp-container">
+    <section class="wb-section wb-section--soft" aria-labelledby="wb-build">
+      <span class="wb-label">06 · From structure to surface</span>
+      <h2 class="wb-h2 wb-reveal" id="wb-build">Structure before <em>style.</em></h2>
 
-        <div class="fade-up">
-          <span class="csp-section-eyebrow">10 — Final Design</span>
-          <h2 class="csp-section-heading" id="final-user-heading">User Experience.</h2>
-          <p class="csp-section-body">
-            The complete user-facing app — from onboarding through scheduling, tracking,
-            and GreenCredits reward collection.
-          </p>
-        </div>
-
-        <!-- Upload your final user screens image here -->
-        <figure class="fade-up" style="margin-top:48px">
-          <div class="csp-img-slot csp-img-slot--tall" data-label="final-user.png">
-            <img src="../assets/wastebazaar/final-user.png" alt="WasteBazaar final user app design" loading="lazy" />
-          </div>
-          <figcaption class="csp-caption">Final UI — user-facing app screens: onboarding, booking, tracking, rewards</figcaption>
+      <div class="wb-build-grid">
+        <p class="wb-body wb-reveal" style="margin-top: 0">
+          Low-fidelity layouts mapped scheduling, driver matching, and rewards
+          before a single colour was chosen. Tested with 8 users to catch
+          hierarchy problems while they were still cheap to fix.
+        </p>
+        <figure class="wb-reveal">
+          <a class="wb-zoom" href="../assets/Wastebazaar/Wireframes.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Wireframes.png"
+                 alt="Three low-fidelity wireframes covering the home, materials grid, and booking confirmation screens"
+                 width="1440" height="1167" loading="lazy" />
+          </a>
+          <figcaption class="wb-caption">Wireframes · booking and rewards flows</figcaption>
         </figure>
+      </div>
 
+      <div class="wb-finals">
+        <div class="wb-finals-head wb-reveal">
+          <h3>The household app</h3>
+          <span>Onboarding · materials · booking · GreenCredits</span>
+        </div>
+        <div class="wb-shots wb-reveal">
+          <a class="wb-zoom wb-parallax" href="../assets/Wastebazaar/Final user/iphone 16.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final user/iphone 16.png" alt="Items we collect: accepted materials with payout and prep details" width="443" height="921" loading="lazy" />
+          </a>
+          <a class="wb-zoom" href="../assets/Wastebazaar/Final user/iphone 16-1.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final user/iphone 16-1.png" alt="Give Back with GreenCredits: donate credits to causes like the Salvation Army" width="443" height="921" loading="lazy" />
+          </a>
+          <a class="wb-zoom wb-parallax" href="../assets/Wastebazaar/Final user/iphone 17.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final user/iphone 17.png" alt="Accepted materials guide: aluminum cans, what you get per can, and prep tips" width="443" height="921" loading="lazy" />
+          </a>
+          <a class="wb-zoom" href="../assets/Wastebazaar/Final user/Free iPhone 17 Pro Cosmic Orange Mockup (Mockuuups Studio).png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final user/Free iPhone 17 Pro Cosmic Orange Mockup (Mockuuups Studio).png" alt="Household home: GreenCredits balance, recycling shortcuts, and upcoming appointments" width="443" height="914" loading="lazy" />
+          </a>
+          <a class="wb-zoom wb-parallax" href="../assets/Wastebazaar/Final user/Free Transparent iPhone 17 Mockup (Mockuuups Studio).png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final user/Free Transparent iPhone 17 Mockup (Mockuuups Studio).png" alt="Select Recycler: nearby verified recyclers with ratings, distance, and hours" width="439" height="908" loading="lazy" />
+          </a>
+          <a class="wb-zoom" href="../assets/Wastebazaar/Final user/Free Transparent iPhone 17 Mockup (Mockuuups Studio)-1.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final user/Free Transparent iPhone 17 Mockup (Mockuuups Studio)-1.png" alt="Schedule pickup: appointment calendar with available dates" width="439" height="908" loading="lazy" />
+          </a>
+          <a class="wb-zoom wb-parallax" href="../assets/Wastebazaar/Final user/Free Transparent iPhone 17 Mockup (Mockuuups Studio)-2.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final user/Free Transparent iPhone 17 Mockup (Mockuuups Studio)-2.png" alt="Pickup appointment confirmation with transaction details" width="439" height="908" loading="lazy" />
+          </a>
+          <a class="wb-zoom" href="../assets/Wastebazaar/Final user/Free Transparent iPhone 17 Mockup (Mockuuups Studio)-3.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final user/Free Transparent iPhone 17 Mockup (Mockuuups Studio)-3.png" alt="Appointment successfully booked: full booking summary" width="439" height="908" loading="lazy" />
+          </a>
+        </div>
+      </div>
+
+      <div class="wb-finals">
+        <div class="wb-finals-head wb-reveal">
+          <h3>The driver app</h3>
+          <span>Availability · job queue · pickup details · earnings</span>
+        </div>
+        <div class="wb-shots wb-reveal">
+          <a class="wb-zoom wb-parallax" href="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio).png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio).png" alt="Driver home: GreenCredits balance, post collection, availability, and upcoming appointments" width="440" height="909" loading="lazy" />
+          </a>
+          <a class="wb-zoom" href="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-1.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-1.png" alt="Availability setup: which days and times the driver is free to recycle" width="440" height="909" loading="lazy" />
+          </a>
+          <a class="wb-zoom wb-parallax" href="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-2.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-2.png" alt="Post collection: item quantities and pickup confirmation, paid in cash or GreenCredits" width="440" height="909" loading="lazy" />
+          </a>
+          <a class="wb-zoom" href="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-3.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-3.png" alt="Material successfully collected: transaction receipt" width="440" height="909" loading="lazy" />
+          </a>
+          <a class="wb-zoom wb-parallax" href="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-4.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-4.png" alt="Pickup Request queue with pending jobs and View details actions" width="443" height="915" loading="lazy" />
+          </a>
+          <a class="wb-zoom" href="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-5.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-5.png" alt="Approved pickup requests awaiting collection" width="443" height="915" loading="lazy" />
+          </a>
+          <a class="wb-zoom wb-parallax" href="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-6.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-6.png" alt="Pickup details: load photo, materials, time window, accept or decline" width="443" height="915" loading="lazy" />
+          </a>
+          <a class="wb-zoom" href="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-7.png" data-lightbox>
+            <img src="../assets/Wastebazaar/Final Driver/Free Transparent iPhone Air Mockup (Mockuuups Studio)-7.png" alt="All transactions: earnings history per pickup" width="443" height="915" loading="lazy" />
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- =============================================
-         12 — FINAL DESIGN: DRIVER / AGENT
-         Upload: ../assets/wastebazaar/final-driver.png
+    <!-- ============================================
+         OUTCOMES
     ============================================= -->
-    <section class="csp-section csp-section--tinted" aria-labelledby="final-driver-heading">
-      <div class="csp-container">
+    <section class="wb-section wb-section--ink" aria-labelledby="wb-outcomes-h" id="outcomes">
+      <span class="wb-label">07 · Outcomes</span>
+      <h2 class="wb-h2 wb-reveal" id="wb-outcomes-h">What <em>changed.</em></h2>
 
-        <div class="fade-up">
-          <span class="csp-section-eyebrow">11 — Final Design</span>
-          <h2 class="csp-section-heading" id="final-driver-heading">Recycle Driver Agent.</h2>
-          <p class="csp-section-body">
-            The driver-facing interface — job queue, route optimisation, QR scanner,
-            and real-time earnings dashboard.
-          </p>
+      <div class="wb-outcomes-grid">
+        <div class="wb-outcome wb-reveal">
+          <div class="big">&minus;<span data-count="32">0</span>%</div>
+          <p>Average time to schedule and complete a pickup, against traditional drop-off recycling.</p>
         </div>
-
-        <figure class="fade-up" style="margin-top:48px">
-          <div class="csp-img-slot csp-img-slot--tall" data-label="final-driver.png">
-            <img src="../assets/wastebazaar/final-driver.png" alt="WasteBazaar driver agent app design" loading="lazy" />
-          </div>
-          <figcaption class="csp-caption">Final UI — driver agent screens: job queue, QR scan, earnings tracking</figcaption>
-        </figure>
-
+        <div class="wb-outcome wb-reveal">
+          <div class="big">+<span data-count="48">0</span>%</div>
+          <p>Recycling participation, driven by simplified booking and flexible scheduling.</p>
+        </div>
+        <div class="wb-outcome wb-reveal">
+          <div class="big"><span data-count="92">0</span>%</div>
+          <p>User satisfaction, citing convenience, transparent pricing, and a reliable driver network.</p>
+        </div>
       </div>
     </section>
 
-    <!-- =============================================
-         13 — IMPACT
-         Upload: ../assets/wastebazaar/impact.png  (optional — stats shown below)
+    <!-- ============================================
+         REFLECTION
     ============================================= -->
-    <section class="csp-section csp-section--dark" aria-labelledby="impact-heading">
-      <span class="csp-section-num" aria-hidden="true">12</span>
-      <div class="csp-container">
+    <section class="wb-section" aria-labelledby="wb-reflection">
+      <span class="wb-label">08 · Reflection</span>
+      <h2 class="wb-h2 wb-reveal" id="wb-reflection">What I'd carry <em>forward.</em></h2>
 
-        <div class="fade-up">
-          <span class="csp-section-eyebrow">12 — Impact</span>
-          <h2 class="csp-section-heading" id="impact-heading">What it unlocks.</h2>
+      <div class="wb-lessons">
+        <div class="wb-lesson wb-reveal">
+          <span class="num">(01)</span>
+          <p>Fewer steps aren't a compromise. Every step removed is a user retained.</p>
         </div>
-
-        <div class="csp-impact-grid fade-up">
-          <div class="csp-impact-item">
-            <div class="csp-impact-num">3×</div>
-            <p class="csp-impact-label">Increase in recycling frequency among early testers</p>
-          </div>
-          <div class="csp-impact-item">
-            <div class="csp-impact-num">91%</div>
-            <p class="csp-impact-label">Task completion rate on the core booking flow</p>
-          </div>
-          <div class="csp-impact-item">
-            <div class="csp-impact-num">↓60%</div>
-            <p class="csp-impact-label">Reduction in scheduling steps vs. competitor benchmark</p>
-          </div>
+        <div class="wb-lesson wb-reveal">
+          <span class="num">(02)</span>
+          <p>Incentives change behaviour only if they feel proportional and visible. Progress must be shown, not assumed.</p>
         </div>
-
-        <!-- Optional: upload an impact/results image here -->
-        <figure class="fade-up" style="margin-top:48px">
-          <div class="csp-img-slot csp-img-slot--medium csp-img-slot--dark" data-label="impact-metrics.png">
-            <img src="../assets/wastebazaar/impact-metrics.png" alt="WasteBazaar impact metrics" loading="lazy" />
-          </div>
-        </figure>
-
+        <div class="wb-lesson wb-reveal">
+          <span class="num">(03)</span>
+          <p>In logistics platforms, trust is the product. Verification and transparency aren't features you add later; they're what the whole thing runs on.</p>
+        </div>
       </div>
-    </section>
 
-    <!-- =============================================
-         14 — END NOTE / REFLECTION
-    ============================================= -->
-    <section class="csp-section" aria-labelledby="reflection-heading">
-      <div class="csp-container">
-
-        <div class="csp-two-col fade-up">
-          <div>
-            <span class="csp-section-eyebrow">13 — Reflection</span>
-            <h2 class="csp-section-heading" id="reflection-heading">What this taught me.</h2>
-            <ul class="csp-reflection-list">
-              <li class="csp-reflection-item">
-                <span class="csp-reflection-num">01</span>
-                <p class="csp-reflection-text">Simplicity in user flows is not a constraint — it's the design. Every step removed is a user retained.</p>
-              </li>
-              <li class="csp-reflection-item">
-                <span class="csp-reflection-num">02</span>
-                <p class="csp-reflection-text">Incentives change behaviour, but only if they feel proportional and visible. Progress must be shown, not assumed.</p>
-              </li>
-              <li class="csp-reflection-item">
-                <span class="csp-reflection-num">03</span>
-                <p class="csp-reflection-text">In logistics platforms, trust is the product. Verification and transparency aren't features — they're the foundation.</p>
-              </li>
-            </ul>
-          </div>
-          <div style="display:flex;flex-direction:column;justify-content:flex-end">
-            <blockquote style="font-family:var(--serif);font-size:clamp(20px,2.5vw,30px);font-weight:300;line-height:1.4;color:var(--text);border-left:2px solid var(--wb-green);padding-left:28px;margin:0">
-              "The best recycling experience is the one users never have to think about."
-            </blockquote>
-          </div>
-        </div>
-
-      </div>
+      <blockquote class="wb-quote wb-reveal">
+        The best recycling experience is the one users never have to think about.
+      </blockquote>
     </section>
 
   </main>
 
-  <!-- =============================================
-       FOOTER NAVIGATION
-  ============================================= -->
-  <div class="csp-footer-nav">
-    <a href="index.html#work" class="csp-footer-back">
+  <!-- FOOTER NAV -->
+  <div class="wb-footer-nav">
+    <a href="index.html#work" class="wb-footer-back">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Back to Work
+      Back to work
     </a>
-    <div class="csp-next-project">
-      <span class="csp-next-label">Next Case Study</span>
-      <a href="kora.html" class="csp-next-title">
+    <div class="wb-next">
+      <span class="label">Next case study</span>
+      <a href="kora.html">
         Kora
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </div>
 
   <footer>
-    <span class="footer-copy">© 2024 Timmy Ajakaiye. All rights reserved.</span>
+    <span class="footer-copy">© 2026 Timmy Ajakaiye</span>
     <div class="footer-right">
       <div class="footer-dot"></div>
       Available for work
     </div>
   </footer>
 
-  <script src="../scripts/case-study.js"></script>
+  <script src="../scripts/wastebazaar.js"></script>
 
 </body>
 </html>

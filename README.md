@@ -1,120 +1,79 @@
 # Timmy Ajakaiye — Portfolio
 
-A premium, minimal portfolio website for a Product Designer & UI/UX Engineer. Built with vanilla HTML, CSS, and JavaScript — no framework required.
+A Swiss-technical portfolio for a Product Designer & UI/UX Engineer. Ink on warm bone with a blueprint-orange accent. Built with vanilla HTML, CSS, and JavaScript — no build step required.
 
 ## Features
 
-- Cinematic scroll-based project preview (GSAP ScrollTrigger)
-- Custom animated cursor with follower
-- Page loader with letter-by-letter reveal
-- Scroll-triggered fade-up animations (Intersection Observer)
-- Case study overlays with full editorial layout
-- CSS-drawn project mockups (no external images needed)
-- Fully responsive (mobile-first)
-- Accessible markup (ARIA labels, keyboard nav)
+- Orchestrated page load: counter + name reveal → hero typographic stagger (GSAP)
+- Interactive canvas dot-field in the hero (ripples toward the pointer)
+- Lenis smooth scrolling wired into GSAP ScrollTrigger
+- Editorial work rows with clip-path reveals and inner-image parallax
+- Custom cursor with contextual "View case" label (fine pointers only)
+- Orange skill marquee, ink-drenched contact section, live London clock
+- Full-screen overlay menu on mobile (burger injected by JS)
+- Case study pages share the design system via CSS variables
+- `prefers-reduced-motion` collapses all motion to simple fades
 
-## Project Structure
+## Project structure
 
 ```
-Portfolio website/
-├── index.html          # HTML structure (clean, no inline styles or scripts)
+Portfolio_website/
+├── index.html              # Redirect → pages/index.html
+├── PRODUCT.md              # Brand context (audience, voice, principles)
+├── DESIGN.md               # Design tokens (color, type, motion)
+├── pages/
+│   ├── index.html          # Home
+│   ├── wastebazaar.html    # Case study
+│   ├── yearbook.html       # Case study
+│   ├── closet-manager.html # Case study
+│   └── kora.html           # Case study (in progress)
 ├── styles/
-│   └── main.css        # All styles — variables, components, responsive
+│   ├── main.css            # Design system + home sections
+│   ├── case.css            # Shared case-study system (palette via CSS vars)
+│   ├── wastebazaar.css     # WasteBazaar page (pine/lime)
+│   ├── closet-manager.css  # Closet Manager (raisin black/earth yellow/light green)
+│   ├── yearbook.css        # Yearbook (brand blue/bright peach)
+│   └── case-study.css      # Legacy layouts, now only used by kora.html
 ├── scripts/
-│   └── main.js         # All JavaScript — animations, interactions, data
-├── assets/
-│   ├── images/         # Place project screenshots / photos here
-│   └── icons/          # Custom icons / favicon
-├── .gitignore
-└── README.md
+│   ├── main.js             # Home: loader, cursor, canvas, scroll
+│   ├── case.js             # Closet/Yearbook: reveals, counters, parallax (vanilla)
+│   ├── wastebazaar.js      # WasteBazaar: same system, page-scoped
+│   └── case-study.js       # Legacy, now only used by kora.html
+└── assets/                 # Case study imagery
 ```
 
-## Running Locally
+## Type & color
 
-### Option A — Python (zero setup, built into your OS)
+| Role | Choice |
+|------|--------|
+| Display + body | Bricolage Grotesque (variable) |
+| Italic accents | Spectral |
+| Labels / meta | Martian Mono |
+| Canvas | `#F3EFE7` warm bone |
+| Ink | `#16130D` |
+| Accent | `#E84B0F` blueprint orange |
+
+## Running locally
 
 ```bash
-cd "Portfolio website"
+npx serve            # → http://localhost:3000
+# or
 python -m http.server 8000
 ```
 
-Open → [http://localhost:8000](http://localhost:8000)
-
-### Option B — Node.js (npx serve)
-
-```bash
-cd "Portfolio website"
-npx serve
-```
-
-Open → [http://localhost:3000](http://localhost:3000)
-
-### Option C — VS Code Live Server
-
-1. Install the **Live Server** extension in VS Code
-2. Right-click `index.html` → **Open with Live Server**
-
-Auto-reloads on file save.
-
-## Customising Content
-
-All project data lives in the `projects` array at the top of `scripts/main.js`. Each entry has:
-
-| Field | Description |
-|-------|-------------|
-| `title` | Project name |
-| `category` | Type / platform label |
-| `tagline` | One-line hook |
-| `bgColor` | Hero background colour |
-| `accent` | Metric highlight colour |
-| `year`, `role`, `duration`, `platform` | Meta info |
-| `overview`, `problem`, `goal`, `solution` | Case study copy |
-| `process` | Array of process steps |
-| `metrics` | Array of `{ num, label }` impact stats |
-
-To update personal info, edit the relevant sections in `index.html` directly.
-
-## Adding Real Images
-
-1. Drop screenshots into `assets/images/`
-2. Replace CSS mockup `<div>` elements in `index.html` with `<img>` tags:
-
-```html
-<img src="assets/images/aria-mockup.png" alt="Aria app screenshot" loading="lazy" />
-```
-
-## Deploying
-
-### Netlify (recommended — drag and drop)
-
-1. Go to [app.netlify.com](https://app.netlify.com)
-2. Drag the entire `Portfolio website` folder onto the deploy zone
-3. Done — live in seconds
-
-### GitHub Pages
-
-```bash
-git init
-git add .
-git commit -m "initial portfolio"
-git remote add origin https://github.com/YOUR_USERNAME/portfolio.git
-git push -u origin main
-```
-
-Then enable GitHub Pages from the repository Settings → Pages → Source: `main` branch.
-
-## Git Setup
-
-```bash
-git init
-git add .
-git commit -m "refactored portfolio — clean HTML/CSS/JS structure"
-```
-
-## Dependencies (CDN — no install needed)
+## Dependencies (CDN, no install)
 
 | Library | Purpose |
 |---------|---------|
-| [GSAP 3.12](https://gsap.com) | Scroll-based animations, ScrollTrigger |
-| [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) | Display / serif typeface |
-| [DM Sans](https://fonts.google.com/specimen/DM+Sans) | Body / UI typeface |
+| [GSAP 3.12](https://gsap.com) + ScrollTrigger | Load choreography, scroll animations |
+| [Lenis](https://lenis.darkroom.engineering) | Smooth scrolling |
+| Google Fonts | Bricolage Grotesque, Spectral, Martian Mono |
+
+## Deploying
+
+Netlify drag-and-drop or GitHub Pages both work as-is. Asset paths are case-sensitive on Linux hosts — keep folder names exactly as they are in `assets/`.
+
+## To do
+
+- Add a real resume PDF (the download link was removed until one exists)
+- Point the social links in the contact section at real profiles

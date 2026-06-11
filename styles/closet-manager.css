@@ -1,0 +1,195 @@
+/* ==================================================
+   CLOSET MANAGER — palette + bespoke sections
+   Palette from the app's own system (design.md):
+   Raisin Black #1D202B · Earth Yellow #F3B664 ·
+   Light Green #A7ED6E
+   ================================================== */
+
+:root {
+  --cs-ink: #1D202B;
+  --cs-hero-bg: #1D202B;
+  --cs-accent: #F3B664;
+  --cs-accent-text: #A4660F;   /* earth yellow, deepened for text on bone */
+  --cs-support: #A7ED6E;
+  --cs-soft: #ECE8DC;
+}
+
+/* Hero: chips read better in yellow on raisin black */
+.cs-hero .cs-chip {
+  color: var(--cs-accent);
+  border-color: rgba(243, 182, 100, 0.4);
+}
+.cs-hero-eyebrow { color: var(--cs-accent); }
+
+/* --------------------------------------------------
+   HOW MIGHT WE — pull quote
+-------------------------------------------------- */
+.cm-hmw {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 250;
+  font-size: clamp(22px, 2.8vw, 38px);
+  line-height: 1.4;
+  max-width: 26em;
+  margin-top: clamp(40px, 6vh, 72px);
+  padding-top: clamp(28px, 4vh, 44px);
+  border-top: 1px solid var(--cs-line);
+  color: var(--text);
+}
+.cm-hmw strong {
+  font-weight: 400;
+  color: var(--cs-accent-text);
+}
+
+/* --------------------------------------------------
+   PERSONA — photo, quote, facts, JTBD
+-------------------------------------------------- */
+.cm-persona {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.35fr) 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  margin-top: clamp(44px, 7vh, 80px);
+  align-items: start;
+}
+.cm-persona-photo {
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--cs-soft);
+  border: 1px solid var(--cs-line);
+}
+.cm-persona-photo img { width: 100%; height: auto; display: block; }
+.cm-persona h3 {
+  font-weight: 650;
+  font-variation-settings: 'wdth' 86;
+  font-size: clamp(24px, 2.8vw, 38px);
+  letter-spacing: -0.02em;
+}
+.cm-persona .role {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cs-accent-text);
+  display: block;
+  margin-top: 8px;
+}
+.cm-persona .quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(18px, 1.9vw, 24px);
+  line-height: 1.5;
+  margin: 24px 0;
+  color: var(--text);
+}
+.cm-persona .facts { font-size: 14px; font-weight: 380; color: var(--text-secondary); line-height: 1.7; }
+.cm-persona .facts strong {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cs-accent-text);
+  margin: 18px 0 8px;
+}
+
+.cm-jtbd { margin-top: clamp(36px, 6vh, 64px); border-top: 1px solid var(--cs-line); }
+.cm-jtbd-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: clamp(16px, 2.5vw, 40px);
+  padding: clamp(20px, 3vh, 30px) 0;
+  border-bottom: 1px solid var(--cs-line);
+}
+.cm-jtbd-row dt {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.cm-jtbd-row dd {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.cm-jtbd-row div:last-child dd { color: var(--text); font-weight: 480; }
+
+/* --------------------------------------------------
+   JOURNEY MAP — five stages, open grid
+-------------------------------------------------- */
+.cm-journey { margin-top: clamp(44px, 7vh, 80px); border-top: 1px solid var(--cs-line); }
+.cm-stage {
+  display: grid;
+  grid-template-columns: 150px 1.1fr 1.1fr 1.2fr;
+  gap: clamp(16px, 2.5vw, 40px);
+  padding: clamp(22px, 3.4vh, 34px) 0;
+  border-bottom: 1px solid var(--cs-line);
+  align-items: start;
+  transition: padding-left 0.4s var(--ease-out);
+}
+.cm-stage:hover { padding-left: 12px; }
+.cm-stage-name .num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--cs-accent-text);
+  display: block;
+  margin-bottom: 8px;
+}
+.cm-stage-name h3 {
+  font-weight: 600;
+  font-variation-settings: 'wdth' 90;
+  font-size: clamp(17px, 1.8vw, 22px);
+  letter-spacing: -0.01em;
+}
+.cm-stage-name .feeling {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cs-accent-text);
+  border: 1px solid color-mix(in srgb, var(--cs-accent) 55%, transparent);
+  border-radius: 100px;
+  padding: 5px 12px;
+  margin-top: 12px;
+}
+.cm-stage dt {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.cm-stage dd {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 390;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.cm-stage .thinking dd {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--text);
+}
+
+@media (max-width: 1200px) {
+  .cm-stage { grid-template-columns: 130px 1fr 1fr; }
+  .cm-stage .opportunity { grid-column: 2 / 4; }
+}
+@media (max-width: 768px) {
+  .cm-persona { grid-template-columns: 1fr; }
+  .cm-persona-photo { max-width: 260px; }
+  .cm-jtbd-row { grid-template-columns: 1fr; gap: 14px; }
+  .cm-stage { grid-template-columns: 1fr; gap: 14px; }
+  .cm-stage .opportunity { grid-column: 1; }
+  .cm-stage:hover { padding-left: 0; }
+}
