@@ -17,7 +17,7 @@
   // ------------------------------------------------
   let lenis = null;
   if (!reducedMotion && typeof Lenis !== 'undefined') {
-    lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    lenis = new Lenis({ duration: 0.75, smoothWheel: true });
     lenis.on('scroll', () => { if (hasGsap) ScrollTrigger.update(); });
     if (hasGsap) {
       gsap.ticker.add((time) => lenis.raf(time * 1000));
