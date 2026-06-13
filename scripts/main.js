@@ -305,7 +305,7 @@
   })();
 
   // ------------------------------------------------
-  // CLOCKS (London time) + BACK TO TOP
+  // CLOCKS (Dublin time) + BACK TO TOP
   // ------------------------------------------------
   (function initClock() {
     const heroClock = document.getElementById('heroClock');
@@ -313,9 +313,9 @@
     if (!heroClock && !footClock) return;
     const tick = () => {
       const time = new Intl.DateTimeFormat('en-GB', {
-        hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London'
+        hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Dublin'
       }).format(new Date());
-      if (heroClock) heroClock.textContent = `Lagos → London — ${time}`;
+      if (heroClock) heroClock.textContent = `Dublin, Ireland — ${time}`;
       if (footClock) footClock.textContent = time;
     };
     tick();
