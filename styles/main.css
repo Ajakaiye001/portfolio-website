@@ -679,6 +679,13 @@ body.menu-open .nav-burger span:nth-child(2) { transform: translateY(-3.25px) ro
   display: inline-block;
   transform: translateY(-0.5em);
 }
+.work-wip-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 44ch;
+}
 .work-wip-desc {
   font-size: 14px;
   font-weight: 380;
