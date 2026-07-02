@@ -265,7 +265,9 @@
     // from IntersectionObserver, so the media itself never "intersects".
     const reveal = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        // Skip zero-height entries: items inside a collapsed category report
+        // as intersecting before the group has actually been opened
+        if (entry.isIntersecting && entry.boundingClientRect.height > 0) {
           entry.target.querySelector('.work-media')?.classList.add('is-revealed');
           reveal.unobserve(entry.target);
         }
@@ -273,6 +275,18 @@
     }, { threshold: 0.18 });
     document.querySelectorAll('.work-item').forEach((item) => {
       if (item.querySelector('.work-media')) reveal.observe(item);
+    });
+
+    // Items observed while their category was collapsed report zero-height
+    // geometry; re-observe them once the group has fully opened so the
+    // initial notification runs against the real layout
+    document.addEventListener('work:groupopened', (e) => {
+      e.detail.group.querySelectorAll('.work-item').forEach((item) => {
+        if (item.querySelector('.work-media:not(.is-revealed)')) {
+          reveal.unobserve(item);
+          reveal.observe(item);
+        }
+      });
     });
 
     if (hasGsap && !reducedMotion) {
@@ -286,6 +300,39 @@
         });
       });
     }
+  })();
+
+  // ------------------------------------------------
+  // WORK — category accordion
+  // ------------------------------------------------
+  (function initWorkAccordion() {
+    const groups = document.querySelectorAll('.work-group');
+    if (!groups.length) return;
+
+    const settle = (group) => {
+      if (hasGsap && typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      if (group.classList.contains('is-open')) {
+        document.dispatchEvent(new CustomEvent('work:groupopened', { detail: { group } }));
+      }
+    };
+
+    groups.forEach((group) => {
+      const toggle = group.querySelector('.work-group-toggle');
+      const body = group.querySelector('.work-group-body');
+      if (!toggle || !body) return;
+
+      toggle.addEventListener('click', () => {
+        const open = group.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.dataset.cursor = open ? 'Close' : 'Open';
+        if (reducedMotion) settle(group);
+      });
+
+      // Parallax start/end positions shift once the group's height settles
+      body.addEventListener('transitionend', (e) => {
+        if (e.propertyName === 'grid-template-rows') settle(group);
+      });
+    });
   })();
 
   // ------------------------------------------------

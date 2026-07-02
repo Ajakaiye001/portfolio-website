@@ -1,0 +1,372 @@
+/* ===== Globals ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: 'Inter', -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6, .blob-text {
+    font-family: 'Outfit', sans-serif;
+}
+
+/* ===== Footer Container ===== */
+.site-footer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Top Section ===== */
+.footer-top {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 50px;
+}
+.heading-container {
+    display: flex;
+    align-items: flex-end;
+}
+
+/* --- Heading: split-word reveal animation --- */
+.footer-heading {
+    font-family: 'Phudu', sans-serif;
+    font-size: 52px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin: 0;
+}
+
+.heading-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px) rotateX(40deg);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.heading-word.revealed {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+
+/* --- Peace hand: float + fade --- */
+.peace-icon-inline {
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    vertical-align: middle;
+    margin-left: 15px;
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateY(20px) scale(0.7) rotate(-15deg);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.peace-icon-inline.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+    animation: floatHand 3s ease-in-out infinite 0.8s;
+}
+.peace-icon-inline img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes floatHand {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25%      { transform: translateY(-6px) rotate(4deg); }
+    50%      { transform: translateY(-10px) rotate(-3deg); }
+    75%      { transform: translateY(-4px) rotate(2deg); }
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* ===== Dashed Divider: draw-on animation ===== */
+.dashed-divider {
+    border: none;
+    height: 1px;
+    background: repeating-linear-gradient(
+        to right,
+        #444 0px,
+        #444 8px,
+        transparent 8px,
+        transparent 16px
+    );
+    width: 100%;
+    margin: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dashed-divider.revealed {
+    transform: scaleX(1);
+}
+
+/* ===== Middle Section ===== */
+.footer-middle {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* --- Company info: slide-up reveal --- */
+.company-info {
+    max-width: 300px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.company-info.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Logo icon: slow spin on load */
+.logo svg {
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.company-info.revealed .logo svg {
+    animation: logoSpin 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes logoSpin {
+    from { transform: rotate(-180deg) scale(0.5); opacity: 0; }
+    to   { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
+.description {
+    color: #888;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* --- Link columns: staggered fade-up --- */
+.links-container {
+    display: flex;
+    gap: 120px;
+    flex-wrap: wrap;
+}
+
+.link-column {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-column.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.link-column h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #fff;
+}
+.link-column ul {
+    list-style: none;
+}
+.link-column li {
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.link-column.revealed li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.link-column a {
+    color: #888;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.25s ease, transform 0.25s ease;
+    display: inline-block;
+    position: relative;
+}
+.link-column a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-column a:hover {
+    color: #fff;
+    transform: translateX(4px);
+}
+.link-column a:hover::after {
+    width: 100%;
+}
+
+/* ===== Blobs Area — Infinite Marquee ===== */
+.footer-bottom-blobs {
+    height: 250px;
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -30px;
+    overflow: hidden;
+}
+
+.blob-track {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: marquee 35s linear infinite;
+    will-change: transform;
+}
+
+@keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Pause marquee on hover for interaction */
+.footer-bottom-blobs:hover .blob-track {
+    animation-play-state: paused;
+}
+
+/* ===== Blob Component ===== */
+.blob-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(var(--rot)) scale(1);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.3s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0 8px;
+}
+.blob-pill:hover {
+    transform: rotate(var(--rot)) scale(1.12) translateY(-8px);
+    z-index: 10 !important;
+    filter: brightness(1.15) drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+}
+.blob-capsule {
+    width: 44px;
+    height: 80px;
+    border-radius: 22px;
+    margin-left: -12px;
+    transition: transform 0.3s ease;
+}
+.blob-capsule:first-child {
+    margin-left: 0;
+}
+
+/* Subtle individual capsule wiggle on pill hover */
+.blob-pill:hover .blob-capsule:nth-child(odd) {
+    transform: translateY(-3px);
+}
+.blob-pill:hover .blob-capsule:nth-child(even) {
+    transform: translateY(3px);
+}
+
+.blob-text {
+    position: absolute;
+    color: #1a1a1a;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    pointer-events: none;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    transition: text-decoration 0.3s ease, transform 0.3s ease;
+}
+.blob-pill:hover .blob-text {
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .links-container {
+        gap: 60px;
+    }
+    .footer-heading {
+        font-size: 42px;
+    }
+    .peace-icon-inline {
+        width: 42px;
+        height: 42px;
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-footer {
+        padding: 40px 20px 0;
+    }
+    .mobile-only {
+        display: inline;
+    }
+    .footer-top {
+        margin-bottom: 40px;
+    }
+    .footer-heading {
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+    .peace-icon-inline {
+        width: 38px;
+        height: 38px;
+        margin-left: 5px;
+        margin-bottom: 4px;
+    }
+    .footer-middle {
+        flex-direction: column;
+        padding: 40px 0;
+        gap: 40px;
+    }
+    .links-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        width: 100%;
+    }
+    .link-column:last-child {
+        grid-column: 1 / -1;
+    }
+    .footer-bottom-blobs {
+        height: 200px;
+    }
+    .blob-track {
+        animation-duration: 25s;
+    }
+}

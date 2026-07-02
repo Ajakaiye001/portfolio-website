@@ -642,6 +642,93 @@ body.menu-open .nav-burger span:nth-child(2) { transform: translateY(-3.25px) ro
 }
 .work-link:hover { color: var(--accent); border-color: var(--accent); gap: 16px; }
 
+/* Category accordion */
+.work-group { border-top: 1px solid var(--border-strong); }
+.work-group-head { margin: 0; }
+.work-group-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(30px, 5.5vh, 56px) var(--gutter);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+}
+.work-category-title {
+  display: block;
+  font-weight: 750;
+  font-variation-settings: 'opsz' 60, 'wdth' 82;
+  font-size: clamp(26px, 3.4vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.4s;
+}
+.work-category-title em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 250;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+.work-group-toggle:hover .work-category-title,
+.work-group.is-open .work-category-title { color: var(--text); }
+.work-group-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+  flex: none;
+}
+.work-group-icon {
+  position: relative;
+  width: clamp(34px, 3.4vw, 44px);
+  height: clamp(34px, 3.4vw, 44px);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  color: var(--text);
+  transition: transform 0.55s var(--ease-out), border-color 0.3s, color 0.3s;
+}
+.work-group-icon::before,
+.work-group-icon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 1.5px;
+  background: currentColor;
+  translate: -50% -50%;
+}
+.work-group-icon::after { rotate: 90deg; }
+.work-group-toggle:hover .work-group-icon {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.work-group.is-open .work-group-icon { transform: rotate(45deg); }
+
+.work-group-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.9s var(--ease-in-out), visibility 0s 0.9s;
+}
+.work-group.is-open .work-group-body {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 0.9s var(--ease-in-out), visibility 0s 0s;
+}
+.work-group-inner { min-height: 0; overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .work-group-body { transition: none; }
+}
+
 /* In-progress row (Kora) */
 .work-item--wip {
   display: block;
