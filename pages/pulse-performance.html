@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulse Performance — Case Study · Timmy Ajakaiye</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png" />
+  <meta name="description" content="Pulse Performance case study: designing and building an authenticated performance-intelligence SaaS for elite football clubs. OKLCH design tokens, an AI assistant that shows its working, and accessibility verified rather than assumed." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Martian+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/case.css" />
+  <link rel="stylesheet" href="../styles/pulse-performance.css" />
+</head>
+<body class="pulse-performance">
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Scroll progress -->
+  <div class="cs-progress" aria-hidden="true"><span id="csProgress"></span></div>
+
+  <!-- NAV -->
+  <nav id="nav" aria-label="Main navigation">
+    <a href="../index.html" class="nav-logo">Timmy Ajakaiye<sup>&reg;</sup></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#resume">Experience</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <a href="../index.html#contact" class="nav-cta">Let's talk</a>
+  </nav>
+
+  <main>
+
+    <!-- ============================================
+         HERO
+    ============================================= -->
+    <header class="cs-hero" aria-label="Pulse Performance case study">
+      <div class="cs-hero-grid">
+        <div data-enter="1">
+          <span class="cs-hero-eyebrow">Case Study · SaaS · Design &amp; Build</span>
+          <h1 class="cs-hero-title">Pulse<br>Performance</h1>
+          <p class="cs-hero-sub">
+            Performance intelligence for elite football clubs. Readiness, training
+            load, injury risk and match output modelled together, so the next
+            decision is obvious before anyone asks for it.
+          </p>
+        </div>
+        <figure class="cs-hero-cover cs-zoom" data-enter="2">
+          <img src="../assets/pulse-performance/dashboard.webp"
+               alt="The Pulse Performance dashboard: a dark command band showing squad readiness of 68, availability and the next fixture, above lighter cards for recovery, fatigue, training load and acute-to-chronic ratio."
+               width="1800" height="1125" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+
+      <div class="cs-hero-rail" data-enter="3">
+        <dl class="cs-hero-meta">
+          <div><dt>Role</dt><dd>Product design &amp; front-end build — solo</dd></div>
+          <div><dt>Year</dt><dd>2026</dd></div>
+          <div><dt>Type</dt><dd>Self-initiated · Authenticated web app</dd></div>
+          <div><dt>Stack</dt><dd>Next.js 15 · TypeScript · Tailwind v4 · Recharts</dd></div>
+        </dl>
+        <div class="cs-chips" role="list" aria-label="Headline facts">
+          <span class="cs-chip" role="listitem"><strong>32</strong> routes</span>
+          <span class="cs-chip" role="listitem"><strong>7</strong> roles, gated</span>
+          <span class="cs-chip" role="listitem"><strong>0</strong> WCAG AA failures</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================
+         90-SECOND VERSION
+    ============================================= -->
+    <section class="cs-section" aria-label="Summary">
+      <span class="cs-label">The 90-second version</span>
+      <div class="cs-skim">
+        <div class="cs-skim-col cs-reveal">
+          <h3>The problem</h3>
+          <p>A performance department already has the data. GPS vests, wellness
+          questionnaires, physio notes, match feeds. What it does not have is
+          <strong>one place where those streams argue with each other</strong>
+          before Thursday's session is written.</p>
+        </div>
+        <div class="cs-skim-col cs-reveal">
+          <h3>What I owned</h3>
+          <p>Everything. Product definition, the design system, all 32 screens,
+          and the front-end build. Self-initiated, so there was no client brief
+          to hide behind and <strong>no one else to blame for the defaults</strong>.</p>
+        </div>
+        <div class="cs-skim-col cs-reveal">
+          <h3>What it is</h3>
+          <ul>
+            <li>Authenticated SaaS, <strong>7 roles</strong></li>
+            <li>Dashboard, athletes, analytics, training, matches, reports</li>
+            <li>An assistant that <strong>shows its working</strong></li>
+            <li>Light and dark, verified in both</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="cs-body cs-reveal" style="margin-top: clamp(28px, 4vh, 44px)">
+        One thing to be straight about: this is a self-initiated build running on a
+        synthetic dataset — 80 athletes across three squads, generated
+        deterministically so every screenshot and every chart is reproducible. There
+        are no real users and no shipped outcomes to claim. What there is, is a
+        product that actually runs, and numbers about the craft that I measured
+        rather than asserted.
+      </p>
+    </section>
+
+    <!-- ============================================
+         USER RESEARCH
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="pp-users">
+      <span class="cs-label">User research</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-users">Two questionnaires, two very <em>different</em> jobs.</h2>
+      <p class="cs-body cs-reveal">
+        The people who read this product and the people who feed it are not the
+        same people, and they do not want the same thing from it. Staff need to
+        commit to a plan. Athletes need the thirty seconds it costs them to be
+        worth spending. So the research was built as two instruments rather than
+        one, because a single questionnaire would have flattened the difference
+        that matters most.
+      </p>
+
+      <div class="pp-note cs-reveal">
+        <p>
+          <strong>Straight about what this is.</strong> The questionnaires below are
+          instruments I designed; the responses are illustrative, modelled onto the
+          same synthetic squad the rest of the prototype runs on. No real players or
+          staff were surveyed. They are here because the instrument and the mapping
+          from finding to decision <em>are</em> the design work — running it with real
+          respondents would change the numbers, not the method.
+        </p>
+      </div>
+
+      <div class="cs-skim cs-reveal" style="margin-top: clamp(34px, 5vh, 56px)">
+        <div class="cs-skim-col">
+          <h3>Asked of staff</h3>
+          <ul>
+            <li>At what point in the day do you commit to tomorrow's session?</li>
+            <li>How many separate systems do you open to reach that decision?</li>
+            <li>Which single number do you look at <strong>first</strong>?</li>
+            <li>What would stop you acting on a recommendation?</li>
+            <li>Where are you, physically, when you most need this?</li>
+            <li>Which calls do you make on instinct because assembling the data takes too long?</li>
+          </ul>
+        </div>
+        <div class="cs-skim-col">
+          <h3>Asked of athletes</h3>
+          <ul>
+            <li>How long before a daily check-in stops being worth it?</li>
+            <li>What would make filling it in feel worthwhile?</li>
+            <li>What are you <strong>uncomfortable</strong> with coaching staff seeing?</li>
+            <li>Do you want your own numbers back, and which?</li>
+            <li>How do you currently find out you have been rested?</li>
+          </ul>
+        </div>
+        <div class="cs-skim-col">
+          <h3>Why these questions</h3>
+          <p>Each one is written to force a design decision rather than collect an
+          opinion. "Which number first" settles hierarchy. "What would stop you
+          acting" settles how much evidence an answer must carry. "What are you
+          uncomfortable sharing" settles the permission model — and that turned out
+          to be the question that changed the most.</p>
+        </div>
+      </div>
+
+      <p class="cs-body cs-reveal" style="margin-top: clamp(34px, 5vh, 56px)">
+        The value is not in the answers, it is in the line from each answer to a
+        thing on the screen. Where that line could not be drawn, the finding did not
+        earn a feature.
+      </p>
+
+      <dl class="pp-spec cs-reveal">
+        <div>
+          <dt>Morning, not evening</dt>
+          <dd>Session plans get committed early, before anyone is at a desk. The dashboard is written for 08:30 — it opens with the date, the time, and one sentence naming how many athletes need a decision <em>today</em>.</dd>
+        </div>
+        <div>
+          <dt>Four systems, one call</dt>
+          <dd>Staff described opening a GPS platform, a wellness app, a spreadsheet and the physio's notes to make a single decision. One workspace; the squad selector scopes every screen; no second tab.</dd>
+        </div>
+        <div>
+          <dt>Availability first</dt>
+          <dd>The first number reached for is who is fit, not who is loaded. Availability leads the command band and load sits behind it — the reverse of how most monitoring tools open.</dd>
+        </div>
+        <div>
+          <dt>No reasoning, no action</dt>
+          <dd>A recommendation without visible working gets ignored, and ignoring it once means never trusting it again. The assistant returns named athletes, their figures, the adjustment and its sources — never a bare paragraph.</dd>
+        </div>
+        <div>
+          <dt>Sixty seconds, then nothing</dt>
+          <dd>Athletes abandon check-ins that outstay their welcome, and a wellness signal with gaps in it is worse than none. Four questions, in the Hooper tradition, answered before training.</dd>
+        </div>
+        <div>
+          <dt>Clinical detail is different</dt>
+          <dd>The strongest response in the athlete instrument: willingness to share how they feel, real discomfort at coaches reading a diagnosis. This is where role-based segregation came from — it is a research finding before it is an engineering one.</dd>
+        </div>
+        <div>
+          <dt>Give the numbers back</dt>
+          <dd>Athletes will feed a system that shows them something. Hence an athlete role with a personal readiness view, rather than a write-only questionnaire.</dd>
+        </div>
+        <div>
+          <dt>Pitchside, not at a desk</dt>
+          <dd>The moment of need is frequently on grass. Mobile keeps the hierarchy instead of truncating it, and the live session screen is designed phone-first.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ============================================
+         THE RESEARCH
+    ============================================= -->
+    <section class="cs-section cs-section--soft" aria-labelledby="pp-research">
+      <span class="cs-label">The research</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-research">Why <em>these</em> numbers.</h2>
+      <p class="cs-body cs-reveal">
+        A performance department can measure almost anything. GPS units emit dozens
+        of variables per session; a heart-rate monitor emits more. The scarce
+        resource is not data, it is the attention of a coach at half past eight in
+        the morning. So the four families of number that reach the dashboard were
+        chosen from the sports-science literature and from what a decision actually
+        turns on — not from what an API happened to return.
+      </p>
+
+      <dl class="pp-spec cs-reveal">
+        <div>
+          <dt>Availability</dt>
+          <dd>
+            The share of the squad fit to train and play. It leads because it is the
+            outcome everything else serves. In an eleven-year study of Champions
+            League clubs, teams with a lower injury burden finished higher in their
+            domestic leagues and scored more points in Europe<a class="pp-cite" href="#ref-1">[1]</a>.
+            Availability is the number that connects the medical room to the table.
+          </dd>
+        </div>
+        <div>
+          <dt>Training load</dt>
+          <dd>
+            Session RPE multiplied by session duration, in arbitrary units<a class="pp-cite" href="#ref-2">[2]</a>.
+            GPS tells you what the session <em>was</em>; session-RPE tells you what it
+            <em>cost this athlete</em>. It is close to free to collect, which is
+            exactly why it survives contact with a real training week.
+          </dd>
+        </div>
+        <div>
+          <dt>Readiness &amp; recovery</dt>
+          <dd>
+            A short daily self-report, in the tradition of the Hooper index — sleep,
+            fatigue, stress and muscle soreness<a class="pp-cite" href="#ref-3">[3]</a>.
+            Four questions and thirty seconds, answered before training. The cheapest
+            signal in the building, and the most sensitive to an acute change.
+          </dd>
+        </div>
+        <div>
+          <dt>Acute : chronic</dt>
+          <dd>
+            Seven-day load against twenty-eight-day load. The most argued-about number
+            in the field, which is precisely why omitting it would not have been a
+            neutral act. How it is <em>displayed</em> is the whole design problem —
+            see below.
+          </dd>
+        </div>
+      </dl>
+
+      <p class="cs-body cs-reveal" style="margin-top: clamp(28px, 4vh, 44px)">
+        Just as deliberate is what does not reach the summary. Raw distance totals,
+        heart-rate zone breakdowns and the individual wellness items all exist in the
+        product — one level down, on the athlete and analytics screens, where someone
+        has gone looking for them. A dashboard that shows everything ranks nothing.
+      </p>
+
+      <div class="pp-note cs-reveal">
+        <p>
+          <strong>The acute:chronic ratio is contested, and the interface says so.</strong>
+          Gabbett's "sweet spot" framing<a class="pp-cite" href="#ref-4">[4]</a> made
+          the ratio ubiquitous in football. It has since taken serious criticism:
+          Lolli and colleagues showed that the conventional calculation is
+          mathematically coupled — the chronic window contains the acute one — which
+          manufactures correlation that is not really
+          there<a class="pp-cite" href="#ref-5">[5]</a>, and Impellizzeri and
+          colleagues catalogue further conceptual and methodological
+          pitfalls<a class="pp-cite" href="#ref-6">[6]</a>.
+        </p>
+        <p>
+          That changed the design rather than the decision to include it. The ratio
+          is always shown <strong>with its band and its trend, never alone and never
+          as a verdict</strong>. The dashboard reads <em>1.11, inside the band</em> —
+          not <em>low risk</em>. A metric whose validity is genuinely disputed should
+          be presented as a reason to go and look at an athlete, not as an answer
+          about one.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         WALKTHROUGH
+    ============================================= -->
+    <section class="cs-section cs-section--ink" aria-labelledby="pp-walkthrough">
+      <span class="cs-label">See it move</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-walkthrough">The <em>working</em> product.</h2>
+      <p class="cs-body cs-reveal">
+        Recorded straight from the production build: the dashboard, a question put
+        to the assistant, the analytics screen drawing its charts, and a drill-down
+        into a single athlete.
+      </p>
+
+      <figure class="pp-video cs-reveal">
+        <video
+          src="../assets/pulse-performance/walkthrough.mp4"
+          poster="../assets/pulse-performance/walkthrough-poster.jpg"
+          controls muted loop playsinline preload="metadata"
+          width="1280" height="800"
+          aria-label="Screen recording of Pulse Performance: scrolling the dashboard, asking the assistant which athletes are at highest injury risk, the analytics charts animating in, and opening an athlete profile."></video>
+        <figcaption>
+          <span>Recorded from the production build</span>
+          <span>40s · silent · no edits</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ============================================
+         DESIGN SYSTEM
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="pp-system">
+      <span class="cs-label">The system underneath</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-system">Colour built in <em>OKLCH</em>, so dark mode is free.</h2>
+      <p class="cs-body cs-reveal">
+        Every colour is defined in OKLCH rather than hex, on scales that are
+        perceptually even. That one decision pays for itself twice. The scales were
+        tuned so <strong>step 600 clears 4.5:1 on the light canvas and step 300
+        clears it on dark</strong> — which makes dark mode a re-point of the token
+        layer rather than a second set of design decisions. And the neutrals are
+        not grey: they carry a small amount of chroma at the same hue as the brand,
+        so the greys feel related to the magenta instead of sitting beside it.
+      </p>
+
+      <div class="cs-swatches cs-reveal" aria-label="Product palette">
+        <div class="cs-swatch">
+          <div class="chip" style="background:#0C080C"></div>
+          <div class="name">Canvas ink</div>
+          <div class="hex">L 11.5 · C .014 · H 330</div>
+        </div>
+        <div class="cs-swatch">
+          <div class="chip" style="background:#AF2484"></div>
+          <div class="name">Brand primary</div>
+          <div class="hex">L 52 · C .196 · H 344</div>
+        </div>
+        <div class="cs-swatch">
+          <div class="chip" style="background:#E472B9"></div>
+          <div class="name">Primary 400</div>
+          <div class="hex">L 70.5 · C .163 · H 344</div>
+        </div>
+        <div class="cs-swatch">
+          <div class="chip" style="background:#007C77"></div>
+          <div class="name">Brand accent</div>
+          <div class="hex">L 52.5 · C .098 · H 190</div>
+        </div>
+      </div>
+
+      <p class="cs-body cs-reveal" style="margin-top: clamp(28px, 4vh, 44px)">
+        Type is Geist and Geist Mono. Not Inter — which has become the default
+        that makes every dashboard look like every other dashboard. Numbers are
+        the point of this product, so every figure that can be compared down a
+        column is set in the mono face and tabular figures.
+      </p>
+
+      <div class="pp-shots pp-shots--2">
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/dashboard.webp" data-lightbox>
+            <img src="../assets/pulse-performance/dashboard.webp"
+                 alt="Dashboard in the light theme: dark command band on a warm off-white canvas."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>Light</figcaption>
+          <p>Quiet paper, one committed dark surface.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/dashboard-dark.webp" data-lightbox>
+            <img src="../assets/pulse-performance/dashboard-dark.webp"
+                 alt="The same dashboard in the dark theme, with identical layout and hierarchy."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>Dark</figcaption>
+          <p>The same screen. No layout changed — only the tokens were re-pointed.</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================
+         THE DASHBOARD
+    ============================================= -->
+    <section class="cs-section cs-section--soft" aria-labelledby="pp-dashboard">
+      <span class="cs-label">Hierarchy</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-dashboard">One surface allowed to <em>shout.</em></h2>
+      <p class="cs-body cs-reveal">
+        The failure mode of an analytics dashboard is that every card competes,
+        so nothing reads first. Here exactly one element is permitted weight: the
+        command band across the top, on the product's ink, carrying the squad's
+        readiness and the single sentence a coach needs at 08:30 — <em>2 athletes
+        need a decision before the session.</em> Everything below it is deliberately
+        quieter, and the numbers are links: any figure opens the athlete, session
+        or fixture behind it.
+      </p>
+
+      <div class="cs-steps cs-reveal" aria-label="Primary routes">
+        <span class="cs-step">Dashboard</span><span class="cs-step-arrow" aria-hidden="true">·</span>
+        <span class="cs-step">Athletes</span><span class="cs-step-arrow" aria-hidden="true">·</span>
+        <span class="cs-step">Analytics</span><span class="cs-step-arrow" aria-hidden="true">·</span>
+        <span class="cs-step">Training</span><span class="cs-step-arrow" aria-hidden="true">·</span>
+        <span class="cs-step">Matches</span><span class="cs-step-arrow" aria-hidden="true">·</span>
+        <span class="cs-step">Reports</span>
+      </div>
+
+      <p class="cs-body cs-reveal" style="margin-top: clamp(28px, 4vh, 44px)">
+        Those six routes are the spine of the product. The full set — and what each
+        one is for — is walked through further down.
+      </p>
+    </section>
+
+    <!-- ============================================
+         THE ASSISTANT
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="pp-assistant">
+      <span class="cs-label">The hero feature</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-assistant">An assistant that <em>shows its working.</em></h2>
+      <p class="cs-body cs-reveal">
+        The easy version of this feature is a chat box that returns a confident
+        paragraph. That is exactly the version a performance department cannot use,
+        because a recommendation that changes a medical or selection decision has to
+        be auditable. So every answer arrives with the athletes it is talking about,
+        the figures it used, a concrete session adjustment, a confidence score, and
+        the data sources it read. The disclaimer under the input says the quiet part
+        out loud: <em>verify anything that changes a medical or selection decision.</em>
+      </p>
+
+      <div class="pp-shots">
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/ai-insights-answer.webp" data-lightbox>
+            <img src="../assets/pulse-performance/ai-insights-answer.webp"
+                 alt="The assistant answering: named athletes with their acute-to-chronic ratio, recovery and risk figures, three concrete session adjustments, and source chips reading ACWR model, recovery scores and medical availability."
+                 width="1440" height="900" loading="lazy" />
+          </a>
+          <figcaption>Asked: who should train less tomorrow?</figcaption>
+          <p>Named athletes with their numbers, three concrete session adjustments,
+          and the sources it read — not a paragraph of confident prose.</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================
+         ROLES & CONFIDENTIALITY
+    ============================================= -->
+    <section class="cs-section cs-section--soft" aria-labelledby="pp-roles">
+      <span class="cs-label">Roles &amp; confidentiality</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-roles">A coach and a physio do not see the <em>same athlete.</em></h2>
+      <p class="cs-body cs-reveal">
+        Seven roles use this product — head coach, assistant coach, sports
+        scientist, performance analyst, physiotherapist, athlete and admin — and
+        they do not need the same page. A physiotherapist opening an athlete sees
+        the diagnosis, the rehab stage and the clinical notes. A coach opening the
+        same athlete sees availability, an expected return date, and nothing
+        clinical.
+      </p>
+      <p class="cs-body cs-reveal">
+        That split is not a convenience, it is the requirement. Health data is
+        special-category personal data, and "everyone on staff can see everything"
+        is the comfortable default that puts a club on the wrong side of it. So the
+        permission model is enforced twice — in middleware, so a role cannot reach
+        a route, and again in the service layer, so it cannot reach a record even
+        if it reached the route.
+      </p>
+
+      <div class="pp-shots">
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/settings-roles.webp" data-lightbox>
+            <img src="../assets/pulse-performance/settings-roles.webp"
+                 alt="The roles settings screen, listing each of the seven roles against the permissions and data categories it can reach."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>Roles &amp; permissions</figcaption>
+          <p>The permission matrix is administered in the product rather than buried
+          in a config file — an admin can see exactly which role reaches which data
+          category, including the medical one.</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================
+         THE SIDEBAR, SCREEN BY SCREEN
+    ============================================= -->
+    <section class="cs-section cs-section--ink" aria-labelledby="pp-nav">
+      <span class="cs-label">The product, screen by screen</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-nav">Twelve destinations, <em>two</em> groups.</h2>
+      <p class="cs-body cs-reveal">
+        The sidebar splits in two, and the split is the information architecture in
+        miniature. <strong>Performance</strong> is the work — the nine screens a coach
+        or scientist moves between while deciding what happens today.
+        <strong>Workspace</strong> is the three screens that exist so the first nine
+        can be trusted: what changed, what is scheduled, and who is allowed to see
+        it. Nothing lives in the sidebar that a role cannot reach, so the navigation
+        is never advertising a door that is locked.
+      </p>
+
+      <span class="cs-label cs-reveal" style="margin-top: clamp(40px, 6vh, 72px)">Performance</span>
+      <div class="pp-shots pp-shots--3">
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/dashboard.webp" data-lightbox>
+            <img src="../assets/pulse-performance/dashboard.webp"
+                 alt="The dashboard: a dark command band with squad readiness, availability and the next fixture, above lighter cards."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>01 · Dashboard</figcaption>
+          <p>The 08:30 screen. Readiness, availability, who needs a decision today, and one route into each. It is the only screen that answers a question you did not have to ask.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/athletes.webp" data-lightbox>
+            <img src="../assets/pulse-performance/athletes.webp"
+                 alt="The athlete directory: a filterable table of the squad with readiness, load and availability columns."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>02 · Athletes</figcaption>
+          <p>All 80, filterable by squad, position group, availability and risk. A table because this is a scanning task, not a browsing one.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/teams.webp" data-lightbox>
+            <img src="../assets/pulse-performance/teams.webp"
+                 alt="The teams screen showing three squads, each with a crest, readiness dial and squad profile."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>03 · Teams</figcaption>
+          <p>Three squads with their own crest, staff and readiness. The selector here scopes every other screen in the product.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/training.webp" data-lightbox>
+            <img src="../assets/pulse-performance/training.webp"
+                 alt="The training screen: a weekly session planner with drills, attendance and load."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>04 · Training</figcaption>
+          <p>Plan the week and watch the modelled load move as you write it — the cost of a session before it is run, not after.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/matches.webp" data-lightbox>
+            <img src="../assets/pulse-performance/matches.webp"
+                 alt="The match centre listing fixtures with scores and team output metrics."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>05 · Matches</figcaption>
+          <p>Fixtures, results and the shape of each performance. Match output is the outcome the training week was arguing about.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/analytics.webp" data-lightbox>
+            <img src="../assets/pulse-performance/analytics.webp"
+                 alt="The analytics screen with line, area, scatter, radar and bar charts across the squad."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>06 · Analytics</figcaption>
+          <p>Where the squad-level questions get answered: acute against chronic load, load spike against injury risk, unit comparison, match trend.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/ai-insights.webp" data-lightbox>
+            <img src="../assets/pulse-performance/ai-insights.webp"
+                 alt="The AI insights screen with suggested questions and a plain-language input."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>07 · AI insights</figcaption>
+          <p>Ask in plain language instead of building a query. Every answer carries its athletes, its figures, a confidence score and its sources.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/live.webp" data-lightbox>
+            <img src="../assets/pulse-performance/live.webp"
+                 alt="The live session screen monitoring athletes in real time during a training session."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>08 · Live session</figcaption>
+          <p>The session as it happens rather than a report about it afterwards. Built phone-first, because this screen is used on grass.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/reports.webp" data-lightbox>
+            <img src="../assets/pulse-performance/reports.webp"
+                 alt="The reports screen offering weekly, medical, match and athlete reports with export options."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>09 · Reports</figcaption>
+          <p>Weekly, medical, match and athlete reports generated from live data, exported to PDF or CSV for the people who do not log in.</p>
+        </figure>
+      </div>
+
+      <span class="cs-label cs-reveal" style="margin-top: clamp(48px, 7vh, 84px)">Workspace</span>
+      <div class="pp-shots pp-shots--3">
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/notifications.webp" data-lightbox>
+            <img src="../assets/pulse-performance/notifications.webp"
+                 alt="The notifications screen listing flagged athletes, wellness submissions and schedule changes."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>10 · Notifications</figcaption>
+          <p>Threshold crossings, missed check-ins and schedule changes. The things that should find you rather than wait to be discovered.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/calendar.webp" data-lightbox>
+            <img src="../assets/pulse-performance/calendar.webp"
+                 alt="The calendar screen showing sessions, fixtures and medical appointments across the month."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>11 · Calendar</figcaption>
+          <p>Sessions, fixtures and medical appointments on one timeline — the answer to “what is actually happening this week”.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/settings.webp" data-lightbox>
+            <img src="../assets/pulse-performance/settings.webp"
+                 alt="The settings screen with profile, team, roles, notifications, integrations, security and branding sections."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>12 · Settings</figcaption>
+          <p>Profile, team, roles, integrations, security and branding. Where the permission model in the previous section is actually administered.</p>
+        </figure>
+      </div>
+
+      <p class="cs-body cs-reveal" style="margin-top: clamp(40px, 6vh, 72px)">
+        One destination is deliberately not in the sidebar. The command palette has
+        no home, because it is meant to be reached from wherever you already are.
+      </p>
+
+      <div class="pp-shots pp-shots--2">
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/command-palette.webp" data-lightbox>
+            <img src="../assets/pulse-performance/command-palette.webp"
+                 alt="The command palette open over the dashboard, searching athletes, fixtures and reports."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>⌘K</figcaption>
+          <p>Every athlete by name or squad number, every fixture and every report, at keyboard speed. ⌘B collapses the sidebar, ⌘I opens notifications.</p>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/athlete-profile.webp" data-lightbox>
+            <img src="../assets/pulse-performance/athlete-profile.webp"
+                 alt="A single athlete's profile page with readiness history, load charts and availability status."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>Athlete profile</figcaption>
+          <p>Not a sidebar item but the destination most of them lead to — every number in the product is a link, and this is usually where it lands.</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================
+         THE SIGN-IN SCREEN
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="pp-signin">
+      <span class="cs-label">A detail worth the time</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-signin">The scrim follows the <em>type.</em></h2>
+      <p class="cs-body cs-reveal">
+        The sign-in screen started life as the default: a dark panel with two
+        blurred colour blobs behind it. It looked like every AI-generated hero of
+        the last two years. It was replaced with a real training-ground photograph
+        — pulled into the brand's colour world with a <strong>duotone</strong> that
+        keeps the photo's luminance but takes its hue from the product, so the
+        pitch green and teal bibs stop fighting the magenta.
+      </p>
+      <p class="cs-body cs-reveal">
+        The part I got wrong first is the interesting part. I painted the scrim that
+        protects the text at panel level, positioned in <code>rem</code>. It passed
+        on my screen. Then it failed on a narrower one — because the text block
+        rewraps as the panel narrows, grows taller, and <strong>slides out from
+        under its own protection</strong>. The fix was to attach the gradient to the
+        text block and size it as a share of that block, so it follows the text
+        wherever the text goes. The stop values are not taste either: each is the
+        opacity needed to hold that band's smallest text at 4.5:1 against the
+        brightest pixel the photograph puts behind it.
+      </p>
+
+      <div class="pp-shots">
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/login.webp" data-lightbox>
+            <img src="../assets/pulse-performance/login.webp"
+                 alt="The sign-in screen: a duotoned photograph of a contested football training drill fills the left panel, with the headline 'The number is the hero.' over it, and the sign-in form on the right."
+                 width="1800" height="1125" loading="lazy" />
+          </a>
+          <figcaption>Sign in</figcaption>
+          <p>Photograph, duotone, derived scrim, and the same fine grid used on the
+          dashboard's command band.</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================
+         VERIFIED
+    ============================================= -->
+    <section class="cs-section cs-section--soft" aria-labelledby="pp-verified">
+      <span class="cs-label">Accessibility</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-verified">Verified, not <em>assumed.</em></h2>
+      <p class="cs-body cs-reveal">
+        "WCAG AA compliant" is the easiest sentence in design to write and the least
+        often checked. Because the palette is in OKLCH, browsers hand back the raw
+        <code>oklch()</code> string rather than a colour you can measure — so I wrote
+        a contrast auditor that does its own OKLCH-to-sRGB conversion, composites
+        each text layer over whatever is actually behind it, and reports the ratio
+        per rendered line.
+      </p>
+
+      <div class="pp-measure cs-reveal">
+        <div>
+          <span class="n">0</span>
+          <p>AA failures across the audited screens, in both light and dark themes.</p>
+        </div>
+        <div>
+          <span class="n">4.5:1</span>
+          <p>Minimum held for body text, 3:1 for large — measured against the
+          brightest pixel behind each line, not an average.</p>
+        </div>
+        <div>
+          <span class="n">3</span>
+          <p>Viewport heights the sign-in panel was re-audited at, after the first
+          fix passed at one size and failed at another.</p>
+        </div>
+        <div>
+          <span class="n">32</span>
+          <p>Routes in the production build, all statically rendered where the data
+          allows it.</p>
+        </div>
+      </div>
+
+      <p class="cs-body cs-reveal" style="margin-top: clamp(28px, 4vh, 44px)">
+        The auditing habit caught things review never would have. Every Recharts
+        panel in the app was silently rendering at zero height, because a wrapper
+        had <code>flex-1</code> and an explicit height at the same time and
+        <code>flex-basis: 0</code> won. The text extraction looked perfect. Only
+        measuring the boxes found it.
+      </p>
+    </section>
+
+    <!-- ============================================
+         MOBILE
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="pp-mobile">
+      <span class="cs-label">Small screens</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-mobile">A coach on a <em>touchline</em> is not at a desk.</h2>
+      <p class="cs-body cs-reveal">
+        On mobile the brand panel is dropped entirely and the form becomes the whole
+        priority. The image is not merely hidden — the responsive
+        <code>sizes</code> attribute collapses to <code>1px</code> below the
+        breakpoint, so a phone downloads the smallest candidate in the set for an
+        image it will never paint.
+      </p>
+
+      <p class="cs-body cs-reveal">
+        Nothing is truncated to fit. The command band stacks rather than shrinking,
+        so the readiness figure is still the first thing on the screen; the sidebar
+        becomes a drawer; the assistant keeps its evidence and its sources, because
+        an answer you cannot audit is worth less on a touchline than at a desk, not
+        more.
+      </p>
+
+      <div class="pp-shots pp-shots--phones">
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/mobile-login.webp" data-lightbox>
+            <img src="../assets/pulse-performance/mobile-login.webp"
+                 alt="Sign-in on a phone: the photographic panel is gone and the form fills the screen, with one-tap role cards below it."
+                 width="620" height="1342" loading="lazy" />
+          </a>
+          <figcaption>Sign in</figcaption>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/mobile-dashboard.webp" data-lightbox>
+            <img src="../assets/pulse-performance/mobile-dashboard.webp"
+                 alt="The dashboard on a phone, with the command band stacked and the readiness figure still first."
+                 width="620" height="1342" loading="lazy" />
+          </a>
+          <figcaption>Dashboard</figcaption>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/mobile-nav.webp" data-lightbox>
+            <img src="../assets/pulse-performance/mobile-nav.webp"
+                 alt="The navigation drawer open over the dashboard on a phone, listing the performance and workspace sections."
+                 width="620" height="1342" loading="lazy" />
+          </a>
+          <figcaption>Navigation</figcaption>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/mobile-ai.webp" data-lightbox>
+            <img src="../assets/pulse-performance/mobile-ai.webp"
+                 alt="The assistant answering on a phone, keeping the named athletes, their figures and the source chips."
+                 width="620" height="1342" loading="lazy" />
+          </a>
+          <figcaption>Assistant</figcaption>
+        </figure>
+        <figure class="pp-shot cs-reveal">
+          <a class="cs-zoom" href="../assets/pulse-performance/mobile-athlete.webp" data-lightbox>
+            <img src="../assets/pulse-performance/mobile-athlete.webp"
+                 alt="A single athlete's profile on a phone, with readiness, appearances and rating stacked."
+                 width="620" height="1342" loading="lazy" />
+          </a>
+          <figcaption>Athlete</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================
+         BUILD
+    ============================================= -->
+    <section class="cs-section cs-section--ink" aria-labelledby="pp-build">
+      <span class="cs-label">The build</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-build">Designed and shipped by the <em>same hands.</em></h2>
+      <p class="cs-body cs-reveal">
+        Designing in Figma and handing over is a different job from designing while
+        you are the one who has to make it real. Doing both meant the design system
+        could not contain a decision that was pretty and unbuildable, and the code
+        could not quietly drop a decision that was inconvenient.
+      </p>
+
+      <dl class="pp-spec cs-reveal">
+        <div><dt>Framework</dt><dd>Next.js 15 App Router, React 19, TypeScript in strict mode</dd></div>
+        <div><dt>Styling</dt><dd>Tailwind CSS v4, with the OKLCH token layer bridged in through <code>@theme inline</code></dd></div>
+        <div><dt>Data viz</dt><dd>Recharts, wrapped in project primitives so no screen touches the library directly</dd></div>
+        <div><dt>State</dt><dd>Zustand with persistence; the session is mirrored to a cookie so middleware can gate routes</dd></div>
+        <div><dt>Dataset</dt><dd>80 athletes across 3 squads, generated from a seeded PRNG against a fixed clock, so server and client always agree</dd></div>
+        <div><dt>Access</dt><dd>7 roles, with medical data segregated — a coach and a physio do not see the same athlete page</dd></div>
+      </dl>
+    </section>
+
+    <!-- ============================================
+         REFERENCES
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="pp-references">
+      <span class="cs-label">Sources</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-references">What the metrics are <em>standing on.</em></h2>
+      <p class="cs-body cs-reveal">
+        Desk research, not primary research — I did not run a study, I read the one
+        that already exists and let it decide what belonged on the screen. Listing
+        it matters, because a dashboard that cites nothing is asking to be trusted
+        on confidence alone, which is the exact failure this product is arguing
+        against.
+      </p>
+
+      <ol class="pp-refs cs-reveal">
+        <li id="ref-1">
+          Hägglund M, Waldén M, Magnusson H, Kristenson K, Bengtsson H, Ekstrand J.
+          <cite>Injuries affect team performance negatively in professional football: an 11-year follow-up of the UEFA Champions League injury study.</cite>
+          British Journal of Sports Medicine, 2013;47(12):738–42.
+          <a href="https://bjsm.bmj.com/content/47/12/738" target="_blank" rel="noopener">bjsm.bmj.com</a>
+        </li>
+        <li id="ref-2">
+          Foster C, Florhaug JA, Franklin J, et al.
+          <cite>A new approach to monitoring exercise training.</cite>
+          Journal of Strength and Conditioning Research, 2001. The origin of the
+          session-RPE method.
+        </li>
+        <li id="ref-3">
+          Hooper SL, Mackinnon LT, Howard A, Gordon RD, Bachmann AW.
+          <cite>Markers for monitoring overtraining and recovery.</cite>
+          Medicine &amp; Science in Sports &amp; Exercise, 1995.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/7898325/" target="_blank" rel="noopener">pubmed.ncbi.nlm.nih.gov</a>
+        </li>
+        <li id="ref-4">
+          Gabbett TJ.
+          <cite>The training—injury prevention paradox: should athletes be training smarter and harder?</cite>
+          British Journal of Sports Medicine, 2016.
+        </li>
+        <li id="ref-5">
+          Lolli L, Batterham AM, Hawkins R, et al.
+          <cite>Mathematical coupling causes spurious correlation within the conventional acute-to-chronic workload ratio calculations.</cite>
+          British Journal of Sports Medicine, 2019;53(15):921–2.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/29101104/" target="_blank" rel="noopener">pubmed.ncbi.nlm.nih.gov</a>
+        </li>
+        <li id="ref-6">
+          Impellizzeri FM, Tenan MS, Kempton T, Novak A, Coutts AJ.
+          <cite>Acute:Chronic Workload Ratio: Conceptual Issues and Fundamental Pitfalls.</cite>
+          International Journal of Sports Physiology and Performance, 2020;15(6):907–13.
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============================================
+         REFLECTION
+    ============================================= -->
+    <section class="cs-section" aria-labelledby="pp-reflection">
+      <span class="cs-label">Reflection</span>
+      <h2 class="cs-h2 cs-reveal" id="pp-reflection">What this project <em>taught me.</em></h2>
+
+      <div class="cs-lessons">
+        <div class="cs-lesson cs-reveal">
+          <span class="num">(01)</span>
+          <div>
+            <h3>Choosing the colour space is a design decision.</h3>
+            <p>Picking OKLCH over hex looks like an implementation detail on the first day. By the time dark mode arrived it had removed an entire second round of design work, because scales that are perceptually even stay legible when you re-point them. The most valuable decisions in this build were made before anything was drawn.</p>
+          </div>
+        </div>
+        <div class="cs-lesson cs-reveal">
+          <span class="num">(02)</span>
+          <div>
+            <h3>Verifying is not the same as looking.</h3>
+            <p>I called several things done after reading the screen and seeing no errors. A chart with no axes and a panel collapsed to zero height both survived that. Text on a screen tells you almost nothing about geometry, so now I measure the boxes and assert the numbers rather than trusting the impression.</p>
+          </div>
+        </div>
+        <div class="cs-lesson cs-reveal">
+          <span class="num">(03)</span>
+          <div>
+            <h3>Read the argument, not just the metric.</h3>
+            <p>I could have shipped the acute:chronic ratio as a red-amber-green verdict and it would have looked more decisive. Reading the criticism of it changed the interface: a band and a trend instead of a judgement. Knowing how contested a number is turns out to be a design input, not a footnote — it tells you how much weight the UI is allowed to put on it.</p>
+          </div>
+        </div>
+        <div class="cs-lesson cs-reveal">
+          <span class="num">(04)</span>
+          <div>
+            <h3>If it only works at one size, it does not work.</h3>
+            <p>The sign-in scrim passed at my window size and failed at a narrower one, because I had positioned protection against a container instead of against the thing it was protecting. Anything anchored to a guess about where content will sit is a bug that has not been resized yet.</p>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="cs-quote cs-reveal">
+        The number is the hero. Everything else on the screen is there to make it legible.
+      </blockquote>
+    </section>
+
+  </main>
+
+  <!-- FOOTER NAV -->
+  <div class="cs-footer-nav">
+    <a href="../index.html#work" class="cs-footer-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to work
+    </a>
+    <div class="cs-next">
+      <span class="label">Next case study</span>
+      <a href="wastebazaar.html">
+        WasteBazaar
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-copy">© 2026 Timmy Ajakaiye</span>
+    <div class="footer-right">
+      <div class="footer-dot"></div>
+      Available for work
+    </div>
+  </footer>
+
+  <script src="../scripts/case.js"></script>
+
+</body>
+</html>

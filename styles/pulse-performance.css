@@ -1,0 +1,291 @@
+/* ==================================================
+   PULSE PERFORMANCE — palette + bespoke sections
+
+   Palette is taken straight from the product's own token
+   layer, converted from OKLCH to hex:
+     canvas-ink      oklch(11.5% 0.014 330)  #0C080C
+     brand-primary   oklch(52%   0.196 344)  #AF2484
+     primary-500     oklch(61%   0.198 344)  #CF44A0
+     primary-400     oklch(70.5% 0.163 344)  #E472B9
+     brand-accent    oklch(52.5% 0.098 190)  #007C77
+   The neutrals in the product carry a 330 hue tint, which is
+   why --cs-soft here is faintly magenta rather than grey.
+   ================================================== */
+
+:root {
+  --cs-ink: #0C080C;
+  --cs-hero-bg: #0C080C;
+  --cs-accent: #CF44A0;
+  --cs-accent-text: #AF2484;   /* 5.37:1 on the bone background */
+  --cs-support: #E472B9;
+  --cs-soft: #F7F2F6;
+  --pp-teal: #007C77;
+}
+
+/* Hero sits on the product's own ink. */
+.cs-hero { color: #FCF9FB; }
+.cs-hero-sub { color: rgba(252, 249, 251, 0.72); }
+.cs-hero-rail { border-top-color: rgba(252, 249, 251, 0.18); }
+.cs-hero-meta dt { color: rgba(252, 249, 251, 0.5); }
+
+/* The product is landscape software; give the cover more room than the
+   phone-shaped case studies get. */
+.pulse-performance .cs-hero-grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+@media (max-width: 900px) {
+  .pulse-performance .cs-hero-grid { grid-template-columns: 1fr; }
+}
+.pulse-performance .cs-hero-cover { border: 1px solid rgba(252, 249, 251, 0.12); }
+
+/* --------------------------------------------------
+   VIDEO — the walkthrough
+-------------------------------------------------- */
+.pp-video {
+  margin: clamp(32px, 5vh, 56px) 0 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--cs-ink);
+  border: 1px solid var(--cs-line);
+  position: relative;
+}
+.cs-section--ink .pp-video { border-color: var(--cs-line-dark); }
+.pp-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.pp-video figcaption {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cs-dim-on-ink);
+  padding: 14px 18px;
+  border-top: 1px solid var(--cs-line-dark);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------
+   SHOT GRID — screens from the running build
+-------------------------------------------------- */
+.pp-shots {
+  display: grid;
+  gap: clamp(16px, 2.4vw, 28px);
+  margin-top: clamp(32px, 5vh, 56px);
+}
+.pp-shots--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pp-shots--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 860px) {
+  .pp-shots--2, .pp-shots--3 { grid-template-columns: 1fr; }
+}
+.pp-shot { margin: 0; }
+.pp-shot .cs-zoom {
+  display: block;
+  border: 1px solid var(--cs-line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--cs-soft);
+}
+.cs-section--ink .pp-shot .cs-zoom {
+  border-color: var(--cs-line-dark);
+  background: rgba(252, 249, 251, 0.04);
+}
+.pp-shot img { width: 100%; height: auto; display: block; }
+.pp-shot figcaption {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cs-accent-text);
+  margin-top: 12px;
+}
+.cs-section--ink .pp-shot figcaption { color: var(--cs-support); }
+.pp-shot p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin-top: 6px;
+  color: rgba(22, 19, 13, 0.66);
+  max-width: 46ch;
+}
+.cs-section--ink .pp-shot p { color: var(--cs-dim-on-ink); }
+
+/* Mobile captures are portrait — cap them so they don't tower, and let the row
+   reflow rather than forcing a column count that breaks at five items. */
+.pp-shots--phones {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 215px));
+  justify-content: start;
+  gap: clamp(14px, 1.8vw, 22px);
+}
+.pp-shots--phones figcaption { font-size: 9.5px; }
+/* auto-fit measures against the 215px max, so on a narrow screen it lands on a
+   single column and the phones stack five deep. Two-up is the better read. */
+@media (max-width: 860px) {
+  .pp-shots--phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --------------------------------------------------
+   SPEC — the build, in mono
+-------------------------------------------------- */
+.pp-spec {
+  margin-top: clamp(32px, 5vh, 56px);
+  border-top: 1px solid var(--cs-line);
+}
+.cs-section--ink .pp-spec { border-top-color: var(--cs-line-dark); }
+.pp-spec > div {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  gap: clamp(12px, 3vw, 40px);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--cs-line);
+}
+.cs-section--ink .pp-spec > div { border-bottom-color: var(--cs-line-dark); }
+@media (max-width: 620px) {
+  .pp-spec > div { grid-template-columns: 1fr; gap: 6px; }
+}
+.pp-spec dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cs-accent-text);
+  padding-top: 3px;
+}
+.cs-section--ink .pp-spec dt { color: var(--cs-support); }
+.pp-spec dd {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------
+   MEASURED — verified numbers, not claimed outcomes
+-------------------------------------------------- */
+.pp-measure {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: clamp(18px, 2.6vw, 32px);
+  margin-top: clamp(30px, 4.5vh, 52px);
+}
+.pp-measure div {
+  padding-top: 18px;
+  border-top: 2px solid var(--cs-accent);
+}
+.cs-section--ink .pp-measure div { border-top-color: var(--cs-support); }
+.pp-measure .n {
+  font-family: var(--mono);
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  display: block;
+  line-height: 1;
+}
+.pp-measure p {
+  font-size: 14px;
+  line-height: 1.55;
+  margin-top: 10px;
+  color: rgba(22, 19, 13, 0.66);
+}
+.cs-section--ink .pp-measure p { color: var(--cs-dim-on-ink); }
+
+/* --------------------------------------------------
+   CODE — the one place a snippet earns its place
+-------------------------------------------------- */
+.pp-code {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.85;
+  background: rgba(252, 249, 251, 0.05);
+  border: 1px solid var(--cs-line-dark);
+  border-radius: 8px;
+  padding: 20px 22px;
+  overflow-x: auto;
+  margin-top: 26px;
+  color: var(--cs-on-ink);
+}
+.pp-code .c { color: rgba(252, 249, 251, 0.42); }
+.pp-code .k { color: var(--cs-support); }
+
+/* --------------------------------------------------
+   NOTE — a caveat that should not read as body copy
+-------------------------------------------------- */
+.pp-note {
+  margin-top: clamp(28px, 4vh, 44px);
+  padding: 22px 24px;
+  border-left: 2px solid var(--cs-accent);
+  background: rgba(207, 68, 160, 0.05);
+  border-radius: 0 8px 8px 0;
+}
+.cs-section--ink .pp-note {
+  border-left-color: var(--cs-support);
+  background: rgba(252, 249, 251, 0.05);
+}
+.pp-note p {
+  font-size: 15.5px;
+  line-height: 1.7;
+  margin: 0;
+  color: rgba(22, 19, 13, 0.74);
+}
+.cs-section--ink .pp-note p { color: var(--cs-on-ink); }
+.pp-note p + p { margin-top: 12px; }
+.pp-note strong { font-weight: 500; color: var(--cs-accent-text); }
+.cs-section--ink .pp-note strong { color: var(--cs-support); }
+
+/* --------------------------------------------------
+   REFERENCES
+-------------------------------------------------- */
+.pp-refs {
+  margin-top: clamp(30px, 4.5vh, 50px);
+  padding: 0;
+  list-style: none;
+  counter-reset: ref;
+  border-top: 1px solid var(--cs-line);
+}
+.cs-section--ink .pp-refs { border-top-color: var(--cs-line-dark); }
+/* Deliberately NOT a grid. A reference is a run of loose inline content —
+   author text, a <cite>, journal text, a link — and in a grid container each of
+   those becomes its own grid item, which drops <cite> into the 34px number
+   column and wraps the title one word per line. Indent + absolute marker is
+   immune to how many children the markup happens to have. */
+.pp-refs li {
+  counter-increment: ref;
+  position: relative;
+  padding: 14px 0 14px 44px;
+  border-bottom: 1px solid var(--cs-line);
+  font-size: 14px;
+  line-height: 1.65;
+  max-width: 82ch;
+}
+.cs-section--ink .pp-refs li { border-bottom-color: var(--cs-line-dark); }
+.pp-refs li::before {
+  content: "[" counter(ref) "]";
+  position: absolute;
+  left: 0;
+  top: 17px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--cs-accent-text);
+}
+.cs-section--ink .pp-refs li::before { color: var(--cs-support); }
+.pp-refs cite { font-style: italic; font-family: var(--serif); font-weight: 300; }
+.pp-refs a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Inline citation markers in body copy */
+.pp-cite {
+  font-family: var(--mono);
+  font-size: 0.72em;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--cs-accent-text);
+  text-decoration: none;
+  padding: 0 1px;
+}
+.cs-section--ink .pp-cite { color: var(--cs-support); }
+.pp-cite:hover { text-decoration: underline; }
+
+/* --------------------------------------------------
+   SWATCHES — tuned for the magenta-tinted scale
+-------------------------------------------------- */
+.pulse-performance .cs-swatch .hex { font-family: var(--mono); }
