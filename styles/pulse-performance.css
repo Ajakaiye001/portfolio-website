@@ -233,6 +233,50 @@
 .cs-section--ink .pp-note strong { color: var(--cs-support); }
 
 /* --------------------------------------------------
+   CTA — go and use the thing
+-------------------------------------------------- */
+.pp-cta {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.4vw, 28px);
+  flex-wrap: wrap;
+  margin-top: clamp(32px, 4.5vh, 52px);
+}
+.pp-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  /* primary-400 rather than the deeper brand magenta: ink type on this tint is
+     7.4:1, where the 600 step would only reach 4.2:1 at button size. */
+  background: var(--cs-support);
+  color: var(--cs-ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 16px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.32s cubic-bezier(0.2, 0, 0, 1), background-color 0.32s ease;
+}
+.pp-cta-btn:hover,
+.pp-cta-btn:focus-visible { background: #F2A0CE; transform: translateY(-2px); }
+.pp-cta-btn svg { transition: transform 0.32s cubic-bezier(0.2, 0, 0, 1); }
+.pp-cta-btn:hover svg { transform: translate(3px, -3px); }
+.pp-cta-url {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: var(--cs-dim-on-ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pp-cta-btn, .pp-cta-btn svg { transition: none; }
+  .pp-cta-btn:hover { transform: none; }
+  .pp-cta-btn:hover svg { transform: none; }
+}
+
+/* --------------------------------------------------
    REFERENCES
 -------------------------------------------------- */
 .pp-refs {

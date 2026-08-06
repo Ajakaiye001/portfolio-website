@@ -642,6 +642,9 @@ body.menu-open .nav-burger span:nth-child(2) { transform: translateY(-3.25px) ro
 }
 .work-link:hover { color: var(--accent); border-color: var(--accent); gap: 16px; }
 
+/* A work item carrying both a case study and a live build to visit. */
+.work-links { display: flex; align-items: center; gap: clamp(20px, 3vw, 34px); flex-wrap: wrap; }
+
 /* Category accordion */
 .work-group { border-top: 1px solid var(--border-strong); }
 .work-group-head { margin: 0; }
