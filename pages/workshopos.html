@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png" />
-  <meta name="description" content="WorkshopOS case study: a connected operating system for automotive workshops, built around the Work Order. Research with three workshop owners, a reversed architecture decision, role-based experiences, and projected targets stated as projections." />
+  <meta name="description" content="WorkshopOS case study: software for car repair shops that puts every job in one place. Three interviews with workshop owners, a design decision I reversed, seven roles, and a live prototype you can sign into. The impact numbers are labelled targets, not results." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,11 +51,17 @@
           <span class="cs-hero-eyebrow">Case Study · B2B SaaS · Research &amp; Product Design</span>
           <h1 class="cs-hero-title">Workshop<br>OS</h1>
           <p class="cs-hero-sub">
-            A connected operating system for automotive workshops. WorkshopOS ties the
-            diagnostic, repair, parts, purchasing and billing workflows to a single
-            object &mdash; the Work Order &mdash; so information stops falling through the
-            gaps between people and tools.
+            WorkshopOS is software for car repair shops. Today a single repair gets
+            diagnosed by a mechanic, scribbled on paper, texted to whoever orders
+            the parts, then typed into a spreadsheet days later. Three places, three
+            chances to lose it. I designed one system where all of it hangs off the
+            job itself.
           </p>
+          <a class="wos-hero-live" href="https://workshop-7iwro0so3-ajakaiye001s-projects.vercel.app/" target="_blank" rel="noopener"
+             data-cursor="Open app" aria-label="Open the live WorkshopOS prototype in a new tab">
+            Open the live prototype
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
         </div>
         <figure class="cs-hero-cover" data-enter="2">
           <div class="wos-browser">
@@ -72,10 +78,10 @@
 
       <div class="cs-hero-rail" data-enter="3">
         <dl class="cs-hero-meta">
-          <div><dt>Role</dt><dd>Product &amp; UX design, research, prototyping</dd></div>
-          <div><dt>Type</dt><dd>Self-directed product concept, validated through research</dd></div>
-          <div><dt>Status</dt><dd>High-fidelity interactive prototype &mdash; validated, not yet usability-tested</dd></div>
-          <div><dt>Focus</dt><dd>Information architecture, workflow design, role-based experiences</dd></div>
+          <div><dt>Role</dt><dd>Sole designer. Research, UX, UI, and the working prototype</dd></div>
+          <div><dt>Type</dt><dd>Self-directed. Three interviews with workshop owners shaped it</dd></div>
+          <div><dt>Status</dt><dd>Working interactive prototype. Not yet usability-tested</dd></div>
+          <div><dt>Focus</dt><dd>How the information is structured, and who gets to see what</dd></div>
         </dl>
       </div>
     </header>
@@ -86,24 +92,24 @@
     <section class="cs-section" aria-labelledby="wos-problem">
       <span class="cs-label"><span class="wos-num">01</span> The problem</span>
       <h2 class="cs-h2 cs-reveal" id="wos-problem">
-        Workshops don't fail for want of software. Work moves through too many
-        <em>disconnected</em> places.
+        These shops weren't short of software. They were short of <em>one</em> place
+        to put things.
       </h2>
 
       <p class="cs-body cs-reveal">
-        A repair begins as a technician's diagnosis, becomes a handwritten note, turns
-        into a WhatsApp message to whoever orders parts, and only later gets typed into
-        a spreadsheet. By the time it reaches the spreadsheet, the spreadsheet is
-        already a second source of truth.
+        A repair starts as a mechanic's diagnosis. It becomes a handwritten note.
+        Then a WhatsApp message to whoever orders the parts. Days later somebody
+        types it into a spreadsheet. By then the spreadsheet and the note disagree,
+        and nobody is quite sure which one is right.
       </p>
 
       <div class="wos-method cs-reveal">
         <h3>How I looked into it</h3>
         <p class="cs-body" style="margin-top:0">
-          Three informal conversations with independent workshop owners, twenty to
-          thirty minutes each. Deliberately about <strong>how work moves</strong>, not
-          about software &mdash; asking people what features they want produces a
-          feature list, not an understanding of the operation.
+          I sat down with three independent workshop owners, twenty to thirty
+          minutes each. I never asked them about software. Ask people what features
+          they want and you get a feature list. I wanted to know <strong>how the
+          work actually moves</strong> through a shop.
         </p>
         <ol style="margin-top:20px">
           <li>Walk me through what happens when a customer brings a car in.</li>
@@ -113,17 +119,17 @@
         </ol>
       </div>
 
-      <h3 class="cs-h3 cs-reveal" style="margin-top:clamp(46px,7vh,80px)">What the research surfaced</h3>
+      <h3 class="cs-h3 cs-reveal" style="margin-top:clamp(46px,7vh,80px)">What I found</h3>
 
       <div class="wos-findings">
         <article class="wos-finding cs-reveal">
           <span class="wos-finding-who">Owner 1</span>
-          <h3>The synchronisation problem</h3>
+          <h3>Keeping everyone updated</h3>
           <p>
-            Ran the shop on spreadsheets, paper, calls and messaging. He didn't call it
-            a software problem &mdash; he described it as constantly having to keep
-            people updated. The pain wasn't recording information. It was keeping it
-            synchronised.
+            They ran the shop on spreadsheets, paper, phone calls and texts. They
+            never once called it a software problem. What they described was having
+            to keep everyone updated, all day long. Writing things down was never
+            the hard part. Keeping every copy of it in agreement was.
           </p>
         </article>
 
@@ -131,28 +137,29 @@
           <span class="wos-finding-who">Owner 2</span>
           <h3>The parts bottleneck</h3>
           <p>
-            Diagnosis goes to the manager, the manager checks stock, stock goes to a
-            supplier, the supplier is ordered from, and the technician waits. Every hop
-            added delay and risk &mdash; the wrong part, a duplicate order, or losing
-            track of which vehicle it was even for.
+            Diagnosis goes to the manager. Manager checks the shelf. Shelf check
+            goes to a supplier. Somebody places the order. Meanwhile the mechanic
+            stands around. Five hand-offs, and each one can go wrong: the wrong
+            part, the same part ordered twice, or nobody remembering which car it
+            was for.
           </p>
         </article>
 
         <article class="wos-finding wos-finding--counter cs-reveal">
-          <span class="wos-finding-who">Owner 3 · counterexample</span>
+          <span class="wos-finding-who">Owner 3 · proved me wrong</span>
           <h3>Already organised</h3>
           <p>
-            This one was disconfirming evidence. It killed the assumption that every
-            workshop is drowning in spreadsheets. Their systems worked perfectly well.
-            They were just separate.
+            This one proved me wrong, which was the most useful thing that happened.
+            I had assumed every workshop was drowning in spreadsheets. Theirs worked
+            fine. The systems just didn't talk to each other.
           </p>
         </article>
       </div>
 
       <blockquote class="cs-quote cs-reveal">
-        The disconfirming evidence reframed the thesis &mdash; from "workshops need to
-        get rid of spreadsheets" to "workshops need a connected operational system that
-        reduces the handoffs between diagnosis, repair, parts and billing."
+        That third conversation changed the brief. I stopped designing a replacement
+        for spreadsheets and started designing something to cut the number of times
+        a job has to change hands.
       </blockquote>
     </section>
 
@@ -166,47 +173,49 @@
       </h2>
 
       <p class="cs-body cs-reveal">
-        If the handoffs are the problem, the architecture has to be built around
-        whatever the handoffs are about. I evaluated three candidates for the central
-        object, because that choice decides every screen that follows.
+        If hand-offs are the problem, the system has to be built around the thing
+        being handed off. I had three candidates. This is the one decision that
+        shapes every screen after it, so it was worth slowing down for.
       </p>
 
       <div class="wos-options">
         <article class="wos-option cs-reveal">
           <span class="wos-option-tag wos-option-tag--muted">Considered</span>
           <h3>Customer-centred</h3>
-          <p>Good for CRM. Doesn't reflect what happens on the floor &mdash; a customer isn't a unit of work.</p>
+          <p>Fine for a contact list. But a customer isn't a piece of work, and the floor doesn't run on customers.</p>
         </article>
         <article class="wos-option cs-reveal">
           <span class="wos-option-tag wos-option-tag--muted">Considered</span>
           <h3>Vehicle-centred</h3>
-          <p>Good for the technical side and service history. Misses the operational work happening around the vehicle.</p>
+          <p>Good for service history. Misses everything happening around the car: who is on it, what it costs, whether it is stuck.</p>
         </article>
         <article class="wos-option wos-option--chosen cs-reveal">
           <span class="wos-option-tag">Chosen</span>
           <h3>Work Order-centred</h3>
-          <p>A customer owns many vehicles; a vehicle visits many times. The Work Order is the specific piece of work happening <strong>now</strong>.</p>
+          <p>One customer owns several cars. One car comes back many times. The job is the thing happening <strong>right now</strong>, which is what everyone is actually asking about.</p>
         </article>
       </div>
 
       <p class="cs-body cs-reveal" style="margin-top:clamp(28px,4vh,44px)">
-        The Work Order is the natural point where people, information, resources and
-        money converge. So that is the operational source of truth: parts attach to it,
-        labour attaches to it, the diagnosis attaches to it, and the invoice is
-        assembled from it rather than re-entered somewhere else.
+        So the job became the spine. Parts attach to it. Hours attach to it. The
+        diagnosis attaches to it. When it is time to invoice, the invoice is already
+        sitting there, built from what everyone did, instead of somebody retyping it
+        off a note.
       </p>
 
       <h3 class="cs-h3 cs-reveal" style="margin-top:clamp(52px,8vh,90px)">The decision I reversed</h3>
       <p class="cs-body cs-reveal">
-        The first concept made the admin dashboard primary, with the technician workflow
-        as a section inside it. It failed, and it failed for a reason worth keeping:
-        admin and technician hold <strong>different mental models</strong>. A manager
-        asks "what's happening across the workshop?" A technician asks "what's happening
-        with this vehicle?" One screen cannot lead with both.
+        My first version made the admin dashboard the main event, with the
+        mechanic's workflow tucked inside it as a section. That was wrong, and why
+        it was wrong turned out to be the most useful thing I learned on this
+        project. A manager opens the app asking <strong>"what's happening across the
+        whole shop?"</strong> A mechanic opens it asking <strong>"what's happening
+        with this car?"</strong> No single screen can answer both of those first.
       </p>
       <p class="cs-body cs-reveal">
-        So I reversed it into role-specific experiences sitting on one shared data
-        layer &mdash; which is what led to the role and permission model.
+        So I rebuilt it as a separate experience per role, all running on the same
+        data underneath. That is the decision that produced the permissions model
+        further down this page.
       </p>
 
       <div class="wos-devices">
@@ -223,7 +232,7 @@
             </a>
           </div>
           <figcaption>Across the workshop</figcaption>
-          <p>The manager's question. Sorted by what is blocking the floor, not by date.</p>
+          <p>The manager's question, answered first thing in the morning. The list leads with whatever is blocking a bay.</p>
         </figure>
 
         <figure class="cs-reveal">
@@ -235,7 +244,7 @@
             </a>
           </div>
           <figcaption>This vehicle</figcaption>
-          <p>The technician's question, on a tablet in the bay.</p>
+          <p>The mechanic's question, on a tablet next to the car.</p>
         </figure>
       </div>
     </section>
@@ -246,18 +255,19 @@
     <section class="cs-section cs-section--ink" aria-labelledby="wos-tech">
       <span class="cs-label">Principle</span>
       <h2 class="cs-h2 cs-reveal" id="wos-tech">
-        The technician should work on the vehicle, <em>not</em> manage the business.
+        A mechanic should be working on the car, <em>not</em> running the business.
       </h2>
 
       <p class="cs-body cs-reveal">
-        The technician view is deliberately stripped down. It carries jobs, diagnostics,
-        repair recommendations, parts requests, notes, photos and status. It does not
-        carry revenue, staff management, payroll or global settings &mdash; not because
-        those are hidden for security, but because they are not that person's job and
-        every one of them is a thing to scroll past while holding a torch.
+        So their screen is stripped back on purpose. Jobs, diagnostics, repair
+        steps, parts requests, notes, photos, status. That is the whole thing. No
+        revenue, no staff rotas, no payroll, no settings. Those are not hidden for
+        security reasons. They are absent because they belong to somebody else's
+        job, and every extra row is one more thing to scroll past while you are
+        holding a torch in your other hand.
       </p>
 
-      <p class="cs-body cs-reveal">The view answers five questions and stops:</p>
+      <p class="cs-body cs-reveal">It answers five questions and then it stops:</p>
 
       <ol class="wos-asks cs-reveal">
         <li>What vehicle am I on?</li>
@@ -274,27 +284,28 @@
     <section class="cs-section" aria-labelledby="wos-business">
       <span class="cs-label"><span class="wos-num">03</span> The business</span>
       <h2 class="cs-h2 cs-reveal" id="wos-business">
-        Every handoff costs time, risks an error, and slows the path to <em>payment</em>.
+        Every time a job changes hands, it costs the shop <em>money</em>.
       </h2>
 
       <p class="cs-body cs-reveal">
-        The target is independent mechanics, repair shops and multi-bay workshops
-        currently stitching together a diagnostic tool, paper, phone calls, spreadsheets
-        and separate accounting software. The commercial thesis is narrow on purpose:
-        connecting those steps is worth paying for, because the gaps between them are
-        where the money leaks.
+        Who it is for: independent mechanics and small multi-bay garages currently
+        holding together a diagnostic tool, a pad of paper, a phone, a spreadsheet
+        and some accounting software with nothing but memory. The pitch is
+        deliberately narrow. Connecting those five things is the entire product,
+        because the gaps between them are where a shop quietly loses money.
       </p>
 
       <p class="cs-body cs-reveal">
-        It has to serve the business without working against the user. The owner gets
-        oversight; the technician gets speed. Neither is sacrificed for the other, which
-        is the failure mode of most software sold to an owner and used by a floor.
+        It also has to work for the person using it, not only the person buying it.
+        The owner gets oversight. The mechanic gets speed. Plenty of shop software
+        gets sold to an owner and then quietly resented by the floor, and I did not
+        want to design that.
       </p>
 
       <p class="cs-body cs-reveal">
-        One deliberate restraint: AI is not the headline. The value proposition is
-        workflow connectivity, and dressing it as an AI product would have made the
-        pitch fashionable and the claim weaker.
+        One thing I held back on: AI. I could have put it on the front of the box.
+        But what this actually does is connect steps that were already there, and
+        calling that AI would have made the pitch trendier and the promise vaguer.
       </p>
 
       <div class="wos-bleed">
@@ -312,9 +323,8 @@
           </div>
           <figcaption>Positioning</figcaption>
           <p>
-            The promise is stated in the language of the floor, not the language of
-            software. The product detail comes later on the page, once the plain-English
-            claim has landed.
+            The headline uses the words a mechanic would use. Feature detail waits
+            until further down the page, once the plain-English promise has landed.
           </p>
         </figure>
       </div>
@@ -326,13 +336,14 @@
     <section class="cs-section cs-section--soft" aria-labelledby="wos-users">
       <span class="cs-label"><span class="wos-num">04</span> The users</span>
       <h2 class="cs-h2 cs-reveal" id="wos-users">
-        Seven roles, mapped to the jobs the research actually <em>surfaced</em>.
+        Seven roles, because a garage is not <em>one</em> job.
       </h2>
 
       <p class="cs-body cs-reveal">
-        The interface adapts per role. This is not a persona paragraph added for form's
-        sake &mdash; the two mental models found in the research, across-the-workshop
-        and this-vehicle, are the reason role-specific experiences exist at all.
+        The interface changes depending on who signs in. This is not a personas
+        slide bolted on at the end. It comes straight out of the two questions I
+        kept hearing: what is happening across the shop, and what is happening with
+        this car.
       </p>
 
       <div class="wos-roles cs-reveal">
@@ -343,7 +354,7 @@
         <article class="wos-role wos-role--floor"><h3>Technician</h3><p>Assigned jobs, diagnostics, parts requests, notes.</p></article>
         <article class="wos-role"><h3>Accountant</h3><p>Invoicing, payments, VAT, financial reporting.</p></article>
         <article class="wos-role"><h3>Receptionist</h3><p>Bookings, check-in, keys, phones.</p></article>
-        <article class="wos-role"><h3>Customer</h3><p>Where is my car, what does it cost, approve, pay.</p></article>
+        <article class="wos-role"><h3>Customer</h3><p>Where is my car, what will it cost, approve it, pay.</p></article>
       </div>
 
       <figure class="wos-frame cs-reveal">
@@ -360,10 +371,9 @@
         </div>
         <figcaption>Roles and permissions</figcaption>
         <p>
-          Twenty-one permissions, editable per role rather than hardcoded per person.
-          Removing one from a role changes the navigation for everyone holding it, with
-          no reload &mdash; which is the point being demonstrated, not a settings screen
-          for its own sake.
+          Twenty-one permissions, set per role rather than hardcoded per person.
+          Untick one and the navigation changes for everyone in that role straight
+          away, no reload. It is wired up rather than drawn.
         </p>
       </figure>
     </section>
@@ -374,20 +384,20 @@
     <section class="cs-section" aria-labelledby="wos-constraints">
       <span class="cs-label"><span class="wos-num">05</span> The constraints</span>
       <h2 class="cs-h2 cs-reveal" id="wos-constraints">
-        The biggest constraint was the <em>hardware</em> I could not build.
+        The biggest constraint was <em>hardware</em> I could not build.
       </h2>
 
       <p class="cs-body cs-reveal">
-        A real build needs diagnostic device integration, vehicle communication
-        protocols and manufacturer data. Building any of that would have pulled the work
-        away from the question I was actually trying to answer. So the prototype uses a
-        simulated diagnostic integration: it demonstrates the flow end to end without
-        pretending to talk to a physical device.
+        A real version of this plugs into a diagnostic scanner, speaks the car's own
+        protocols, and pulls manufacturer data. I could not build any of that, and
+        chasing it would have eaten the time I needed for the actual design
+        question. So the scan is simulated. The flow runs end to end, and the
+        product says plainly that no physical scanner is involved.
       </p>
 
       <p class="cs-body cs-reveal">
-        The goal was to validate the workflow and the information architecture &mdash;
-        not the automotive communications technology.
+        I was testing the workflow and the way the information is organised. The car
+        electronics were somebody else's problem.
       </p>
 
       <ul class="wos-chain cs-reveal">
@@ -413,9 +423,9 @@
         </div>
         <figcaption>Simulated scan</figcaption>
         <p>
-          The console is rendered as an instrument rather than a dashboard &mdash; mono
-          type, a dark field, a sweeping scan line &mdash; because that is what the
-          object it stands in for looks like.
+          I styled the console like a piece of workshop equipment rather than a web
+          dashboard. Mono type, dark field, a scan line that sweeps. It stands in
+          for a physical tool, so it should look like one.
         </p>
       </figure>
 
@@ -433,9 +443,9 @@
         </div>
         <figcaption>Fault code becomes priced repair</figcaption>
         <p>
-          This is the hinge of the whole product. The code carries its own repair, the
-          repair carries its parts, and the parts are checked against the shelf before
-          anyone has typed anything.
+          This is the hinge the whole product turns on. The fault code already knows
+          its repair. The repair already knows its parts. Those parts get checked
+          against the shelf before anyone has typed a thing.
         </p>
       </figure>
 
@@ -453,7 +463,7 @@
             </a>
           </div>
           <figcaption>Supplier comparison</figcaption>
-          <p>Out of stock becomes a decision with a price and a date attached, not a phone call.</p>
+          <p>"Out of stock" turns into a choice with three prices and three delivery dates on it. No ringing round.</p>
         </figure>
 
         <figure class="cs-reveal">
@@ -469,7 +479,7 @@
             </a>
           </div>
           <figcaption>Purchase order</figcaption>
-          <p>Still carrying the job number it came from, so receiving it unblocks that vehicle.</p>
+          <p>It still carries the job number it came from, so booking the part in unblocks that exact car.</p>
         </figure>
       </div>
 
@@ -487,35 +497,35 @@
         </div>
         <figcaption>The shelf, as the system sees it</figcaption>
         <p>
-          Stock is reserved against the vehicle that needs it, which is what stops a
-          part being fitted to the wrong car &mdash; Owner 2's duplicate-order risk,
-          designed out rather than warned about.
+          Stock gets reserved against the car that needs it, so a part cannot
+          quietly end up on the wrong vehicle. That is Owner 2's duplicate-order
+          problem, designed out instead of warned about.
         </p>
       </figure>
 
       <h3 class="cs-h3 cs-reveal" style="margin-top:clamp(52px,8vh,90px)">What I deliberately cut</h3>
       <p class="cs-body cs-reveal">
-        Each of these is a design decision rather than an unfinished edge, and each one
-        exists to protect the highest-friction workflow: diagnosis, repair, parts,
-        purchasing, job completion, invoice.
+        None of these are unfinished corners. I cut each one to protect the flow
+        that mattered most: diagnose it, repair it, get the parts, buy the parts,
+        finish the job, send the invoice.
       </p>
 
       <ul class="wos-cuts cs-reveal">
         <li>
           <strong>Full accounting integration</strong>
-          <span>The product generates invoices. It does not try to replace an accounting platform.</span>
+          <span>It writes the invoice. Replacing a shop's accounting software is a different product.</span>
         </li>
         <li>
           <strong>Live supplier APIs</strong>
-          <span>Realistic prototype data instead. The design question was how a supplier decision is presented, not who serves the JSON.</span>
+          <span>Realistic mock data instead. The design question was how you show someone three supplier options, not where the data comes from.</span>
         </li>
         <li>
           <strong>A standalone customer app</strong>
-          <span>A responsive portal first. The immediate need was visibility and approval, and neither justifies asking a customer to install anything.</span>
+          <span>A web page that works on a phone does the job. Customers want to see where the car is and tap approve. That does not justify asking them to install anything.</span>
         </li>
         <li>
           <strong>Advanced AI diagnostics</strong>
-          <span>Cut on purpose, to keep the value proposition honest.</span>
+          <span>Cut on purpose, so the promise stays honest.</span>
         </li>
       </ul>
 
@@ -545,7 +555,7 @@
             </a>
           </div>
           <figcaption>The floor</figcaption>
-          <p>Answering the manager's question spatially, because that is how they describe it.</p>
+          <p>Managers describe their shop as bays, so the screen shows bays. Drag a waiting car onto a free one.</p>
         </figure>
       </div>
     </section>
@@ -560,15 +570,16 @@
       </h2>
 
       <p class="cs-body cs-reveal">
-        The product is validated as a concept but has not been usability-tested. What
-        follows are projected targets tied to the core hypothesis &mdash; not outcomes
-        the product has achieved, and not numbers from anybody's shop floor. Every one
-        is stated with the research finding it comes from, so it can be argued with.
+        Read this part carefully. I have not run a usability test, and this has
+        never run in a real garage. Every number below is a goal I designed towards.
+        Not one of them is something the product has achieved, and not one came off
+        anybody's shop floor. I have put the reasoning under each so you can
+        disagree with it.
       </p>
 
       <blockquote class="cs-quote cs-reveal">
-        The hypothesis: the product succeeds if it reduces the number of manual handoffs
-        required to move a vehicle from diagnosis to completed payment.
+        The bet: this works if it cuts the number of times a job has to be handed
+        from one person to the next between diagnosis and payment.
       </blockquote>
 
       <div class="wos-projections">
@@ -578,9 +589,10 @@
           <h3>Manual handoffs per job</h3>
           <span class="why">Why</span>
           <p>
-            Today a diagnosis passes through technician, manager, stock check and
-            supplier by hand (Owner 2). Connecting diagnosis to parts to purchasing
-            collapses those hops into one system.
+            Owner 2 walked me through five hand-offs between finding a fault and
+            ordering the part. Wiring diagnosis straight into parts and purchasing
+            collapses those into one system. Whether it really lands at one is
+            exactly what a pilot would tell me.
           </p>
         </article>
 
@@ -590,8 +602,9 @@
           <h3>Time from diagnosis to parts ordered</h3>
           <span class="why">Why</span>
           <p>
-            Often minutes. The request no longer waits for someone to manually translate
-            the technician's finding into a purchasing task.
+            The parts request is generated from the diagnosis itself, so it stops
+            waiting on a person to turn one into the other. Plausible mechanism,
+            still an untested claim.
           </p>
         </article>
 
@@ -601,8 +614,9 @@
           <h3>"Awaiting parts" dwell time</h3>
           <span class="why">Why</span>
           <p>
-            Automatic inventory checks and supplier ETAs at the point of diagnosis remove
-            the back-and-forth that stretches this state.
+            Stock levels and supplier delivery dates appear at the moment of
+            diagnosis, so the back-and-forth that stretches this state has nowhere
+            to happen. How much shorter, I would need real shop data to say.
           </p>
         </article>
 
@@ -612,9 +626,9 @@
           <h3>Information-sync errors</h3>
           <span class="why">Why</span>
           <p>
-            Wrong or duplicate part orders and stale job status. A single Work Order
-            source of truth removes the second-source-of-truth spreadsheet problem
-            (Owner 1).
+            Wrong parts, the same part ordered twice, a job status nobody has
+            updated. One job record that everyone reads from removes the
+            disagreeing-spreadsheet problem Owner 1 described.
           </p>
         </article>
 
@@ -624,15 +638,16 @@
           <h3>Invoice turnaround</h3>
           <span class="why">Why</span>
           <p>
-            Parts and labour already live on the Work Order, so the invoice is assembled
-            from existing data rather than re-entered.
+            Parts and hours are already sitting on the job, so the invoice is built
+            from what is there instead of retyped. That should shorten the gap
+            between finishing a car and getting paid for it.
           </p>
         </article>
       </div>
 
       <p class="cs-body cs-reveal" style="margin-top:clamp(28px,4vh,44px)">
-        These become the actual success metrics to measure in usability testing and a
-        later pilot.
+        If this ever gets built for real, these five are what I would measure. Today
+        they are hypotheses with reasoning attached, and nothing more than that.
       </p>
     </section>
 
@@ -642,12 +657,12 @@
     <section class="cs-section" aria-labelledby="wos-next">
       <span class="cs-label">Validation plan · what's next</span>
       <h2 class="cs-h2 cs-reveal" id="wos-next">
-        From assumption-driven design to <em>observed</em> validation.
+        The next step is to sit down and <em>watch</em> someone use it.
       </h2>
 
       <p class="cs-body cs-reveal">
-        The next step is to take the prototype back to the same three owners and run a
-        realistic scenario rather than a demo:
+        I would take the prototype back to the same three owners. Not a demo. A
+        task:
       </p>
 
       <blockquote class="cs-quote cs-reveal">
@@ -656,22 +671,22 @@
       </blockquote>
 
       <p class="cs-body cs-reveal">
-        Then observe rather than ask, because what people say about an interface and
-        what they do with one are different data:
+        Then stop talking and watch. What people say about an interface and what
+        they do with one are two different things:
       </p>
 
       <ul class="wos-cuts cs-reveal">
         <li><strong>Where they hesitate</strong><span>And what information they expected to be there at that moment.</span></li>
-        <li><strong>Whether the terminology matches theirs</strong><span>Their words for the work, not mine.</span></li>
-        <li><strong>Whether the Work Order structure matches their mental model</strong><span>The central architectural bet, tested directly.</span></li>
-        <li><strong>Whether the technician flow is actually faster</strong><span>Measured against how they work today, not against nothing.</span></li>
-        <li><strong>Whether managers can read job status without asking staff</strong><span>The synchronisation problem, restated as a test.</span></li>
-        <li><strong>Where the workflow still forces offline communication</strong><span>Every remaining phone call is a gap the design has not closed.</span></li>
+        <li><strong>Do they call it what I call it?</strong><span>Their words for the work, not mine.</span></li>
+        <li><strong>Does putting the job at the centre match how they think?</strong><span>That is the whole bet. This is the test of it.</span></li>
+        <li><strong>Is the mechanic's screen actually faster?</strong><span>Timed against how they work today, not against a blank page.</span></li>
+        <li><strong>Can a manager read the floor without asking anyone?</strong><span>Owner 1's problem, turned into a pass or a fail.</span></li>
+        <li><strong>Where does it still force a phone call?</strong><span>Every call left over is a gap I have not closed.</span></li>
       </ul>
 
       <p class="cs-body cs-reveal">
-        Those findings feed back into the information architecture and the interaction
-        design.
+        Whatever comes back changes the structure, and probably some of my
+        better-looking screens.
       </p>
 
       <div class="wos-bleed">
@@ -689,8 +704,8 @@
           </div>
           <figcaption>Marketing · feature showcase</figcaption>
           <p>
-            Each claim on the marketing site is paired with the screen that backs it, so
-            the pitch and the product cannot drift apart.
+            Every claim on the marketing site sits next to the screen that backs it
+            up, so the pitch and the product cannot drift apart.
           </p>
         </figure>
       </div>
@@ -706,22 +721,42 @@
       </h2>
 
       <p class="cs-body cs-reveal">
-        I started by understanding how a workshop operates, found the real problem was
-        fragmented information and handoffs between people and tools, and let that
-        reframing drive the architecture &mdash; the Work Order as the source of truth,
-        diagnostics wired to parts and purchasing, and role-specific experiences on one
-        connected data layer.
+        I started by asking three people how their shops actually run. The problem
+        turned out to be hand-offs, not software. Everything after that followed
+        from putting the job at the centre: diagnostics wired to parts, parts wired
+        to purchasing, and a different screen for each role sitting on the same
+        data.
       </p>
 
-      <p class="cs-body cs-reveal">
-        The result is WorkshopOS.
-      </p>
+      <p class="cs-body cs-reveal">That is WorkshopOS.</p>
 
       <div class="cs-chips cs-reveal" style="margin-top:clamp(30px,4.5vh,50px)">
         <span class="cs-chip"><strong>Central object</strong> Work Order</span>
         <span class="cs-chip"><strong>Roles</strong> 7 · 21 permissions</span>
         <span class="cs-chip"><strong>Surfaces</strong> Admin · Floor · Portal · Marketing</span>
         <span class="cs-chip"><strong>Status</strong> Interactive prototype</span>
+      </div>
+
+      <p class="cs-body cs-reveal" style="margin-top:clamp(34px,5vh,58px)">
+        Go and poke at it. The sign-in page lists seven demo accounts, one click each,
+        with the password printed underneath. Sign in as the <strong>Owner</strong> and
+        you get the whole shop. Sign out, come back as a <strong>Technician</strong>, and
+        watch how much disappears. That is the permissions model, and it takes ten seconds
+        to see.
+      </p>
+
+      <div class="wos-cta cs-reveal">
+        <a class="wos-cta-btn" href="https://workshop-7iwro0so3-ajakaiye001s-projects.vercel.app/"
+           target="_blank" rel="noopener" data-cursor="Open app"
+           aria-label="Open the live WorkshopOS app in a new tab">
+          Visit the live app
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a class="wos-cta-alt" href="https://github.com/Ajakaiye001/Workshop-os"
+           target="_blank" rel="noopener" data-cursor="Source"
+           aria-label="View the WorkshopOS source on GitHub">
+          Source on GitHub
+        </a>
       </div>
     </section>
 
